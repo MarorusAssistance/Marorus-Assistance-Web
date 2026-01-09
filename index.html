@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maroru's Assistance - Ingeniería de Software & IA</title>
     
+    <!-- FAVICON (Icono de la pestaña) -->
+    <!-- Asegúrate de tener un archivo llamado 'favicon.png' en la misma carpeta -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!-- Tailwind CSS (Estilos) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -81,18 +85,9 @@
 
         const MarorusAssistance = () => {
             const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-            const [formStatus, setFormStatus] = React.useState('idle');
-
+            
+            // Ya no necesitamos estado local de envío porque Formspree maneja la redirección
             const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                setFormStatus('sending');
-                setTimeout(() => {
-                    setFormStatus('success');
-                    setTimeout(() => setFormStatus('idle'), 3000);
-                }, 1500);
-            };
 
             const scrollToSection = (id) => {
                 const element = document.getElementById(id);
@@ -386,13 +381,14 @@
                         <div className="absolute top-0 left-0 w-full h-2" style={{ backgroundColor: brandColors.primary }}></div>
                         <h3 className="text-2xl font-bold mb-8 font-fatimi">Formulario de Contacto</h3>
                         
-                        <form onSubmit={handleSubmit} className="space-y-8">
+                        <form action="https://formspree.io/f/xwvveolo" method="POST" className="space-y-8">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-2 group">
                                 <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-gray-500 group-focus-within:text-red-700 transition">Nombre</label>
                                 <input 
                                 type="text" 
                                 id="name" 
+                                name="name"
                                 required 
                                 className="w-full px-0 py-3 border-b-2 border-gray-200 focus:border-red-700 bg-transparent outline-none transition font-medium"
                                 placeholder="Tu nombre"
@@ -403,6 +399,7 @@
                                 <input 
                                 type="email" 
                                 id="email" 
+                                name="email"
                                 required 
                                 className="w-full px-0 py-3 border-b-2 border-gray-200 focus:border-red-700 bg-transparent outline-none transition font-medium"
                                 placeholder="tu@email.com"
@@ -414,6 +411,7 @@
                             <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-gray-500 group-focus-within:text-red-700 transition">Mensaje</label>
                             <textarea 
                                 id="message" 
+                                name="message"
                                 rows="4" 
                                 required 
                                 className="w-full px-0 py-3 border-b-2 border-gray-200 focus:border-red-700 bg-transparent outline-none transition resize-none font-medium"
@@ -423,15 +421,10 @@
 
                             <button 
                             type="submit" 
-                            disabled={formStatus === 'sending' || formStatus === 'success'}
-                            className={`w-full py-5 text-white font-bold tracking-widest uppercase text-sm transition flex items-center justify-center gap-3 mt-4 hover:shadow-lg
-                                ${formStatus === 'sending' ? 'opacity-75 cursor-wait' : ''}
-                            `}
-                            style={{ backgroundColor: formStatus === 'success' ? '#1f2937' : brandColors.primary }}
+                            className={`w-full py-5 text-white font-bold tracking-widest uppercase text-sm transition flex items-center justify-center gap-3 mt-4 hover:shadow-lg bg-gray-900 hover:bg-red-700`}
+                            style={{ backgroundColor: brandColors.primary }}
                             >
-                            {formStatus === 'idle' && <>ENVIAR MENSAJE <Send size={18} /></>}
-                            {formStatus === 'sending' && 'ENVIANDO...'}
-                            {formStatus === 'success' && <>¡ENVIADO CORRECTAMENTE! <CheckCircle size={18} /></>}
+                                ENVIAR MENSAJE <Send size={18} />
                             </button>
                         </form>
                         </div>
