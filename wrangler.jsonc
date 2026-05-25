@@ -1,0 +1,8 @@
+{
+  "name": "marorus-assistance-web",
+  "compatibility_date": "2025-05-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist"
+  }
+}
