@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -7,9 +9,30 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t('meta.title')} description={t('meta.description')} lang={lang}>
-  <div class="min-h-screen flex items-center justify-center px-4">
-    <h1 class="font-display text-3xl md:text-4xl font-bold text-text text-center">
-      En construcción
-    </h1>
-  </div>
+  <Hero lang={lang} />
+  <Stats lang={lang} />
+
+  <section id="servicios-it" class="min-h-screen flex items-center justify-center px-4 bg-bg">
+    <h2 class="font-display text-2xl text-text-muted">Servicios IT — en construcción</h2>
+  </section>
+
+  <section id="operaciones" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
+    <h2 class="font-display text-2xl text-text-muted">Operaciones IA — en construcción</h2>
+  </section>
+
+  <section id="proyectos" class="min-h-screen flex items-center justify-center px-4 bg-bg">
+    <h2 class="font-display text-2xl text-text-muted">Proyectos — en construcción</h2>
+  </section>
+
+  <section id="sobre-mi" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
+    <h2 class="font-display text-2xl text-text-muted">Sobre mí — en construcción</h2>
+  </section>
+
+  <section id="como-trabajo" class="min-h-screen flex items-center justify-center px-4 bg-bg">
+    <h2 class="font-display text-2xl text-text-muted">Cómo trabajo — en construcción</h2>
+  </section>
+
+  <section id="contacto" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
+    <h2 class="font-display text-2xl text-text-muted">Contacto — en construcción</h2>
+  </section>
 </Layout>

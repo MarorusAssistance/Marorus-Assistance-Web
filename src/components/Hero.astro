@@ -1,0 +1,76 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section
+  id="inicio"
+  class="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] bg-bg flex items-center"
+>
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full hero-content">
+
+    <!-- Badge -->
+    <div class="inline-flex items-center border border-border-soft rounded px-3 py-1 mb-8" aria-label="Tecnologías">
+      <span class="font-mono text-[10px] text-text-muted uppercase tracking-widest leading-none">
+        {t('hero.badge')}
+      </span>
+    </div>
+
+    <!-- H1 -->
+    <h1 class="font-display font-bold text-5xl md:text-6xl lg:text-7xl text-text leading-tight">
+      <span class="block">{t('hero.titleLine1')}</span>
+      <span>{t('hero.titleLine2')} <span class="text-primary">{t('hero.titleAccent')}</span></span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="font-body text-lg md:text-xl text-text-muted max-w-[700px] leading-relaxed mt-8">
+      {t('hero.subtitle')}
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-12">
+      <a
+        href="#servicios-it"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-white font-medium rounded-md hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary w-full sm:w-auto"
+      >
+        {t('hero.ctaIT')} <span aria-hidden="true">→</span>
+      </a>
+      <a
+        href="#operaciones"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-text border border-text rounded-md hover:bg-text hover:text-bg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary w-full sm:w-auto"
+      >
+        {t('hero.ctaOps')} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero-content {
+    animation: heroFadeIn 0.35s ease-out both;
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-content {
+      animation: none;
+    }
+  }
+</style>

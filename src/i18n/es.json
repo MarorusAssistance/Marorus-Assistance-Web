@@ -26,5 +26,29 @@
     "es": "ES",
     "en": "EN",
     "ariaLabel": "Cambiar idioma"
+  },
+  "hero": {
+    "badge": "GenAI · Agentes · RAG · Azure",
+    "titleLine1": "Freelance GenAI Engineer.",
+    "titleLine2": "Sistemas de IA en producción,",
+    "titleAccent": "no demos.",
+    "subtitle": "Ingeniero freelance especializado en agentes, RAG y automatización con LLMs sobre Azure. He llevado a producción asistentes sobre 19.000 productos y automatizado 500 facturas/mes. Certificado AI-102, DP-100, AZ-204.",
+    "ctaIT": "Soy CTO / IT Lead",
+    "ctaOps": "Soy de operaciones"
+  },
+  "stats": {
+    "stat1": {
+      "number": "19.000",
+      "label": "productos indexados en asistente de compras en producción"
+    },
+    "stat2": {
+      "number": "500/mes",
+      "label": "facturas procesadas en sistema de loyalty B2B"
+    },
+    "stat3": {
+      "number": "85-90%",
+      "label": "precisión en matching de facturas con datos ruidosos"
+    },
+    "footnote": "Resultados reales en producción durante mi etapa como AI Engineer en Wembley Studios (2023-2025)."
   }
 }
