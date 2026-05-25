@@ -1,1 +1,30 @@
-{}
+{
+  "nav": {
+    "servicesIT": "IT Services",
+    "operations": "AI Operations",
+    "projects": "Projects",
+    "about": "About",
+    "howIWork": "How I work",
+    "contact": "Contact",
+    "cta": "Book a call"
+  },
+  "footer": {
+    "tagline": "AI Engineering for B2B operations",
+    "rights": "All rights reserved",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt",
+      "email": "Email"
+    }
+  },
+  "meta": {
+    "title": "Maroru's Assistance — AI Engineering for B2B operations",
+    "description": "I build production-grade AI systems for B2B companies: agents, automations, and data pipelines that actually work in production."
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN",
+    "ariaLabel": "Change language"
+  }
+}

@@ -1,13 +1,25 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../i18n/utils';
 
 interface Props {
   title: string;
-  description?: string;
-  lang?: string;
+  description: string;
+  lang: Locale;
+  image?: string;
 }
 
-const { title, description = '', lang = 'es' } = Astro.props;
+const SITE_URL = 'https://marorusassistance.com';
+
+const { title, description, lang, image = `${SITE_URL}/og-image.svg` } = Astro.props;
+
+const canonicalUrl = `${SITE_URL}${Astro.url.pathname}`;
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+
+const esPath = lang === 'en' ? (Astro.url.pathname.replace(/^\/en/, '') || '/') : Astro.url.pathname;
+const enPath = lang === 'es' ? `/en${Astro.url.pathname}` : Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -17,10 +29,42 @@ const { title, description = '', lang = 'es' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+
     <title>{title}</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={`${SITE_URL}${esPath}`} />
+    <link rel="alternate" hreflang="en" href={`${SITE_URL}${enPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE_URL}${esPath}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="Maroru's Assistance" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
-    <slot />
+    <Nav lang={lang} />
+    <main class="pt-16 md:pt-20">
+      <slot />
+    </main>
+    <Footer lang={lang} />
   </body>
 </html>

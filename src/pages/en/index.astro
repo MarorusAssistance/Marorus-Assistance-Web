@@ -1,7 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="Maroru's Assistance" lang="en">
-  <h1>Maroru's Assistance — Under Construction</h1>
+<Layout title={t('meta.title')} description={t('meta.description')} lang={lang}>
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <h1 class="font-display text-3xl md:text-4xl font-bold text-text text-center">
+      Under Construction
+    </h1>
+  </div>
 </Layout>

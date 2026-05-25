@@ -1,0 +1,72 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const path = Astro.url.pathname;
+
+// Compute the URL for each language
+const esPath = lang === 'en' ? (path.replace(/^\/en/, '') || '/') : path;
+const enPath = lang === 'es' ? `/en${path}` : path;
+---
+
+<nav aria-label={t('languageSwitcher.ariaLabel')} class="flex items-center gap-1.5 text-sm font-medium">
+  <a
+    href={esPath}
+    data-lang-link="es"
+    aria-current={lang === 'es' ? 'true' : undefined}
+    class:list={[
+      'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm',
+      lang === 'es'
+        ? 'font-bold text-primary'
+        : 'text-text-muted hover:text-text',
+    ]}
+  >
+    {t('languageSwitcher.es')}
+  </a>
+  <span class="text-border select-none" aria-hidden="true">·</span>
+  <a
+    href={enPath}
+    data-lang-link="en"
+    aria-current={lang === 'en' ? 'true' : undefined}
+    class:list={[
+      'transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm',
+      lang === 'en'
+        ? 'font-bold text-primary'
+        : 'text-text-muted hover:text-text',
+    ]}
+  >
+    {t('languageSwitcher.en')}
+  </a>
+</nav>
+
+<script>
+  // One-time auto-detect per session to avoid constant redirects
+  if (!sessionStorage.getItem('marorus-lang-checked')) {
+    sessionStorage.setItem('marorus-lang-checked', '1');
+    const stored = localStorage.getItem('marorus-lang');
+    const isEnPath = window.location.pathname.startsWith('/en');
+    const preferEn =
+      stored === 'en' || (!stored && navigator.language.startsWith('en'));
+
+    if (preferEn && !isEnPath) {
+      window.location.replace('/en' + window.location.pathname);
+    } else if (!preferEn && stored === 'es' && isEnPath) {
+      window.location.replace(
+        window.location.pathname.replace(/^\/en/, '') || '/',
+      );
+    }
+  }
+
+  // Persist language preference on link click
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-link]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const lang = el.dataset.langLink;
+      if (lang) localStorage.setItem('marorus-lang', lang);
+    });
+  });
+</script>

@@ -1,0 +1,188 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const homeHref = lang === 'es' ? '/' : '/en/';
+
+const navLinks = [
+  { key: 'nav.servicesIT', href: '#servicios-it' },
+  { key: 'nav.operations', href: '#operaciones' },
+  { key: 'nav.projects', href: '#proyectos' },
+  { key: 'nav.about', href: '#sobre-mi' },
+  { key: 'nav.howIWork', href: '#como-trabajo' },
+  { key: 'nav.contact', href: '#contacto' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-bg border-b border-border-soft">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <!-- Logo -->
+      <a href={homeHref} class="font-display font-bold text-lg text-text shrink-0">
+        Maroru's Assistance
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav class="hidden md:flex items-center gap-6" aria-label="Navegación principal">
+        {navLinks.map(({ key, href }) => (
+          <a
+            href={href}
+            class="text-sm text-text-muted hover:text-text transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+          >
+            {t(key)}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop: language switcher + CTA -->
+      <div class="hidden md:flex items-center gap-4 shrink-0">
+        <LanguageSwitcher lang={lang} />
+        <a
+          href="https://calendly.com/marorusassistance/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          {t('nav.cta')}
+        </a>
+      </div>
+
+      <!-- Mobile: language switcher + hamburger -->
+      <div class="flex md:hidden items-center gap-3">
+        <LanguageSwitcher lang={lang} />
+        <button
+          id="nav-hamburger"
+          type="button"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+          class="p-2 text-text rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div
+  id="mobile-overlay"
+  class="fixed inset-0 bg-black/40 z-40 hidden"
+  aria-hidden="true"
+></div>
+
+<!-- Mobile drawer -->
+<div
+  id="mobile-drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+  class="fixed top-0 right-0 bottom-0 w-72 max-w-[85vw] bg-bg-light z-50 translate-x-full transition-transform duration-300 flex flex-col shadow-xl"
+>
+  <!-- Drawer header -->
+  <div class="flex items-center justify-between px-5 py-4 border-b border-border-soft">
+    <span class="font-display font-bold text-base text-text">Menú</span>
+    <button
+      id="nav-close"
+      type="button"
+      aria-label="Cerrar menú"
+      class="p-2 text-text-muted hover:text-text rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Drawer links -->
+  <nav class="flex flex-col px-5 py-6 gap-5" aria-label="Menú móvil">
+    {navLinks.map(({ key, href }) => (
+      <a
+        href={href}
+        class="text-base text-text hover:text-primary transition-colors nav-mobile-link focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+      >
+        {t(key)}
+      </a>
+    ))}
+  </nav>
+
+  <!-- Drawer CTA -->
+  <div class="mt-auto px-5 pb-8">
+    <a
+      href="https://calendly.com/marorusassistance/30min"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      {t('nav.cta')}
+    </a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger') as HTMLButtonElement | null;
+  const closeBtn = document.getElementById('nav-close') as HTMLButtonElement | null;
+  const drawer = document.getElementById('mobile-drawer') as HTMLDivElement | null;
+  const overlay = document.getElementById('mobile-overlay') as HTMLDivElement | null;
+
+  if (!hamburger || !closeBtn || !drawer || !overlay) {
+    // Elements not found, graceful no-op
+  } else {
+    function openMenu() {
+      drawer!.classList.remove('translate-x-full');
+      overlay!.classList.remove('hidden');
+      hamburger!.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      // Focus first link inside drawer for keyboard nav
+      const firstLink = drawer!.querySelector<HTMLElement>('a, button');
+      firstLink?.focus();
+    }
+
+    function closeMenu() {
+      drawer!.classList.add('translate-x-full');
+      overlay!.classList.add('hidden');
+      hamburger!.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger!.focus();
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && hamburger!.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+
+    document.querySelectorAll<HTMLAnchorElement>('.nav-mobile-link').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+</script>

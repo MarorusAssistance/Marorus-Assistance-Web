@@ -1,1 +1,30 @@
-{}
+{
+  "nav": {
+    "servicesIT": "Servicios IT",
+    "operations": "Operaciones IA",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "howIWork": "Cómo trabajo",
+    "contact": "Contacto",
+    "cta": "Reservar llamada"
+  },
+  "footer": {
+    "tagline": "Ingeniería de IA para operaciones B2B",
+    "rights": "Todos los derechos reservados",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt",
+      "email": "Email"
+    }
+  },
+  "meta": {
+    "title": "Maroru's Assistance — Ingeniería de IA para operaciones B2B",
+    "description": "Construyo sistemas de IA en producción para empresas B2B: agentes, automatizaciones y pipelines de datos que realmente funcionan en producción."
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN",
+    "ariaLabel": "Cambiar idioma"
+  }
+}
