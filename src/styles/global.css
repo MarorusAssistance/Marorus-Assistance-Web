@@ -94,6 +94,18 @@ body {
   transform: translateY(0);
 }
 
+/* ─── Services IT scroll-triggered animation ─────────────────── */
+.cards-animate [data-card] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.cards-animate [data-card].card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Respect prefers-reduced-motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -113,6 +125,12 @@ body {
   }
 
   .stats-animate [data-stat] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .cards-animate [data-card] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

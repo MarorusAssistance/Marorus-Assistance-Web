@@ -1,0 +1,116 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const cards = [
+  {
+    key: 'card1',
+    stack: ['LangChain', 'LangGraph', 'Azure OpenAI', 'AI Search', 'pgvector', 'FastAPI'],
+  },
+  {
+    key: 'card2',
+    stack: ['Document Intelligence', 'Azure Functions', 'Service Bus', 'embeddings', 'Python'],
+  },
+  {
+    key: 'card3',
+    stack: ['Azure', 'Key Vault', 'Docker', 'Teams', 'CI/CD'],
+  },
+] as const;
+---
+
+<section id="servicios-it" class="bg-bg py-20 md:py-28">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+
+    <p class="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+      {t('servicesIT.sectionLabel')}
+    </p>
+    <h2 class="font-display font-bold text-4xl md:text-5xl text-text mb-4">
+      {t('servicesIT.title')}
+    </h2>
+    <p class="font-body text-base md:text-lg text-text-muted mb-14 max-w-[640px]">
+      {t('servicesIT.subtitle')}
+    </p>
+
+    <div data-cards-section class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {cards.map(({ key, stack }, i) => (
+        <div
+          data-card
+          class="bg-bg-light border border-border-soft rounded-md p-6 md:p-8 flex flex-col"
+        >
+          <span class="font-mono text-xs text-primary mb-5">0{i + 1}</span>
+          <h3 class="font-display font-semibold text-xl text-text mb-3">
+            {t(`servicesIT.${key}.title`)}
+          </h3>
+          <p class="font-body text-sm text-text-muted leading-relaxed flex-1 mb-6">
+            {t(`servicesIT.${key}.body`)}
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            {stack.map((chip) => (
+              <span class="font-mono text-[11px] px-2 py-1 border border-border-soft text-text-muted rounded">
+                {chip}
+              </span>
+            ))}
+          </div>
+          <div class="border-t border-border-soft pt-4">
+            <p class="font-body text-xs text-text-muted italic">
+              {t(`servicesIT.${key}.proof`)}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="font-body text-sm text-text-muted text-center mt-12 opacity-80">
+      {t('servicesIT.rate')}
+    </p>
+
+    <div class="flex justify-center mt-8">
+      <a
+        href="#contacto"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-text border border-text rounded-md hover:bg-text hover:text-bg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        {t('servicesIT.cta')} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-cards-section]');
+
+  if (section && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      section.querySelectorAll<HTMLElement>('[data-card]').forEach((el) => {
+        el.classList.add('card-visible');
+      });
+    } else {
+      section.classList.add('cards-animate');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const items = entry.target.querySelectorAll<HTMLElement>('[data-card]');
+              items.forEach((item, i) => {
+                setTimeout(() => item.classList.add('card-visible'), i * 150);
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      observer.observe(section);
+    }
+  }
+</script>

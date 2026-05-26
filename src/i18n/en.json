@@ -9,38 +9,6 @@
     "cta": "Book a call"
   },
   "hero": {
-    "badge": "GenAI Engineer · Freelance",
-    "title": "I build AI systems that reach production",
-    "subtitle": "Automations, agents and data pipelines for B2B teams that don't want demos. They want results.",
-    "ctaIT": "IT Services",
-    "ctaOps": "AI Operations",
-    "stackLabel": "I work with"
-  },
-  "stats": {
-    "item1": { "value": "3+", "label": "Years with LLMs in production" },
-    "item2": { "value": "12+", "label": "B2B projects deployed" },
-    "item3": { "value": "350€", "label": "Daily IT rate" }
-  },
-  "footer": {
-    "tagline": "AI Engineering for B2B operations",
-    "rights": "All rights reserved",
-    "links": {
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "malt": "Malt",
-      "email": "Email"
-    }
-  },
-  "meta": {
-    "title": "Maroru's Assistance — AI Engineering for B2B operations",
-    "description": "I build production-grade AI systems for B2B companies: agents, automations, and data pipelines that actually work in production."
-  },
-  "languageSwitcher": {
-    "es": "ES",
-    "en": "EN",
-    "ariaLabel": "Change language"
-  },
-  "hero": {
     "badge": "GenAI · Agents · RAG · Azure",
     "titleLine1": "Freelance GenAI Engineer.",
     "titleLine2": "Production-grade AI systems,",
@@ -63,5 +31,46 @@
       "label": "accuracy in invoice matching with noisy data"
     },
     "footnote": "Real production results during my tenure as AI Engineer at Wembley Studios (2023–2025)."
+  },
+  "servicesIT": {
+    "sectionLabel": "IT Services",
+    "title": "Technical services for IT teams",
+    "subtitle": "Team reinforcement or fixed-price projects.",
+    "card1": {
+      "title": "AI Agents and RAG Systems",
+      "body": "I design and implement Retrieval-Augmented Generation systems and agents with tool-calling on LangChain and LangGraph. Hybrid search, semantic ranking, multi-query retrieval, routing. Tested stack: Azure OpenAI, AI Search, pgvector, FastAPI.",
+      "proof": "In production: shopping assistant over 19,000 products."
+    },
+    "card2": {
+      "title": "Document Automation with AI",
+      "body": "Pipelines to extract and ingest unstructured documents (PDFs, invoices, contracts) into ERPs or databases. Azure Document Intelligence, Functions, Service Bus, embeddings and fuzzy matching for noisy data.",
+      "proof": "In production: 500 invoices/month in a B2B loyalty system, 85–90% matching accuracy."
+    },
+    "card3": {
+      "title": "GenAI Architecture on Azure",
+      "body": "Architecture design for LLMs in production: service orchestration, secrets management, observability, cost control. Integration with existing systems (Teams, CRMs, ERPs). Certified AZ-204, DP-100, AI-102.",
+      "proof": "Support bot on Teams with automatic ticket creation, deployed for a B2B client."
+    },
+    "rate": "Team reinforcement: 350€/day · Fixed-price projects: on quote · Availability: remote, UTC+1",
+    "cta": "Let's talk about your project"
+  },
+  "footer": {
+    "tagline": "AI Engineering for B2B operations",
+    "rights": "All rights reserved",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt",
+      "email": "Email"
+    }
+  },
+  "meta": {
+    "title": "Maroru's Assistance — AI Engineering for B2B operations",
+    "description": "I build production-grade AI systems for B2B companies: agents, automations, and data pipelines that actually work in production."
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN",
+    "ariaLabel": "Change language"
   }
 }

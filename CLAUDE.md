@@ -97,7 +97,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 2 | ✅ | Nav, Footer, Layout, selector idioma |
 | 3 | ✅ | Hero + banda de stats (3 stats) |
 | 3.5 | ✅ | CLAUDE.md + mejoras visuales hero (Opción C) |
-| 4 | ⏳ | Servicios IT (3 cards) |
+| 4 | ✅ | Servicios IT (3 cards) |
 | 5 | ⏳ | Operaciones IA (3 bloques) |
 | 6 | ⏳ | Proyectos (Wembley + Labs) |
 | 7 | ⏳ | Sobre mí + Cómo trabajo + Contacto |
@@ -122,3 +122,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **Dot pattern como CSS radial-gradient**: `background-image: radial-gradient(circle, var(--color-text) 1px, transparent 1px)` con `background-size: 28px 28px` y `opacity: 0.065`. Aplicado en un `<div>` absolutamente posicionado dentro del hero, no como SVG inline separado (más simple y sin request extra).
 - **Scroll indicator oculto en móvil**: se muestra solo en `md:` breakpoint para no saturar pantallas pequeñas.
 - **`data/projects.ts` y `data/services.ts`** usan `unknown[]` como placeholder tipado hasta que se definan las interfaces en sesión 6.
+- **ServicesIT stack chips hardcodeados en frontmatter**: los chips de tecnologías son términos técnicos idénticos en ES/EN, no requieren i18n.
+- **ServicesIT IntersectionObserver**: threshold `0.15` (más bajo que stats ya que las cards son más altas), stagger `150ms` por card.
+- **Card background**: `bg-bg-light` (#f0ece5) sobre sección `bg-bg` (#e6e1d9) para contraste visual.
+- **Fix JSON inválido en i18n**: es.json y en.json tenían claves `"hero"` y `"stats"` duplicadas (legacy del merge). Limpiadas en sesión 4.
