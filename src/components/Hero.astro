@@ -1,0 +1,126 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const techStack = [
+  'Azure',
+  'Python',
+  'LangChain',
+  'LangGraph',
+  'Azure OpenAI',
+  'PostgreSQL',
+  'FastAPI',
+  'Docker',
+];
+---
+
+<section id="inicio" class="relative overflow-hidden">
+  <!-- Mejora 1: dot pattern background -->
+  <div class="absolute inset-0 hero-dots pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-24">
+
+    <!-- Badge -->
+    <div class="animate-fade-slide-down mb-7">
+      <span class="inline-block font-mono text-xs font-medium px-3 py-1.5 border border-border-soft rounded-full text-text-muted tracking-widest uppercase">
+        {t('hero.badge')}
+      </span>
+    </div>
+
+    <!-- H1 -->
+    <h1
+      class="animate-fade-slide-up font-display font-bold text-text leading-tight mb-6
+             text-4xl sm:text-5xl md:text-6xl lg:text-[4rem]"
+      style="animation-delay: 100ms; max-width: 20ch;"
+    >
+      {t('hero.title')}
+    </h1>
+
+    <!-- Subtitle -->
+    <p
+      class="animate-fade-slide-up text-text-muted leading-relaxed mb-10
+             text-lg md:text-xl max-w-2xl"
+      style="animation-delay: 200ms;"
+    >
+      {t('hero.subtitle')}
+    </p>
+
+    <!-- CTAs -->
+    <div
+      class="animate-fade-slide-up flex flex-col sm:flex-row gap-3 mb-16 md:mb-20"
+      style="animation-delay: 300ms;"
+    >
+      <a
+        href="#servicios-it"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3
+               bg-primary text-white font-medium rounded-md
+               hover:bg-primary-dark transition-colors
+               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        {t('hero.ctaIT')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+      <a
+        href="#operaciones"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3
+               border-2 border-text text-text font-medium rounded-md
+               hover:bg-text hover:text-bg transition-colors
+               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+      >
+        {t('hero.ctaOps')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Mejora 2: tech stack row -->
+    <div class="animate-fade-in" style="animation-delay: 400ms;">
+      <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">
+        {t('hero.stackLabel')}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {techStack.map((tech) => (
+          <span class="font-mono text-xs px-3 py-1.5 border border-border-soft text-text-muted rounded hover:border-text-muted transition-colors">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Mejora 4: scroll indicator (solo desktop) -->
+  <div class="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 opacity-60">
+    <button
+      id="scroll-cue"
+      type="button"
+      aria-label="Scroll to next section"
+      class="flex flex-col items-center gap-1.5 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded"
+    >
+      <div class="w-px h-8 bg-text-muted animate-scroll-bounce"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+        <path d="M1 1L6 7L11 1" stroke="var(--color-text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  const scrollCue = document.getElementById('scroll-cue');
+  if (scrollCue) {
+    scrollCue.addEventListener('click', () => {
+      const statsSection = document.getElementById('stats-band');
+      statsSection?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+</script>

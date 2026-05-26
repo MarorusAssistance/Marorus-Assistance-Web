@@ -8,6 +8,19 @@
     "contact": "Contacto",
     "cta": "Reservar llamada"
   },
+  "hero": {
+    "badge": "GenAI Engineer · Freelance",
+    "title": "Construyo sistemas de IA que llegan a producción",
+    "subtitle": "Automatizaciones, agentes y pipelines para equipos B2B que no quieren demos. Quieren resultados.",
+    "ctaIT": "Servicios IT",
+    "ctaOps": "Operaciones IA",
+    "stackLabel": "Trabajo con"
+  },
+  "stats": {
+    "item1": { "value": "3+", "label": "Años con LLMs en producción" },
+    "item2": { "value": "12+", "label": "Proyectos B2B desplegados" },
+    "item3": { "value": "350€", "label": "Tarifa jornada IT" }
+  },
   "footer": {
     "tagline": "Ingeniería de IA para operaciones B2B",
     "rights": "Todos los derechos reservados",

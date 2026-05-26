@@ -8,6 +8,19 @@
     "contact": "Contact",
     "cta": "Book a call"
   },
+  "hero": {
+    "badge": "GenAI Engineer · Freelance",
+    "title": "I build AI systems that reach production",
+    "subtitle": "Automations, agents and data pipelines for B2B teams that don't want demos. They want results.",
+    "ctaIT": "IT Services",
+    "ctaOps": "AI Operations",
+    "stackLabel": "I work with"
+  },
+  "stats": {
+    "item1": { "value": "3+", "label": "Years with LLMs in production" },
+    "item2": { "value": "12+", "label": "B2B projects deployed" },
+    "item3": { "value": "350€", "label": "Daily IT rate" }
+  },
   "footer": {
     "tagline": "AI Engineering for B2B operations",
     "rights": "All rights reserved",
