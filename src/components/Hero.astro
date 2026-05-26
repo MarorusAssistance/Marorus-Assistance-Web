@@ -18,34 +18,41 @@ const techStack = [
   'FastAPI',
   'Docker',
 ];
+
+const stackLabel = lang === 'es' ? 'Trabajo con' : 'I work with';
 ---
 
-<section id="inicio" class="relative overflow-hidden">
+<section
+  id="inicio"
+  class="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] bg-bg flex items-center overflow-hidden"
+>
   <!-- Mejora 1: dot pattern background -->
   <div class="absolute inset-0 hero-dots pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-24">
+  <div class="relative max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full">
 
     <!-- Badge -->
-    <div class="animate-fade-slide-down mb-7">
-      <span class="inline-block font-mono text-xs font-medium px-3 py-1.5 border border-border-soft rounded-full text-text-muted tracking-widest uppercase">
+    <div
+      class="animate-fade-slide-down inline-flex items-center border border-border-soft rounded px-3 py-1 mb-8"
+      aria-label="Tecnologías"
+    >
+      <span class="font-mono text-[10px] text-text-muted uppercase tracking-widest leading-none">
         {t('hero.badge')}
       </span>
     </div>
 
     <!-- H1 -->
     <h1
-      class="animate-fade-slide-up font-display font-bold text-text leading-tight mb-6
-             text-4xl sm:text-5xl md:text-6xl lg:text-[4rem]"
-      style="animation-delay: 100ms; max-width: 20ch;"
+      class="animate-fade-slide-up font-display font-bold text-5xl md:text-6xl lg:text-7xl text-text leading-tight"
+      style="animation-delay: 100ms;"
     >
-      {t('hero.title')}
+      <span class="block">{t('hero.titleLine1')}</span>
+      <span>{t('hero.titleLine2')} <span class="text-primary">{t('hero.titleAccent')}</span></span>
     </h1>
 
     <!-- Subtitle -->
     <p
-      class="animate-fade-slide-up text-text-muted leading-relaxed mb-10
-             text-lg md:text-xl max-w-2xl"
+      class="animate-fade-slide-up font-body text-lg md:text-xl text-text-muted max-w-[700px] leading-relaxed mt-8"
       style="animation-delay: 200ms;"
     >
       {t('hero.subtitle')}
@@ -53,41 +60,27 @@ const techStack = [
 
     <!-- CTAs -->
     <div
-      class="animate-fade-slide-up flex flex-col sm:flex-row gap-3 mb-16 md:mb-20"
+      class="animate-fade-slide-up flex flex-col sm:flex-row gap-4 mt-12"
       style="animation-delay: 300ms;"
     >
       <a
         href="#servicios-it"
-        class="inline-flex items-center justify-center gap-2 px-6 py-3
-               bg-primary text-white font-medium rounded-md
-               hover:bg-primary-dark transition-colors
-               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-white font-medium rounded-md hover:bg-primary-dark transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary w-full sm:w-auto"
       >
-        {t('hero.ctaIT')}
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        {t('hero.ctaIT')} <span aria-hidden="true">→</span>
       </a>
       <a
         href="#operaciones"
-        class="inline-flex items-center justify-center gap-2 px-6 py-3
-               border-2 border-text text-text font-medium rounded-md
-               hover:bg-text hover:text-bg transition-colors
-               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-text border border-text rounded-md hover:bg-text hover:text-bg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary w-full sm:w-auto"
       >
-        {t('hero.ctaOps')}
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        {t('hero.ctaOps')} <span aria-hidden="true">→</span>
       </a>
     </div>
 
     <!-- Mejora 2: tech stack row -->
-    <div class="animate-fade-in" style="animation-delay: 400ms;">
+    <div class="animate-fade-in mt-16 md:mt-20" style="animation-delay: 400ms;">
       <p class="font-mono text-xs text-text-muted uppercase tracking-widest mb-3">
-        {t('hero.stackLabel')}
+        {stackLabel}
       </p>
       <div class="flex flex-wrap gap-2">
         {techStack.map((tech) => (
@@ -97,6 +90,7 @@ const techStack = [
         ))}
       </div>
     </div>
+
   </div>
 
   <!-- Mejora 4: scroll indicator (solo desktop) -->
@@ -119,8 +113,7 @@ const techStack = [
   const scrollCue = document.getElementById('scroll-cue');
   if (scrollCue) {
     scrollCue.addEventListener('click', () => {
-      const statsSection = document.getElementById('stats-band');
-      statsSection?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('stats-band')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 </script>

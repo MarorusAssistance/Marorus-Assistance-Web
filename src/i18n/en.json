@@ -39,5 +39,29 @@
     "es": "ES",
     "en": "EN",
     "ariaLabel": "Change language"
+  },
+  "hero": {
+    "badge": "GenAI · Agents · RAG · Azure",
+    "titleLine1": "Freelance GenAI Engineer.",
+    "titleLine2": "Production-grade AI systems,",
+    "titleAccent": "not demos.",
+    "subtitle": "Freelance engineer specializing in agents, RAG, and LLM automation on Azure. I've deployed production assistants over 19,000 products and automated 500 invoices/month. Certified AI-102, DP-100, AZ-204.",
+    "ctaIT": "I'm a CTO / IT Lead",
+    "ctaOps": "I'm in operations"
+  },
+  "stats": {
+    "stat1": {
+      "number": "19,000",
+      "label": "products indexed in a production shopping assistant"
+    },
+    "stat2": {
+      "number": "500/mo",
+      "label": "invoices processed monthly in a B2B loyalty system"
+    },
+    "stat3": {
+      "number": "85-90%",
+      "label": "accuracy in invoice matching with noisy data"
+    },
+    "footnote": "Real production results during my tenure as AI Engineer at Wembley Studios (2023–2025)."
   }
 }
