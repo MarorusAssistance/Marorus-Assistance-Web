@@ -98,7 +98,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 3 | ✅ | Hero + banda de stats (3 stats) |
 | 3.5 | ✅ | CLAUDE.md + mejoras visuales hero (Opción C) |
 | 4 | ✅ | Servicios IT (3 cards) |
-| 5 | ⏳ | Operaciones IA (3 bloques) |
+| 5 | ✅ | Operaciones IA (3 bloques) |
 | 6 | ⏳ | Proyectos (Wembley + Labs) |
 | 7 | ⏳ | Sobre mí + Cómo trabajo + Contacto |
 | 8 | ⏳ | SEO, performance, sitemap, OG image |
@@ -126,3 +126,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **ServicesIT IntersectionObserver**: threshold `0.15` (más bajo que stats ya que las cards son más altas), stagger `150ms` por card.
 - **Card background**: `bg-bg-light` (#f0ece5) sobre sección `bg-bg` (#e6e1d9) para contraste visual.
 - **Fix JSON inválido en i18n**: es.json y en.json tenían claves `"hero"` y `"stats"` duplicadas (legacy del merge). Limpiadas en sesión 4.
+- **Operations layout**: `grid-cols-[2fr_3fr]` (~40/60), fondo sección `bg-bg-light`, sub-bloque result con `bg-bg` (inversión de contraste dentro de sección más clara).
+- **Operations números**: `font-accent text-8xl md:text-9xl text-primary` (Bebas Neue) — contraste visual con font-display de ServicesIT.
+- **Operations IntersectionObserver**: threshold `0.1`, stagger `200ms` por bloque (bloques más altos = threshold más bajo y stagger más amplio que cards).
+- **Operations nota de transparencia**: `border-l-2 border-primary pl-4 italic text-sm` — visible pero discreta.

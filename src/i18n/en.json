@@ -54,6 +54,59 @@
     "rate": "Team reinforcement: 350€/day · Fixed-price projects: on quote · Availability: remote, UTC+1",
     "cta": "Let's talk about your project"
   },
+  "operations": {
+    "sectionLabel": "FOR OPERATIONS",
+    "title": "AI Operations",
+    "subtitle": "Applied AI systems for real business processes.",
+    "transparencyNote": "Cases developed during my tenure as AI Engineer at Wembley Studios (2023–2025), now offered as a freelance service.",
+    "block1": {
+      "title": "Product search and catalog management",
+      "pain": {
+        "label": "The pain",
+        "text": "Your purchasing or sales team wastes time searching for products across PDF catalogs, scattered spreadsheets, or slow ERPs. Every supplier query means lost minutes, reference errors, and customers waiting."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A conversational assistant that understands natural language (\"I need a part compatible with model X\") and searches simultaneously across all your catalogs, data sheets, and product databases. Integrated where your team already works: Teams, internal web, or ERP."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "Assistant deployed for a retail / bath and sanitary client with 19,000 products and 5,000 spare parts indexed across 20 PDF catalogs. Although deployed in a B2C channel, the retrieval architecture is the same as what you'd need for an internal purchasing or sales search tool."
+      }
+    },
+    "block2": {
+      "title": "Invoices, delivery notes, and documents into ERP",
+      "pain": {
+        "label": "The pain",
+        "text": "Your admin team spends hours entering invoices and delivery notes into the ERP. Data arrives in different formats depending on the supplier, there are transcription errors, and the bottleneck is always the same: one person copying fields by hand."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A pipeline that receives documents by email or folder, extracts the relevant data using AI, cross-references it against your supplier and product master data, and prepares it for ERP upload. Ambiguous cases are flagged for human review before loading."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "I built a production invoice verification system for a retail / bath and sanitary client, as part of a loyalty program for professional installers. The system processes 500 invoices/month, extracts the sold products, and matches them against the catalog master with 85–90% accuracy on noisy data (imperfect OCR, abbreviations, partial references). The same architecture works for ERP upload."
+      }
+    },
+    "block3": {
+      "title": "Internal support and incident management",
+      "pain": {
+        "label": "The pain",
+        "text": "Your IT or internal support team answers the same questions over and over: \"how do I access X?\", \"where is the Y procedure?\", \"I need permissions for Z\". Repetitive queries consume the team, and the ones that actually need attention wait."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A bot integrated in Teams that answers frequent questions from your internal documentation and, when it can't resolve, automatically creates a ticket in your system with the information already collected from the user. The support team receives clean cases, not raw questions."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "Support bot deployed in Microsoft Teams for an appraisal and valuation client, with automatic ticket creation from the conversation. Frequently asked questions no longer reach the human team; real cases arrive with context."
+      }
+    },
+    "closingLine": "If you recognize any of these pain points in your operation, let's talk. Each case starts from an analysis of the real process, not a template.",
+    "cta": "Tell me about your case"
+  },
   "footer": {
     "tagline": "AI Engineering for B2B operations",
     "rights": "All rights reserved",

@@ -106,6 +106,18 @@ body {
   transform: translateY(0);
 }
 
+/* ─── Operations scroll-triggered animation ──────────────────── */
+.ops-animate [data-block] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.ops-animate [data-block].block-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Respect prefers-reduced-motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -131,6 +143,12 @@ body {
   }
 
   .cards-animate [data-card] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .ops-animate [data-block] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

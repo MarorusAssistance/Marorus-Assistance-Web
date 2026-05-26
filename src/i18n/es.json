@@ -54,6 +54,59 @@
     "rate": "Refuerzo de equipo: 350€/jornada · Proyectos cerrados: a presupuesto · Disponibilidad: remoto, UTC+1",
     "cta": "Hablemos de tu proyecto"
   },
+  "operations": {
+    "sectionLabel": "PARA OPERACIONES",
+    "title": "Operaciones IA",
+    "subtitle": "Sistemas de IA aplicada a procesos reales de negocio.",
+    "transparencyNote": "Casos desarrollados durante mi etapa como AI Engineer en Wembley Studios (2023-2025), hoy ofrecidos como servicio freelance.",
+    "block1": {
+      "title": "Búsqueda de productos y catálogos",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo de compras o ventas pierde tiempo buscando productos en catálogos PDF, hojas de cálculo dispersas o ERPs lentos. Cada consulta a proveedor son minutos perdidos, errores de referencia y clientes esperando."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un asistente conversacional que entiende lenguaje natural (\"necesito un repuesto compatible con el modelo X\") y busca a la vez en todos tus catálogos, fichas técnicas y bases de datos de producto. Integrado donde tu equipo ya trabaja: Teams, web interna o ERP."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "Asistente desplegado para un cliente del sector retail / sanitarios y baño con 19.000 productos y 5.000 repuestos indexados sobre 20 catálogos PDF. Aunque se desplegó en canal B2C, la arquitectura de recuperación es la misma que necesitarías para un buscador interno de compras o ventas."
+      }
+    },
+    "block2": {
+      "title": "Facturas, albaranes y documentos hacia ERP",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo administrativo dedica horas a meter facturas y albaranes en el ERP. Los datos llegan en formatos distintos según el proveedor, hay errores de transcripción, y el cuello de botella siempre es el mismo: una persona copiando campos a mano."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un pipeline que recibe los documentos por email o carpeta, extrae los datos relevantes con IA, los contrasta con tus maestros de proveedores y productos, y los prepara para volcado al ERP. Los casos ambiguos se marcan para revisión humana antes de cargar."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "He construido un sistema de verificación de facturas en producción para un cliente del sector retail / sanitarios y baño, dentro de un programa de loyalty para profesionales instaladores. El sistema procesa 500 facturas/mes, extrae los productos vendidos y matchea contra el maestro de catálogo con 85-90% de precisión sobre datos ruidosos (OCR imperfecto, abreviaturas, referencias parciales). La misma arquitectura sirve para volcado a ERP."
+      }
+    },
+    "block3": {
+      "title": "Soporte interno y gestión de incidencias",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo de IT o de soporte interno responde una y otra vez a las mismas preguntas: \"¿cómo accedo a X?\", \"¿dónde está el procedimiento de Y?\", \"necesito permisos para Z\". Las consultas repetitivas consumen al equipo y las que sí necesitan atención esperan."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un bot integrado en Teams que responde dudas frecuentes a partir de tu documentación interna y, cuando no puede resolver, crea automáticamente el ticket en tu sistema con la información ya recogida del usuario. El equipo de soporte recibe casos limpios, no preguntas en bruto."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "Bot de soporte desplegado en Microsoft Teams para un cliente del sector tasación y valoración, con creación automática de tickets a partir de la conversación. Las preguntas frecuentes dejan de llegar al equipo humano; los casos reales llegan con contexto."
+      }
+    },
+    "closingLine": "Si reconoces alguno de estos dolores en tu operación, hablemos. Cada caso parte de un análisis del proceso real, no de una plantilla.",
+    "cta": "Cuéntame tu caso"
+  },
   "footer": {
     "tagline": "Ingeniería de IA para operaciones B2B",
     "rights": "Todos los derechos reservados",

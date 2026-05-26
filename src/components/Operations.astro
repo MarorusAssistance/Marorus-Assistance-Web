@@ -1,0 +1,135 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const blocks = ['block1', 'block2', 'block3'] as const;
+---
+
+<section id="operaciones" class="bg-bg-light py-20 md:py-32">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div data-ops-section>
+
+      <!-- Header -->
+      <div data-block class="mb-16 md:mb-20">
+        <p class="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+          {t('operations.sectionLabel')}
+        </p>
+        <h2 class="font-display font-bold text-4xl md:text-5xl text-text mb-4">
+          {t('operations.title')}
+        </h2>
+        <p class="font-body text-base md:text-lg text-text-muted mb-8 max-w-[640px]">
+          {t('operations.subtitle')}
+        </p>
+        <div class="border-l-2 border-primary pl-4 max-w-[700px]">
+          <p class="font-body italic text-sm text-text-muted">
+            {t('operations.transparencyNote')}
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 bloques -->
+      <div class="flex flex-col gap-16 md:gap-24">
+        {blocks.map((key, i) => (
+          <div data-block>
+            <div class="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-8 md:gap-12">
+
+              <!-- Columna izquierda: número + título -->
+              <div>
+                <span class="font-accent text-8xl md:text-9xl text-primary leading-none block">
+                  0{i + 1}
+                </span>
+                <h3 class="font-display font-bold text-2xl md:text-3xl text-text mt-3">
+                  {t(`operations.${key}.title`)}
+                </h3>
+              </div>
+
+              <!-- Columna derecha: pain → solution → result -->
+              <div class="flex flex-col gap-8">
+                <div>
+                  <p class="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                    {t(`operations.${key}.pain.label`)}
+                  </p>
+                  <p class="font-body text-base text-text leading-relaxed">
+                    {t(`operations.${key}.pain.text`)}
+                  </p>
+                </div>
+                <div>
+                  <p class="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                    {t(`operations.${key}.solution.label`)}
+                  </p>
+                  <p class="font-body text-base text-text leading-relaxed">
+                    {t(`operations.${key}.solution.text`)}
+                  </p>
+                </div>
+                <div class="bg-bg rounded-md p-5 md:p-6">
+                  <p class="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                    {t(`operations.${key}.result.label`)}
+                  </p>
+                  <p class="font-body text-sm text-text-muted leading-relaxed italic">
+                    {t(`operations.${key}.result.text`)}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Cierre + CTA -->
+      <div data-block class="mt-24 md:mt-32">
+        <p class="font-body italic text-base md:text-lg text-text-muted max-w-[640px]">
+          {t('operations.closingLine')}
+        </p>
+        <div class="mt-6">
+          <a
+            href="#contacto"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-text border border-text rounded-md hover:bg-text hover:text-bg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {t('operations.cta')} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-ops-section]');
+
+  if (section && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) {
+      section.querySelectorAll<HTMLElement>('[data-block]').forEach((el) => {
+        el.classList.add('block-visible');
+      });
+    } else {
+      section.classList.add('ops-animate');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const items = entry.target.querySelectorAll<HTMLElement>('[data-block]');
+              items.forEach((item, i) => {
+                setTimeout(() => item.classList.add('block-visible'), i * 200);
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      observer.observe(section);
+    }
+  }
+</script>

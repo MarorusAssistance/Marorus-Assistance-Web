@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
 import ServicesIT from '../components/ServicesIT.astro';
+import Operations from '../components/Operations.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -15,9 +16,7 @@ const t = useTranslations(lang);
 
   <ServicesIT lang={lang} />
 
-  <section id="operaciones" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
-    <h2 class="font-display text-2xl text-text-muted">Operaciones IA — en construcción</h2>
-  </section>
+  <Operations lang={lang} />
 
   <section id="proyectos" class="min-h-screen flex items-center justify-center px-4 bg-bg">
     <h2 class="font-display text-2xl text-text-muted">Proyectos — en construcción</h2>
