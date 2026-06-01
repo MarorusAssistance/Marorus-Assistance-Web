@@ -65,7 +65,6 @@ const altLinks = [
             data-url="https://calendly.com/marorusassistance/30min"
             style="min-width:280px;height:680px;"
           ></div>
-          <script src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
         </div>
 
         <!-- Formulario -->
@@ -122,5 +121,25 @@ const altLinks = [
         });
       }, { threshold: 0.05 }).observe(section);
     }
+  }
+
+  // ─── Calendly lazy load ───────────────────────────────────────
+  const calendlyWidget = document.querySelector<HTMLElement>('.calendly-inline-widget');
+  if (calendlyWidget) {
+    let calendlyLoaded = false;
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !calendlyLoaded) {
+            calendlyLoaded = true;
+            const script = document.createElement('script');
+            script.src = 'https://assets.calendly.com/assets/external/widget.js';
+            script.async = true;
+            document.body.appendChild(script);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '200px' },
+    ).observe(calendlyWidget);
   }
 </script>

@@ -13,7 +13,7 @@ interface Props {
 
 const SITE_URL = 'https://marorusassistance.com';
 
-const { title, description, lang, image = `${SITE_URL}/og-image.svg` } = Astro.props;
+const { title, description, lang, image = `${SITE_URL}/og-image.png` } = Astro.props;
 
 const canonicalUrl = `${SITE_URL}${Astro.url.pathname}`;
 const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
@@ -29,6 +29,8 @@ const enPath = lang === 'es' ? `/en${Astro.url.pathname}` : Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Manuel Romero" />
 
     <title>{title}</title>
 
@@ -44,6 +46,8 @@ const enPath = lang === 'es' ? `/en${Astro.url.pathname}` : Astro.url.pathname;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Maroru's Assistance" />
 
@@ -56,9 +60,48 @@ const enPath = lang === 'es' ? `/en${Astro.url.pathname}` : Astro.url.pathname;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Preconnect fonts -->
+    <!-- Preconnect fonts + Calendly -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://assets.calendly.com" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Manuel Romero",
+        "alternateName": "Manuel Pedro Romero Ruiz",
+        "jobTitle": "Freelance GenAI Engineer",
+        "description": "Freelance GenAI Engineer especializado en agentes IA, sistemas RAG y automatización con LLMs sobre Azure",
+        "url": "https://marorusassistance.com",
+        "image": "https://marorusassistance.com/og-image.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/manuel-pedro-romero-ruiz/",
+          "https://github.com/MarorusAssistance",
+          "https://www.malt.es/profile/manuelromero"
+        ],
+        "knowsAbout": ["Generative AI", "Azure", "RAG", "LangChain", "Python", "Document Intelligence", "Agentic AI"],
+        "hasCredential": [
+          { "@type": "EducationalOccupationalCredential", "name": "Microsoft Certified: Azure AI Engineer Associate (AI-102)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } },
+          { "@type": "EducationalOccupationalCredential", "name": "Microsoft Certified: Azure Data Scientist Associate (DP-100)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } },
+          { "@type": "EducationalOccupationalCredential", "name": "Microsoft Certified: Azure Developer Associate (AZ-204)", "credentialCategory": "certification", "recognizedBy": { "@type": "Organization", "name": "Microsoft" } }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Maroru's Assistance",
+        "description": "Servicios freelance de ingeniería de IA generativa para B2B: agentes IA, sistemas RAG, automatización documental, arquitectura GenAI en Azure",
+        "url": "https://marorusassistance.com",
+        "founder": { "@type": "Person", "name": "Manuel Romero" },
+        "areaServed": { "@type": "Place", "name": "Remote / Worldwide" },
+        "serviceType": ["AI Engineering", "RAG Systems", "AI Agents", "Document Automation", "Azure GenAI Architecture"],
+        "priceRange": "€€€"
+      }
+    </script>
   </head>
   <body>
     <Nav lang={lang} />

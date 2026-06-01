@@ -101,7 +101,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 5 | ✅ | Operaciones IA (3 bloques) |
 | 6 | ✅ | Proyectos (Wembley + Labs) |
 | 7 | ✅ | Sobre mí + Cómo trabajo + Contacto |
-| 8 | ⏳ | SEO, performance, sitemap, OG image |
+| 8 | ✅ | SEO, performance, sitemap, OG image |
 | 9 | ⏳ | Deploy a producción + DNS swap |
 
 ## Cómo trabajar en este proyecto
@@ -136,6 +136,11 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **Projects layout producción**: `grid-cols-[3fr_2fr]` (~60/40), cards horizontales apiladas una bajo otra.
 - **Projects video**: Vimeo embed. videoId `"PENDING"` en i18n = botón oculto. Cambiar por ID real para que aparezca.
 - **Projects demoUrl**: mismo patrón — `"PENDING"` = botón oculto.
+- **Sitemap**: `@astrojs/sitemap` con i18n (`es-ES`, `en-US`). Excluye `/privacidad` y `/en/privacy` via `filter`. Requiere `site` en `astro.config.mjs`.
+- **OG image**: SVG en `public/og-image.svg` + PNG generado con `sharp` via `npm run generate:og`. El PNG se commitea al repo. Layout.astro usa `.png` como default.
+- **JSON-LD**: dos bloques en `<head>` de Layout.astro — `Person` (Manuel Romero, certificaciones, sameAs) y `ProfessionalService` (Maroru's Assistance).
+- **Calendly lazy load**: script de Calendly se inyecta via `IntersectionObserver` en Contact.astro cuando el widget entra en viewport (`rootMargin: 200px`). Elimina el peso de Calendly del tiempo de carga inicial.
+- **Modal accesibilidad**: `lastFocused` tracking — al cerrar el modal, el foco vuelve al botón que lo abrió. Al abrir, el foco va al botón de cerrar.
 - **React instalado en sesión 7**: `@astrojs/react` + `react` + `react-dom` + `@types/react` + `@types/react-dom`. Integración añadida en `astro.config.mjs`.
 - **Zod instalado en sesión 7**: validación de formulario en cliente desde `ContactForm.tsx`.
 - **ContactForm.tsx**: React island con `client:load`. Props de i18n pasadas desde `Contact.astro`. Validación con Zod, POST a Formspree `https://formspree.io/f/xwvveolo`. Estado: 'idle' | 'submitting' | 'success' | 'error'.

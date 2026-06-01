@@ -295,8 +295,11 @@ const statusLabel: Record<string, string> = {
   const modalClose = document.getElementById('modal-close');
 
   if (modal && modalBody && modalClose) {
+    let lastFocused: HTMLElement | null = null;
+
     document.querySelectorAll<HTMLElement>('[data-open-modal]').forEach((btn) => {
       btn.addEventListener('click', () => {
+        lastFocused = btn;
         const type = btn.dataset.openModal!;
 
         if (type === 'diagram') {
@@ -320,6 +323,7 @@ const statusLabel: Record<string, string> = {
         }
 
         modal.showModal();
+        modalClose.focus();
         document.body.style.overflow = 'hidden';
       });
     });
@@ -327,6 +331,7 @@ const statusLabel: Record<string, string> = {
     const closeModal = () => {
       modal.close();
       document.body.style.overflow = '';
+      lastFocused?.focus();
     };
 
     modalClose.addEventListener('click', closeModal);
