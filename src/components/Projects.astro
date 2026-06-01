@@ -302,7 +302,7 @@ const statusLabel: Record<string, string> = {
         if (type === 'diagram') {
           const src = btn.dataset.diagramSrc!;
           const alt = btn.dataset.diagramAlt ?? '';
-          modalBody.innerHTML = `<img src="${src}" alt="${alt}" class="w-full h-auto rounded" loading="eager" />`;
+          modalBody.innerHTML = `<img src="${src}" alt="${alt}" style="max-width:100%;max-height:calc(90vh - 80px);width:auto;height:auto;object-fit:contain;display:block;margin:0 auto;border-radius:6px;" loading="eager" />`;
         } else if (type === 'video') {
           const videoId = btn.dataset.videoId!;
           const iframeSrc = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;

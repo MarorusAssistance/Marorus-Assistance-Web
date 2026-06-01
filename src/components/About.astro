@@ -15,8 +15,8 @@ const dict = lang === 'es' ? esData : enData;
 
 const bio = dict.about.bio as string[];
 const skillCategories = Object.values(dict.about.skills) as Array<{ label: string; items: string[] }>;
-const certifications = dict.about.certifications as Array<{ code: string; name: string; description: string; url: string }>;
-const viewCredential = lang === 'es' ? 'Ver credencial' : 'View credential';
+const certifications = dict.about.certifications as Array<{ code: string; name: string; description: string; infoUrl: string; verifyUrl: string }>;
+const verifyCredential = lang === 'es' ? 'Verificar credencial' : 'Verify credential';
 ---
 
 <section id="sobre-mi" class="bg-bg-light py-20 md:py-32">
@@ -87,18 +87,18 @@ const viewCredential = lang === 'es' ? 'Ver credencial' : 'View credential';
           {t('about.certificationsSubtitle')}
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {certifications.map(({ code, name, description, url }) => (
+          {certifications.map(({ code, name, description, verifyUrl }) => (
             <div class="bg-bg border border-border-soft rounded-lg p-6 flex flex-col hover:-translate-y-0.5 hover:shadow-md transition-all duration-200">
               <span class="font-accent text-5xl text-primary leading-none mb-3">{code}</span>
               <p class="font-display font-semibold text-base text-text mb-2 leading-snug">{name}</p>
               <p class="font-body text-sm text-text-muted leading-relaxed flex-1 mb-4">{description}</p>
               <a
-                href={url}
+                href={verifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="font-mono text-xs text-primary hover:underline"
               >
-                {viewCredential} →
+                {verifyCredential} →
               </a>
             </div>
           ))}

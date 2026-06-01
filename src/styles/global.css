@@ -143,11 +143,14 @@ body {
 
 /* ─── Project modal ───────────────────────────────────────────── */
 dialog.project-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
   padding: 0;
   border: none;
   border-radius: 12px;
-  max-width: min(1100px, 90vw);
-  width: 90vw;
+  max-width: min(1100px, 95vw);
+  width: 95vw;
   max-height: 90vh;
   overflow-y: auto;
   background: var(--color-bg);

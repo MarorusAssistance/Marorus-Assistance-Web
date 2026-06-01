@@ -219,9 +219,9 @@
     "certificationsTitle": "Certifications",
     "certificationsSubtitle": "Three official Microsoft Azure certifications as verifiable proof of technical competence.",
     "certifications": [
-      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Design and implementation of AI solutions on Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/" },
-      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Design and operation of machine learning solutions on Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/" },
-      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Development of applications and services on the Azure platform.", "url": "https://learn.microsoft.com/credentials/certifications/azure-developer/" }
+      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Design and implementation of AI solutions on Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/8458E78A893EB486?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Design and operation of machine learning solutions on Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/1C2E34127EC4F30C?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Development of applications and services on the Azure platform.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-developer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/7494AEF2236C87DC?sharingId=1D7BF3F93DD8D96E" }
     ]
   },
   "howIWork": {
