@@ -1,0 +1,126 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+import esData from '../i18n/es.json';
+import enData from '../i18n/en.json';
+import ContactForm from './ContactForm';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+
+const privacyUrl = lang === 'es' ? '/privacidad' : '/en/privacy';
+const formFields = dict.contact.form.fields;
+const formLabels = {
+  submit: dict.contact.form.submit,
+  submitting: dict.contact.form.submitting,
+  success: dict.contact.form.success,
+  error: dict.contact.form.error,
+  microcopy: dict.contact.form.microcopy,
+  privacyLink: dict.contact.form.privacyLink,
+  anotherMessage: dict.contact.form.anotherMessage,
+};
+
+const altLinks = [
+  { label: t('contact.alternativeContact.linkedin'), href: 'https://www.linkedin.com/in/manuel-pedro-romero-ruiz/' },
+  { label: t('contact.alternativeContact.github'), href: 'https://github.com/MarorusAssistance' },
+  { label: t('contact.alternativeContact.malt'), href: 'https://www.malt.es/profile/manuelromero?origin=dashboard_profile_name' },
+];
+---
+
+<section id="contacto" class="bg-bg-dark py-20 md:py-32">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div data-contact-section>
+
+      <!-- Header -->
+      <div data-contact-item class="mb-14 md:mb-16">
+        <p class="font-mono text-xs uppercase tracking-widest mb-4" style="color: #9ca3af;">
+          {t('contact.sectionLabel')}
+        </p>
+        <h2 class="font-display font-bold text-4xl md:text-5xl text-white mb-4">
+          {t('contact.title')}
+        </h2>
+        <p class="font-body text-base max-w-[700px] leading-relaxed" style="color: #d1d5db;">
+          {t('contact.intro')}
+        </p>
+      </div>
+
+      <!-- Grid Calendly + Formulario -->
+      <div data-contact-item class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+        <!-- Calendly -->
+        <div class="bg-bg-light rounded-xl p-6 md:p-8">
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text mb-2">
+            {t('contact.calendly.title')}
+          </h3>
+          <p class="font-body text-sm text-text-muted mb-6">
+            {t('contact.calendly.subtitle')}
+          </p>
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/marorusassistance/30min"
+            style="min-width:280px;height:680px;"
+          ></div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async is:inline></script>
+        </div>
+
+        <!-- Formulario -->
+        <div class="bg-bg-light rounded-xl p-6 md:p-8">
+          <h3 class="font-display font-bold text-xl md:text-2xl text-text mb-6">
+            {t('contact.form.title')}
+          </h3>
+          <ContactForm
+            client:load
+            lang={lang}
+            fields={formFields as any}
+            labels={formLabels}
+            privacyUrl={privacyUrl}
+          />
+        </div>
+
+      </div>
+
+      <!-- Links alternativos -->
+      <div data-contact-item class="mt-14 md:mt-16 flex flex-wrap items-center gap-x-4 gap-y-2 justify-center md:justify-start">
+        <span class="font-body text-sm" style="color: #9ca3af;">{t('contact.alternativeContact.label')}</span>
+        {altLinks.map(({ label, href }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-body text-sm hover:text-white transition-colors"
+            style="color: #d1d5db; text-decoration: underline; text-underline-offset: 3px;"
+          >
+            {label}
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-contact-section]');
+  if (section && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      section.querySelectorAll<HTMLElement>('[data-contact-item]').forEach((el) => el.classList.add('contact-visible'));
+    } else {
+      section.classList.add('contact-animate');
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-contact-item]').forEach((item, i) => {
+              setTimeout(() => item.classList.add('contact-visible'), i * 150);
+            });
+          }
+        });
+      }, { threshold: 0.05 }).observe(section);
+    }
+  }
+</script>

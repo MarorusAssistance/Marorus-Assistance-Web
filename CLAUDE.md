@@ -100,7 +100,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 4 | ✅ | Servicios IT (3 cards) |
 | 5 | ✅ | Operaciones IA (3 bloques) |
 | 6 | ✅ | Proyectos (Wembley + Labs) |
-| 7 | ⏳ | Sobre mí + Cómo trabajo + Contacto |
+| 7 | ✅ | Sobre mí + Cómo trabajo + Contacto |
 | 8 | ⏳ | SEO, performance, sitemap, OG image |
 | 9 | ⏳ | Deploy a producción + DNS swap |
 
@@ -136,3 +136,10 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **Projects layout producción**: `grid-cols-[3fr_2fr]` (~60/40), cards horizontales apiladas una bajo otra.
 - **Projects video**: Vimeo embed. videoId `"PENDING"` en i18n = botón oculto. Cambiar por ID real para que aparezca.
 - **Projects demoUrl**: mismo patrón — `"PENDING"` = botón oculto.
+- **React instalado en sesión 7**: `@astrojs/react` + `react` + `react-dom` + `@types/react` + `@types/react-dom`. Integración añadida en `astro.config.mjs`.
+- **Zod instalado en sesión 7**: validación de formulario en cliente desde `ContactForm.tsx`.
+- **ContactForm.tsx**: React island con `client:load`. Props de i18n pasadas desde `Contact.astro`. Validación con Zod, POST a Formspree `https://formspree.io/f/xwvveolo`. Estado: 'idle' | 'submitting' | 'success' | 'error'.
+- **Foto**: `src/assets/photo.jpeg` — Astro la optimiza a WebP en build (350kB → 23kB). Usar `<Image>` de `astro:assets`.
+- **HowIWork step body**: texto con `\n\n` en JSON, spliteado en frontmatter/template para renderizar como párrafos `<p>` separados.
+- **Contact sección**: `bg-bg-dark` — cierra la web en oscuro. Cards Calendly y formulario en `bg-bg-light` para contraste.
+- **Páginas privacidad**: `src/pages/privacidad.astro` (ES) y `src/pages/en/privacy.astro` (EN). Placeholders con TODO RGPD.

@@ -5,6 +5,9 @@ import Stats from '../components/Stats.astro';
 import ServicesIT from '../components/ServicesIT.astro';
 import Operations from '../components/Operations.astro';
 import Projects from '../components/Projects.astro';
+import About from '../components/About.astro';
+import HowIWork from '../components/HowIWork.astro';
+import Contact from '../components/Contact.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -21,15 +24,7 @@ const t = useTranslations(lang);
 
   <Projects lang={lang} />
 
-  <section id="sobre-mi" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
-    <h2 class="font-display text-2xl text-text-muted">Sobre mí — en construcción</h2>
-  </section>
-
-  <section id="como-trabajo" class="min-h-screen flex items-center justify-center px-4 bg-bg">
-    <h2 class="font-display text-2xl text-text-muted">Cómo trabajo — en construcción</h2>
-  </section>
-
-  <section id="contacto" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
-    <h2 class="font-display text-2xl text-text-muted">Contacto — en construcción</h2>
-  </section>
+  <About lang={lang} />
+  <HowIWork lang={lang} />
+  <Contact lang={lang} />
 </Layout>

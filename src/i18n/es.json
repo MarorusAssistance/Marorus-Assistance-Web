@@ -198,6 +198,95 @@
       "statusArchitectureOnly": "Solo arquitectura"
     }
   },
+  "about": {
+    "sectionLabel": "SOBRE MÍ",
+    "title": "Manuel Romero",
+    "bio": [
+      "Soy Manuel Romero. Construyo sistemas de IA generativa para B2B desde 2023.",
+      "Empecé como AI Engineer en Wembley Studios, una consultora técnica B2B, donde durante año y medio diseñé y desplegué sistemas en producción para clientes reales: un asistente conversacional sobre catálogos de producto con 19.000 referencias en el sector retail, un sistema de loyalty con verificación automática de facturas para profesionales del mismo sector, y un bot de soporte interno integrado en Teams para una empresa del sector de tasación y valoración. No fueron POCs ni demos: son sistemas que siguen funcionando hoy.",
+      "Desde marzo de 2025 trabajo como freelance. Mi enfoque actual son tres servicios concretos donde puedo entregar valor profundo: agentes y sistemas RAG, automatización documental con IA, y arquitectura GenAI sobre Azure. Prefiero ir despacio y especializarme antes que ofrecer un catálogo amplio sin profundidad.",
+      "Trabajo principalmente sobre Azure (con tres certificaciones oficiales: AI-102, DP-100, AZ-204) y el ecosistema Python para IA: LangChain, LangGraph, FastAPI, PostgreSQL con pgvector. Pero la tecnología es la herramienta; lo que vendo es criterio para decidir qué construir, cómo, y qué no construir."
+    ],
+    "skillsTitle": "Stack y experiencia",
+    "skills": {
+      "aiLlm": { "label": "Lenguajes y frameworks IA", "items": ["Python", "LangChain", "LangGraph", "FastAPI", "prompt engineering", "tool calling", "multi-agent systems"] },
+      "cloud": { "label": "Cloud y servicios Azure", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault"] },
+      "data": { "label": "Datos, búsqueda y almacenamiento", "items": ["PostgreSQL", "pgvector", "SQL", "embeddings", "hybrid search", "semantic search", "OCR"] },
+      "quality": { "label": "Calidad y evaluación de LLMs", "items": ["LangSmith", "LLM-as-judge", "evals heurísticos", "observabilidad de LLMs"] },
+      "integration": { "label": "Integración y operación", "items": ["Docker", "CI/CD", "arquitecturas asíncronas", "API integration", "Microsoft Teams"] },
+      "alt": { "label": "Entornos alternativos", "items": ["n8n", "LLMs locales / on-premise"] }
+    },
+    "certificationsTitle": "Certificaciones",
+    "certificationsSubtitle": "Tres certificaciones oficiales de Microsoft Azure como prueba de competencia técnica verificable.",
+    "certifications": [
+      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Diseño e implementación de soluciones de IA sobre Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/" },
+      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Diseño y operación de soluciones de machine learning en Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/" },
+      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Desarrollo de aplicaciones y servicios sobre la plataforma Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-developer/" }
+    ]
+  },
+  "howIWork": {
+    "sectionLabel": "CÓMO TRABAJO",
+    "title": "Conecta. Desconecta. Reconecta.",
+    "intro": "Construir un sistema de IA en una empresa no es solo desplegar código. Es entender el proceso real, integrarlo en la operativa, y hacer que el equipo lo adopte. Mi forma de trabajar se resume en tres palabras.",
+    "step1": {
+      "letter": "C",
+      "title": "Conecta",
+      "subtitle": "Antes de proponer arquitectura, entiendo el proceso.",
+      "body": "Cada empresa tiene su forma de funcionar, sus herramientas, sus cuellos de botella reales (que casi nunca son los que aparecen en el brief inicial). El primer trabajo es identificar dónde la IA aporta valor de verdad y dónde es más eficiente no usarla. No todo proceso necesita un LLM detrás; algunos necesitan una query SQL bien escrita o un cambio de procedimiento.\n\nEsta fase es conversación, observación y mucho preguntar. El objetivo es salir con un mapa claro de qué construir, qué no construir, y por qué."
+    },
+    "step2": {
+      "letter": "D",
+      "title": "Desconecta",
+      "subtitle": "El sistema funciona para que tu equipo no tenga que estar encima.",
+      "body": "Una vez identificado el caso, lo construyo para que el trabajo repetitivo deje de pasar por personas. Las facturas se procesan solas, las consultas frecuentes se resuelven sin intervención, los datos están centralizados y consultables. Lo que antes consumía horas, ahora ocurre en segundo plano.\n\nLa meta no es solo automatizar tareas, es liberar atención. Que tu equipo deje de gastar energía en lo mecánico para poder gastarla en lo que requiere criterio."
+    },
+    "step3": {
+      "letter": "R",
+      "title": "Reconecta",
+      "subtitle": "Menos ruido operativo, más espacio para lo que importa.",
+      "body": "Cuando el sistema funciona, pasa algo que va más allá del ROI: las personas dejan de ir corriendo todo el día. El responsable de operaciones sale a las 18:00 en vez de a las 21:00. El CTO deja de apagar fuegos y vuelve a pensar a tres meses vista. El equipo deja de estar disperso y empieza a tener espacio mental.\n\nSuena blando para un servicio técnico, pero es el resultado que veo una y otra vez. Un sistema bien construido no solo ahorra costes; devuelve tiempo y baja la temperatura de la operativa. Y ese tiempo es lo que tú decides cómo usar: en estrategia, en el equipo, o en tu vida fuera del trabajo."
+    },
+    "cta": "¿Reconoces el patrón? Hablemos →"
+  },
+  "contact": {
+    "sectionLabel": "CONTACTO",
+    "title": "Hablemos",
+    "intro": "Si tienes un proyecto en mente, un problema operativo que crees que la IA puede resolver, o simplemente quieres validar una idea técnica, escríbeme. Respondo en menos de 48 horas laborables.",
+    "calendly": {
+      "title": "Reserva una llamada",
+      "subtitle": "30 minutos. Sin compromiso. Cuéntame tu caso y te digo si puedo ayudarte."
+    },
+    "form": {
+      "title": "O escríbeme directamente",
+      "fields": {
+        "name": "Nombre",
+        "company": "Empresa (opcional)",
+        "email": "Email",
+        "type": "¿Cómo te llego?",
+        "typeOptions": { "team": "Refuerzo de equipo IT", "project": "Proyecto cerrado", "general": "Consulta general", "other": "Otro" },
+        "message": "Cuéntame brevemente",
+        "privacy": "He leído y acepto la política de privacidad"
+      },
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "success": "Mensaje enviado. Te responderé en menos de 48 horas laborables.",
+      "error": "Algo ha fallado. Inténtalo de nuevo o escríbeme directamente a marorusassistance@gmail.com",
+      "microcopy": "Tus datos solo se usan para responderte. No los comparto ni los uso para marketing.",
+      "privacyLink": "Más detalles en la política de privacidad.",
+      "anotherMessage": "Enviar otro mensaje"
+    },
+    "alternativeContact": {
+      "label": "También en:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt"
+    }
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: [PENDIENTE]",
+    "placeholder": "Esta página está en construcción. Si necesitas información sobre cómo se tratan tus datos al contactarme, escríbeme directamente a marorusassistance@gmail.com."
+  },
   "footer": {
     "tagline": "Ingeniería de IA para operaciones B2B",
     "rights": "Todos los derechos reservados",

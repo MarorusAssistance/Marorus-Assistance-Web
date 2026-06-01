@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import { useTranslations, type Locale } from '../i18n/utils';
+import esData from '../i18n/es.json';
+import enData from '../i18n/en.json';
+import photo from '../assets/photo.jpeg';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+
+const bio = dict.about.bio as string[];
+const skillCategories = Object.values(dict.about.skills) as Array<{ label: string; items: string[] }>;
+const certifications = dict.about.certifications as Array<{ code: string; name: string; description: string; url: string }>;
+const viewCredential = lang === 'es' ? 'Ver credencial' : 'View credential';
+---
+
+<section id="sobre-mi" class="bg-bg-light py-20 md:py-32">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div data-about-section>
+
+      <!-- Header -->
+      <div data-about-item class="mb-14 md:mb-16">
+        <p class="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+          {t('about.sectionLabel')}
+        </p>
+        <h2 class="font-display font-bold text-4xl md:text-5xl text-text">
+          {t('about.title')}
+        </h2>
+      </div>
+
+      <!-- Foto + Bio -->
+      <div data-about-item class="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 md:gap-16 mb-20 md:mb-24">
+        <!-- Foto -->
+        <div class="flex justify-center md:justify-start">
+          <div class="w-full max-w-[320px] md:max-w-none">
+            <Image
+              src={photo}
+              alt="Manuel Romero — Freelance GenAI Engineer"
+              class="w-full aspect-[4/5] object-cover rounded-lg"
+              loading="eager"
+            />
+          </div>
+        </div>
+        <!-- Bio -->
+        <div class="flex flex-col justify-center">
+          {bio.map((paragraph, i) => (
+            <p class={`font-body text-base leading-[1.75] mb-4 last:mb-0 ${i === 0 ? 'text-text font-medium' : 'text-text-muted'}`}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div data-about-item class="mb-20 md:mb-24">
+        <h3 class="font-display font-bold text-2xl md:text-3xl text-text mb-10">
+          {t('about.skillsTitle')}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 md:gap-y-8">
+          {skillCategories.map(({ label, items }) => (
+            <div>
+              <p class="font-mono text-xs text-primary uppercase tracking-widest mb-3">{label}</p>
+              <div class="flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <span class="font-mono text-xs px-2.5 py-1 border border-border-soft text-text-muted rounded">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certificaciones -->
+      <div data-about-item>
+        <h3 class="font-display font-bold text-2xl md:text-3xl text-text mb-2">
+          {t('about.certificationsTitle')}
+        </h3>
+        <p class="font-body text-sm text-text-muted mb-8 max-w-[600px]">
+          {t('about.certificationsSubtitle')}
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {certifications.map(({ code, name, description, url }) => (
+            <div class="bg-bg border border-border-soft rounded-lg p-6 flex flex-col hover:-translate-y-0.5 hover:shadow-md transition-all duration-200">
+              <span class="font-accent text-5xl text-primary leading-none mb-3">{code}</span>
+              <p class="font-display font-semibold text-base text-text mb-2 leading-snug">{name}</p>
+              <p class="font-body text-sm text-text-muted leading-relaxed flex-1 mb-4">{description}</p>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-xs text-primary hover:underline"
+              >
+                {viewCredential} →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-about-section]');
+  if (section && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      section.querySelectorAll<HTMLElement>('[data-about-item]').forEach((el) => el.classList.add('about-visible'));
+    } else {
+      section.classList.add('about-animate');
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-about-item]').forEach((item, i) => {
+              setTimeout(() => item.classList.add('about-visible'), i * 100);
+            });
+          }
+        });
+      }, { threshold: 0.05 }).observe(section);
+    }
+  }
+</script>

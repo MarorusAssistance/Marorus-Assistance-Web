@@ -167,6 +167,37 @@ dialog.project-modal[open] {
   animation: modalFadeIn 200ms ease-out;
 }
 
+/* ─── About scroll-triggered animation ───────────────────────── */
+.about-animate [data-about-item] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.about-animate [data-about-item].about-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── HowIWork scroll-triggered animation ────────────────────── */
+.howwork-animate [data-step] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.howwork-animate [data-step].step-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Contact scroll-triggered animation ─────────────────────── */
+.contact-animate [data-contact-item] {
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+.contact-animate [data-contact-item].contact-visible {
+  opacity: 1;
+}
+
 /* ─── Respect prefers-reduced-motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -212,5 +243,13 @@ dialog.project-modal[open] {
 
   dialog.project-modal[open] {
     animation: none !important;
+  }
+
+  .about-animate [data-about-item],
+  .howwork-animate [data-step],
+  .contact-animate [data-contact-item] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

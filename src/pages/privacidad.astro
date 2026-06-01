@@ -1,0 +1,29 @@
+---
+{/*
+  TODO: Rellenar política de privacidad completa antes de lanzar la web.
+  Debe cubrir RGPD: datos recogidos en formulario (nombre, email, empresa, mensaje),
+  finalidad (responder consulta), base legal (consentimiento expreso),
+  responsable (Manuel Romero), derechos del usuario (acceso, rectificación, supresión,
+  portabilidad, oposición), cómo ejercerlos (marorusassistance@gmail.com),
+  tiempo de conservación, no cesión a terceros, no uso para marketing.
+*/}
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('privacy.title')} description={t('privacy.title')} lang={lang}>
+  <main class="max-w-[700px] mx-auto px-4 py-12 md:py-20 pt-28 md:pt-36">
+    <h1 class="font-display font-bold text-3xl md:text-4xl text-text mb-3">
+      {t('privacy.title')}
+    </h1>
+    <p class="font-mono text-xs text-text-muted mb-10">
+      {t('privacy.lastUpdated')}
+    </p>
+    <p class="font-body text-base text-text-muted leading-relaxed">
+      {t('privacy.placeholder')}
+    </p>
+  </main>
+</Layout>

@@ -198,6 +198,95 @@
       "statusArchitectureOnly": "Architecture only"
     }
   },
+  "about": {
+    "sectionLabel": "ABOUT",
+    "title": "Manuel Romero",
+    "bio": [
+      "I'm Manuel Romero. I've been building generative AI systems for B2B since 2023.",
+      "I started as AI Engineer at Wembley Studios, a B2B technical consultancy, where over a year and a half I designed and deployed production systems for real clients: a conversational assistant over product catalogs with 19,000 references in retail, a loyalty system with automatic invoice verification for professionals in the same sector, and an internal support bot integrated with Teams for a company in the appraisal and valuation sector. These were not POCs or demos — they are systems still running today.",
+      "Since March 2025 I work as a freelancer. My current focus is three specific services where I can deliver deep value: agents and RAG systems, document automation with AI, and GenAI architecture on Azure. I prefer going slow and specializing rather than offering a broad catalog without depth.",
+      "I work primarily on Azure (with three official certifications: AI-102, DP-100, AZ-204) and the Python AI ecosystem: LangChain, LangGraph, FastAPI, PostgreSQL with pgvector. But technology is the tool; what I sell is the judgment to decide what to build, how, and what not to build."
+    ],
+    "skillsTitle": "Stack and experience",
+    "skills": {
+      "aiLlm": { "label": "AI languages and frameworks", "items": ["Python", "LangChain", "LangGraph", "FastAPI", "prompt engineering", "tool calling", "multi-agent systems"] },
+      "cloud": { "label": "Cloud and Azure services", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault"] },
+      "data": { "label": "Data, search and storage", "items": ["PostgreSQL", "pgvector", "SQL", "embeddings", "hybrid search", "semantic search", "OCR"] },
+      "quality": { "label": "LLM quality and evaluation", "items": ["LangSmith", "LLM-as-judge", "heuristic evals", "LLM observability"] },
+      "integration": { "label": "Integration and operations", "items": ["Docker", "CI/CD", "async architectures", "API integration", "Microsoft Teams"] },
+      "alt": { "label": "Alternative environments", "items": ["n8n", "local LLMs / on-premise"] }
+    },
+    "certificationsTitle": "Certifications",
+    "certificationsSubtitle": "Three official Microsoft Azure certifications as verifiable proof of technical competence.",
+    "certifications": [
+      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Design and implementation of AI solutions on Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/" },
+      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Design and operation of machine learning solutions on Azure.", "url": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/" },
+      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Development of applications and services on the Azure platform.", "url": "https://learn.microsoft.com/credentials/certifications/azure-developer/" }
+    ]
+  },
+  "howIWork": {
+    "sectionLabel": "HOW I WORK",
+    "title": "Connect. Disconnect. Reconnect.",
+    "intro": "Building an AI system in a company is not just deploying code. It means understanding the real process, integrating it into operations, and making the team adopt it. My way of working comes down to three words.",
+    "step1": {
+      "letter": "C",
+      "title": "Connect",
+      "subtitle": "Before proposing architecture, I understand the process.",
+      "body": "Every company has its own way of working, its tools, its real bottlenecks (which are almost never the ones that appear in the initial brief). The first job is to identify where AI adds real value and where it's more efficient not to use it. Not every process needs an LLM behind it; some just need a well-written SQL query or a procedure change.\n\nThis phase is conversation, observation, and a lot of questions. The goal is to come out with a clear map of what to build, what not to build, and why."
+    },
+    "step2": {
+      "letter": "D",
+      "title": "Disconnect",
+      "subtitle": "The system runs so your team doesn't have to babysit it.",
+      "body": "Once the use case is identified, I build it so that repetitive work stops going through people. Invoices are processed automatically, frequent queries are resolved without intervention, data is centralized and queryable. What used to take hours now happens in the background.\n\nThe goal is not just to automate tasks — it's to free up attention. To let your team stop spending energy on the mechanical so they can spend it on what requires judgment."
+    },
+    "step3": {
+      "letter": "R",
+      "title": "Reconnect",
+      "subtitle": "Less operational noise, more room for what matters.",
+      "body": "When the system works, something happens that goes beyond ROI: people stop rushing around all day. The operations manager leaves at 6pm instead of 9pm. The CTO stops fighting fires and starts thinking three months ahead. The team stops being scattered and starts having mental space.\n\nIt sounds soft for a technical service, but it's the result I see again and again. A well-built system doesn't just save costs; it returns time and lowers the temperature of operations. And that time is what you decide how to use: on strategy, on the team, or on your life outside of work."
+    },
+    "cta": "Recognize the pattern? Let's talk →"
+  },
+  "contact": {
+    "sectionLabel": "CONTACT",
+    "title": "Let's talk",
+    "intro": "If you have a project in mind, an operational problem you think AI can solve, or just want to validate a technical idea, write to me. I respond within 48 business hours.",
+    "calendly": {
+      "title": "Book a call",
+      "subtitle": "30 minutes. No commitment. Tell me your case and I'll let you know if I can help."
+    },
+    "form": {
+      "title": "Or write to me directly",
+      "fields": {
+        "name": "Name",
+        "company": "Company (optional)",
+        "email": "Email",
+        "type": "How did you find me?",
+        "typeOptions": { "team": "IT team reinforcement", "project": "Fixed-price project", "general": "General inquiry", "other": "Other" },
+        "message": "Tell me briefly",
+        "privacy": "I have read and accept the privacy policy"
+      },
+      "submit": "Send",
+      "submitting": "Sending...",
+      "success": "Message sent. I'll reply within 48 business hours.",
+      "error": "Something went wrong. Please try again or write to me directly at marorusassistance@gmail.com",
+      "microcopy": "Your data is only used to reply to you. I don't share it or use it for marketing.",
+      "privacyLink": "More details in the privacy policy.",
+      "anotherMessage": "Send another message"
+    },
+    "alternativeContact": {
+      "label": "Also on:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt"
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "lastUpdated": "Last updated: [PENDING]",
+    "placeholder": "This page is under construction. If you need information about how your data is handled when you contact me, write to me directly at marorusassistance@gmail.com."
+  },
   "footer": {
     "tagline": "AI Engineering for B2B operations",
     "rights": "All rights reserved",

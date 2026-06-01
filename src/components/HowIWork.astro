@@ -1,0 +1,100 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+import esData from '../i18n/es.json';
+import enData from '../i18n/en.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+
+const steps = [
+  { key: 'step1' as const, data: dict.howIWork.step1 },
+  { key: 'step2' as const, data: dict.howIWork.step2 },
+  { key: 'step3' as const, data: dict.howIWork.step3 },
+];
+---
+
+<section id="como-trabajo" class="bg-bg py-20 md:py-32">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <p class="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+      {t('howIWork.sectionLabel')}
+    </p>
+    <h2 class="font-display font-bold text-4xl md:text-5xl text-text mb-6">
+      <span>{t('howIWork.step1.title')}</span><span class="text-primary">.</span>{' '}
+      <span>{t('howIWork.step2.title')}</span><span class="text-primary">.</span>{' '}
+      <span>{t('howIWork.step3.title')}</span><span class="text-primary">.</span>
+    </h2>
+    <p class="font-body text-base md:text-lg text-text-muted max-w-[700px] mb-20 md:mb-24 leading-relaxed">
+      {t('howIWork.intro')}
+    </p>
+
+    <!-- 3 bloques C/D/R -->
+    <div data-howwork-section class="flex flex-col gap-20 md:gap-28">
+      {steps.map(({ data }) => {
+        const paragraphs = (data.body as string).split('\n\n').filter(Boolean);
+        return (
+          <div data-step>
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-16">
+              <!-- Letra + Título -->
+              <div>
+                <span class="font-accent text-[9rem] md:text-[11rem] text-primary leading-none block">
+                  {data.letter}
+                </span>
+                <h3 class="font-display font-bold text-2xl md:text-3xl text-text -mt-2 md:-mt-4">
+                  {data.title}
+                </h3>
+              </div>
+              <!-- Subtítulo + Body -->
+              <div class="flex flex-col justify-center">
+                <p class="font-display text-lg md:text-xl italic text-text-muted mb-6">
+                  {data.subtitle}
+                </p>
+                {paragraphs.map((p) => (
+                  <p class="font-body text-base text-text leading-[1.75] mb-4 last:mb-0">{p}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA final -->
+    <div class="mt-24 md:mt-32 flex justify-center">
+      <a
+        href="#contacto"
+        class="font-display text-lg md:text-xl italic text-text hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-0.5"
+      >
+        {t('howIWork.cta')}
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-howwork-section]');
+  if (section && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      section.querySelectorAll<HTMLElement>('[data-step]').forEach((el) => el.classList.add('step-visible'));
+    } else {
+      section.classList.add('howwork-animate');
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-step]').forEach((item, i) => {
+              setTimeout(() => item.classList.add('step-visible'), i * 200);
+            });
+          }
+        });
+      }, { threshold: 0.1 }).observe(section);
+    }
+  }
+</script>
