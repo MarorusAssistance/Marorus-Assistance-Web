@@ -118,6 +118,55 @@ body {
   transform: translateY(0);
 }
 
+/* ─── Projects scroll-triggered animation ────────────────────── */
+.projs-animate [data-project] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.projs-animate [data-project].project-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.labs-animate [data-lab] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.labs-animate [data-lab].lab-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Project modal ───────────────────────────────────────────── */
+dialog.project-modal {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  max-width: min(1100px, 90vw);
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-bg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+dialog.project-modal::backdrop {
+  background: rgba(26, 26, 26, 0.85);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+dialog.project-modal[open] {
+  animation: modalFadeIn 200ms ease-out;
+}
+
 /* ─── Respect prefers-reduced-motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -152,5 +201,16 @@ body {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .projs-animate [data-project],
+  .labs-animate [data-lab] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  dialog.project-modal[open] {
+    animation: none !important;
   }
 }

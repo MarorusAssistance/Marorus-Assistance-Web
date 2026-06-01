@@ -4,6 +4,7 @@ import Hero from '../../components/Hero.astro';
 import Stats from '../../components/Stats.astro';
 import ServicesIT from '../../components/ServicesIT.astro';
 import Operations from '../../components/Operations.astro';
+import Projects from '../../components/Projects.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -18,9 +19,7 @@ const t = useTranslations(lang);
 
   <Operations lang={lang} />
 
-  <section id="proyectos" class="min-h-screen flex items-center justify-center px-4 bg-bg">
-    <h2 class="font-display text-2xl text-text-muted">Projects — coming soon</h2>
-  </section>
+  <Projects lang={lang} />
 
   <section id="sobre-mi" class="min-h-screen flex items-center justify-center px-4 bg-bg-light">
     <h2 class="font-display text-2xl text-text-muted">About — coming soon</h2>

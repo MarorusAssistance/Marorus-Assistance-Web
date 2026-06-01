@@ -107,6 +107,97 @@
     "closingLine": "If you recognize any of these pain points in your operation, let's talk. Each case starts from an analysis of the real process, not a template.",
     "cta": "Tell me about your case"
   },
+  "projects": {
+    "sectionLabel": "TRACK RECORD",
+    "title": "Projects",
+    "subtitle": "Real systems built and operated, plus personal lab work.",
+    "production": {
+      "heading": "In production",
+      "description": "Production systems built for real clients during my tenure at Wembley Studios (2023–2025)."
+    },
+    "labs": {
+      "heading": "Labs",
+      "description": "Personal projects in development. Some have a demo, others are at architecture stage. The transparency about each project's status is deliberate."
+    },
+    "production1": {
+      "title": "Conversational assistant over product catalog",
+      "meta": "Sector: Retail / Bath & Sanitary · Wembley Studios · 2024",
+      "summary": "Conversational system over ~20 supplier PDF catalogs, ~19,000 products, and ~5,000 spare parts. The main challenge was not generation — it was retrieval: catalogs had inconsistent structures, reference mismatches, and technical data in poorly scanned tables.",
+      "decisions": [
+        "Hybrid search (lexical + vector) to combine exact reference matches with semantic search",
+        "Semantic ranking on results to prioritize actual relevance",
+        "Multi-query retrieval to decompose complex questions",
+        "Tool-calling routing to avoid invoking the LLM when a deterministic query sufficed"
+      ],
+      "stack": ["Azure OpenAI", "Azure AI Search", "LangChain", "FastAPI", "Python"]
+    },
+    "production2": {
+      "title": "Automatic invoice verification in a loyalty program",
+      "meta": "Sector: Retail / Bath & Sanitary · Wembley Studios · 2024",
+      "summary": "B2B loyalty system where professional installers upload invoices from their distributors and earn points for the brand's products sold. The technical challenge was not generic extraction — it was reliable identification: in a multi-brand distributor invoice, you need to identify which products belong to the client brand, which references map to which catalog SKU, all with noisy input data (imperfect OCR, abbreviations, partial references).",
+      "decisions": [
+        "Azure Document Intelligence for structured extraction of invoice line items",
+        "Embeddings + fuzzy matching + layered heuristics for product matching against the catalog master with noisy data",
+        "Measured accuracy of 85–90% in matching against master data",
+        "Asynchronous architecture with Azure Functions and Service Bus for volume spike tolerance (500 invoices/month)",
+        "Human validation before crediting points on all processed cases"
+      ],
+      "stack": ["Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "PostgreSQL", "Python"]
+    },
+    "production3": {
+      "title": "Internal support bot on Teams",
+      "meta": "Sector: Appraisal & Valuation · Wembley Studios · 2024",
+      "summary": "Conversational bot integrated in Microsoft Teams that answers questions about internal documentation and, when it cannot resolve, opens a ticket in the management system with the context already collected from the user.",
+      "decisions": [
+        "RAG over internal document base with per-user access control",
+        "Intent detection to distinguish resolvable queries vs. incidents requiring a ticket",
+        "Enriched ticket creation: the bot extracts data from the conversation (affected system, problem description, urgency) and structures it before creating the incident"
+      ],
+      "stack": ["Azure OpenAI", "Microsoft Bot Framework", "Teams SDK", "Python"]
+    },
+    "lab1": {
+      "title": "Internal Assistant for Microsoft Teams",
+      "summary": "FAQ-bot connected to internal documentation with automatic escalation to incidents when the query exceeds what the bot can resolve. Personal iteration on the pattern of Project 3, generalized for deployment at different clients.",
+      "status": "Functional · demo, video and architecture available",
+      "statusType": "functional",
+      "videoId": "PENDING",
+      "demoUrl": "PENDING",
+      "githubUrl": "https://github.com/MarorusAssistance/Asistente-Interno-Microsoft-Teams"
+    },
+    "lab2": {
+      "title": "Document Intelligent Processor",
+      "summary": "Automatic extraction of data from unstructured documents (invoices, delivery notes, contracts) into ERP, with a matching layer against master data and human review for ambiguous cases. Generalization of the pattern used in Project 2, reoriented toward the ERP upload use case.",
+      "status": "Demo in development · no public visual demo (backend pipeline)",
+      "statusType": "in-development",
+      "githubUrl": "https://github.com/MarorusAssistance/Document-Intelligent-Processor"
+    },
+    "lab3": {
+      "title": "Agent Orchestrator (LOLO)",
+      "summary": "Gateway that routes requests to multiple specialized agents based on intent: shopping agent, support agent, document agent. Designed for clients who already have several use cases and need a common orchestration, authentication, and observability layer.",
+      "status": "Architecture vision · no implementation yet",
+      "statusType": "architecture-only",
+      "githubUrl": "https://github.com/MarorusAssistance/LOLO.openclaw-gateway"
+    },
+    "activeFronts": {
+      "title": "Other active fronts",
+      "items": [
+        "Lead management agent integrated with CRM (Notion)",
+        "Assistant on n8n with local LLMs for on-premise scenarios"
+      ]
+    },
+    "labels": {
+      "decisions": "Technical decisions",
+      "stack": "Stack",
+      "viewDiagram": "View architecture",
+      "viewVideo": "Watch video",
+      "viewDemo": "Try demo",
+      "viewGithub": "View on GitHub",
+      "closeModal": "Close",
+      "statusFunctional": "Functional",
+      "statusInDevelopment": "In development",
+      "statusArchitectureOnly": "Architecture only"
+    }
+  },
   "footer": {
     "tagline": "AI Engineering for B2B operations",
     "rights": "All rights reserved",

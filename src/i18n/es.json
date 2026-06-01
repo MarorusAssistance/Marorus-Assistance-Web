@@ -107,6 +107,97 @@
     "closingLine": "Si reconoces alguno de estos dolores en tu operación, hablemos. Cada caso parte de un análisis del proceso real, no de una plantilla.",
     "cta": "Cuéntame tu caso"
   },
+  "projects": {
+    "sectionLabel": "TRAYECTORIA",
+    "title": "Proyectos",
+    "subtitle": "Sistemas reales construidos y operados, más laboratorio propio.",
+    "production": {
+      "heading": "En producción",
+      "description": "Sistemas operativos para clientes reales durante mi etapa en Wembley Studios (2023-2025)."
+    },
+    "labs": {
+      "heading": "Labs",
+      "description": "Proyectos propios en desarrollo. Algunos tienen demo, otros están en fase de arquitectura. La transparencia sobre el estado de cada uno es deliberada."
+    },
+    "production1": {
+      "title": "Asistente conversacional sobre catálogo de producto",
+      "meta": "Sector: Retail / Sanitarios y baño · Wembley Studios · 2024",
+      "summary": "Sistema conversacional sobre ~20 catálogos PDF de proveedores, ~19.000 productos y ~5.000 repuestos. El reto principal no era la generación, era la recuperación: los catálogos tenían estructuras dispares, referencias inconsistentes y datos técnicos en tablas mal escaneadas.",
+      "decisions": [
+        "Hybrid search (búsqueda léxica + vectorial) para combinar coincidencias exactas de referencia con búsqueda semántica",
+        "Semantic ranking sobre los resultados para priorizar relevancia real",
+        "Multi-query retrieval para descomponer preguntas complejas",
+        "Tool-calling routing para evitar invocar al LLM cuando una consulta determinista bastaba"
+      ],
+      "stack": ["Azure OpenAI", "Azure AI Search", "LangChain", "FastAPI", "Python"]
+    },
+    "production2": {
+      "title": "Verificación automática de facturas en programa de loyalty",
+      "meta": "Sector: Retail / Sanitarios y baño · Wembley Studios · 2024",
+      "summary": "Sistema de loyalty B2B donde instaladores profesionales suben las facturas de sus distribuidores y reciben puntos por los productos de la marca vendidos. El reto técnico no era la extracción genérica, era la identificación fiable: en una factura de un distribuidor multimarca, hay que distinguir qué productos son de la marca cliente, qué referencias se corresponden con qué SKU del catálogo, y todo esto con datos de entrada ruidosos (OCR imperfecto, abreviaturas, referencias parciales del distribuidor).",
+      "decisions": [
+        "Azure Document Intelligence para extracción estructurada de líneas de factura",
+        "Embeddings + fuzzy matching + heurísticas en capas para matching de productos contra el maestro de catálogo con datos ruidosos",
+        "Precisión medida del 85-90% en matching contra maestros",
+        "Arquitectura asíncrona con Azure Functions y Service Bus para tolerancia a picos de volumen (500 facturas/mes)",
+        "Validación humana antes de acreditar puntos sobre todos los casos procesados"
+      ],
+      "stack": ["Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "PostgreSQL", "Python"]
+    },
+    "production3": {
+      "title": "Bot de soporte interno en Teams",
+      "meta": "Sector: Tasación y valoración · Wembley Studios · 2024",
+      "summary": "Bot conversacional integrado en Microsoft Teams que responde sobre documentación interna y, cuando no puede resolver, abre ticket en el sistema de gestión con el contexto ya recogido del usuario.",
+      "decisions": [
+        "RAG sobre base documental interna con control de acceso por usuario",
+        "Detección de intención para distinguir consulta resoluble vs. incidencia que requiere ticket",
+        "Creación de tickets enriquecida: el bot extrae datos de la conversación (sistema afectado, descripción del problema, urgencia) y los estructura antes de crear la incidencia"
+      ],
+      "stack": ["Azure OpenAI", "Microsoft Bot Framework", "Teams SDK", "Python"]
+    },
+    "lab1": {
+      "title": "Asistente Interno para Microsoft Teams",
+      "summary": "FAQ-bot conectado a documentación interna con escalado automático a incidencias cuando la consulta supera lo que el bot puede resolver. Iteración propia sobre el patrón del Proyecto 3, generalizado para ser desplegable en distinto cliente.",
+      "status": "Funcional · demo, vídeo y arquitectura disponibles",
+      "statusType": "functional",
+      "videoId": "PENDING",
+      "demoUrl": "PENDING",
+      "githubUrl": "https://github.com/MarorusAssistance/Asistente-Interno-Microsoft-Teams"
+    },
+    "lab2": {
+      "title": "Document Intelligent Processor",
+      "summary": "Extracción automática de datos de documentos no estructurados (facturas, albaranes, contratos) hacia ERP, con capa de matching contra maestros y revisión humana para casos ambiguos. Generalización del patrón usado en el Proyecto 2, reorientado al caso de uso de volcado a ERP.",
+      "status": "Demo en desarrollo · sin demo visual pública (pipeline backend)",
+      "statusType": "in-development",
+      "githubUrl": "https://github.com/MarorusAssistance/Document-Intelligent-Processor"
+    },
+    "lab3": {
+      "title": "Orquestador de agentes (LOLO)",
+      "summary": "Gateway que enruta peticiones a múltiples agentes especializados según intención: agente de compras, agente de soporte, agente documental. Pensado para clientes que ya tienen varios casos de uso y necesitan una capa común de orquestación, autenticación y observabilidad.",
+      "status": "Visión arquitectónica · sin implementación todavía",
+      "statusType": "architecture-only",
+      "githubUrl": "https://github.com/MarorusAssistance/LOLO.openclaw-gateway"
+    },
+    "activeFronts": {
+      "title": "Otros frentes activos",
+      "items": [
+        "Agente de lead management integrado con CRM (Notion)",
+        "Asistente sobre n8n con LLMs locales para escenarios on-premise"
+      ]
+    },
+    "labels": {
+      "decisions": "Decisiones técnicas",
+      "stack": "Stack",
+      "viewDiagram": "Ver arquitectura",
+      "viewVideo": "Ver vídeo",
+      "viewDemo": "Probar demo",
+      "viewGithub": "Ver en GitHub",
+      "closeModal": "Cerrar",
+      "statusFunctional": "Funcional",
+      "statusInDevelopment": "En desarrollo",
+      "statusArchitectureOnly": "Solo arquitectura"
+    }
+  },
   "footer": {
     "tagline": "Ingeniería de IA para operaciones B2B",
     "rights": "Todos los derechos reservados",

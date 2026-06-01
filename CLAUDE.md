@@ -99,7 +99,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 3.5 | ✅ | CLAUDE.md + mejoras visuales hero (Opción C) |
 | 4 | ✅ | Servicios IT (3 cards) |
 | 5 | ✅ | Operaciones IA (3 bloques) |
-| 6 | ⏳ | Proyectos (Wembley + Labs) |
+| 6 | ✅ | Proyectos (Wembley + Labs) |
 | 7 | ⏳ | Sobre mí + Cómo trabajo + Contacto |
 | 8 | ⏳ | SEO, performance, sitemap, OG image |
 | 9 | ⏳ | Deploy a producción + DNS swap |
@@ -130,3 +130,9 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **Operations números**: `font-accent text-8xl md:text-9xl text-primary` (Bebas Neue) — contraste visual con font-display de ServicesIT.
 - **Operations IntersectionObserver**: threshold `0.1`, stagger `200ms` por bloque (bloques más altos = threshold más bajo y stagger más amplio que cards).
 - **Operations nota de transparencia**: `border-l-2 border-primary pl-4 italic text-sm` — visible pero discreta.
+- **Projects modal**: elemento nativo `<dialog>` + vanilla JS. Sin librerías externas. `dialog::backdrop` para overlay, `showModal()` / `close()` API. El evento `close` limpia el innerHTML del body (cubre Escape nativo).
+- **Projects diagramas**: SVG placeholders en `public/diagrams/` (no en `src/assets/` para evitar complejidad de import con Astro Image). Cuando el usuario tenga PNGs reales, moverlos a `src/assets/diagrams/`, actualizar a imports estáticos y usar `<Image>` de `astro:assets`.
+- **Projects arrays en i18n**: `decisions` y `stack` como arrays nativos en JSON. Accedidos mediante import directo del JSON en el frontmatter (`esData.projects.production1.decisions`), no vía `t()` helper (que solo retorna strings).
+- **Projects layout producción**: `grid-cols-[3fr_2fr]` (~60/40), cards horizontales apiladas una bajo otra.
+- **Projects video**: Vimeo embed. videoId `"PENDING"` en i18n = botón oculto. Cambiar por ID real para que aparezca.
+- **Projects demoUrl**: mismo patrón — `"PENDING"` = botón oculto.

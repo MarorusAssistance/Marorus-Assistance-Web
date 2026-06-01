@@ -1,0 +1,380 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+import esData from '../i18n/es.json';
+import enData from '../i18n/en.json';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+
+// Extract typed project data from the dict to avoid dynamic key access issues
+const p1 = dict.projects.production1;
+const p2 = dict.projects.production2;
+const p3 = dict.projects.production3;
+const l1 = dict.projects.lab1;
+const l2 = dict.projects.lab2;
+const l3 = dict.projects.lab3;
+
+// Diagram paths (static files in public/diagrams/ — replace with src/assets/ PNGs when available)
+// TODO: Once you have real PNG diagrams, move them to src/assets/diagrams/ and use Astro's <Image> for optimization
+const DIAGRAMS = {
+  catalog:  '/diagrams/wembley-catalog.svg',
+  invoices: '/diagrams/wembley-invoices.svg',
+  teams:    '/diagrams/wembley-teams-bot.svg',
+  lab1:     '/diagrams/lab-internal-assistant.svg',
+} as const;
+
+const productionProjects = [
+  { diagramSrc: DIAGRAMS.catalog,  diagramId: 'diag-catalog',  title: p1.title, meta: p1.meta, summary: p1.summary, decisions: p1.decisions as string[], stack: p1.stack as string[] },
+  { diagramSrc: DIAGRAMS.invoices, diagramId: 'diag-invoices', title: p2.title, meta: p2.meta, summary: p2.summary, decisions: p2.decisions as string[], stack: p2.stack as string[] },
+  { diagramSrc: DIAGRAMS.teams,    diagramId: 'diag-teams',    title: p3.title, meta: p3.meta, summary: p3.summary, decisions: p3.decisions as string[], stack: p3.stack as string[] },
+];
+
+const labs = [
+  { key: 'lab1', diagramSrc: DIAGRAMS.lab1, diagramId: 'diag-lab1', number: '01', hasDiagram: true,
+    title: l1.title, summary: l1.summary, status: l1.status, statusType: l1.statusType,
+    githubUrl: l1.githubUrl, videoId: l1.videoId, demoUrl: l1.demoUrl },
+  { key: 'lab2', diagramSrc: null, diagramId: null, number: '02', hasDiagram: false,
+    title: l2.title, summary: l2.summary, status: l2.status, statusType: l2.statusType,
+    githubUrl: l2.githubUrl, videoId: undefined, demoUrl: undefined },
+  { key: 'lab3', diagramSrc: null, diagramId: null, number: '03', hasDiagram: false,
+    title: l3.title, summary: l3.summary, status: l3.status, statusType: l3.statusType,
+    githubUrl: l3.githubUrl, videoId: undefined, demoUrl: undefined },
+];
+
+const statusConfig: Record<string, string> = {
+  'functional':        'bg-emerald-50 text-emerald-700 border border-emerald-200',
+  'in-development':    'bg-amber-50 text-amber-700 border border-amber-200',
+  'architecture-only': 'bg-neutral-100 text-neutral-600 border border-neutral-200',
+};
+
+const statusLabel: Record<string, string> = {
+  'functional':        t('projects.labels.statusFunctional'),
+  'in-development':    t('projects.labels.statusInDevelopment'),
+  'architecture-only': t('projects.labels.statusArchitectureOnly'),
+};
+---
+
+<section id="proyectos" class="bg-bg py-20 md:py-32">
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <p class="font-mono text-xs text-primary uppercase tracking-widest mb-4">
+      {t('projects.sectionLabel')}
+    </p>
+    <h2 class="font-display font-bold text-4xl md:text-5xl text-text mb-4">
+      {t('projects.title')}
+    </h2>
+    <p class="font-body text-base md:text-lg text-text-muted mb-16 max-w-[640px]">
+      {t('projects.subtitle')}
+    </p>
+
+    <!-- SUB-SECCIÓN 1: En producción -->
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-text mb-2">
+      {t('projects.production.heading')}
+    </h3>
+    <p class="font-body text-sm text-text-muted mb-10 max-w-[580px]">
+      {t('projects.production.description')}
+    </p>
+
+    <div data-projs-section class="flex flex-col gap-8">
+      {productionProjects.map(({ diagramSrc, diagramId, title, meta, summary, decisions, stack }) => (
+        <div data-project class="bg-bg-light border border-border-soft rounded-xl p-6 md:p-10">
+          <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-8 md:gap-10">
+
+            <!-- Texto -->
+            <div>
+              <h4 class="font-display font-bold text-xl md:text-2xl text-text mb-1">{title}</h4>
+              <p class="font-mono text-xs text-text-muted mb-5">{meta}</p>
+              <p class="font-body text-sm text-text-muted leading-relaxed mb-6">{summary}</p>
+
+              <p class="font-mono text-xs text-primary uppercase tracking-widest mb-3">
+                {t('projects.labels.decisions')}
+              </p>
+              <ul class="flex flex-col gap-2 mb-6">
+                {decisions.map((d) => (
+                  <li class="flex gap-2 items-start">
+                    <span class="mt-[7px] w-1.5 h-1.5 bg-primary shrink-0 rounded-sm" aria-hidden="true"></span>
+                    <span class="font-body text-sm text-text-muted leading-snug">{d}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p class="font-mono text-xs text-primary uppercase tracking-widest mb-2">
+                {t('projects.labels.stack')}
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                {stack.map((chip) => (
+                  <span class="font-mono text-[11px] px-2 py-1 border border-border-soft text-text-muted rounded">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Diagrama (clickable → modal) -->
+            <div class="flex items-start mt-4 md:mt-0">
+              <button
+                type="button"
+                data-open-modal="diagram"
+                data-diagram-id={diagramId}
+                data-diagram-src={diagramSrc}
+                data-diagram-alt={title}
+                class="group w-full rounded-lg overflow-hidden border border-border-soft relative hover:border-primary transition-colors cursor-pointer"
+                aria-label={t('projects.labels.viewDiagram')}
+              >
+                <img
+                  src={diagramSrc}
+                  alt={title}
+                  width="520"
+                  height="293"
+                  loading="lazy"
+                  class="w-full h-auto block"
+                />
+                <div class="absolute inset-0 bg-text opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                <div class="absolute bottom-2 right-2 bg-bg/90 rounded px-2 py-1 font-mono text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  {t('projects.labels.viewDiagram')} →
+                </div>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- SUB-SECCIÓN 2: Labs -->
+    <h3 class="font-display font-semibold text-2xl md:text-3xl text-text mt-20 md:mt-28 mb-2">
+      {t('projects.labs.heading')}
+    </h3>
+    <p class="font-body text-sm text-text-muted mb-10 max-w-[580px]">
+      {t('projects.labs.description')}
+    </p>
+
+    <div data-labs-section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {labs.map(({ key, diagramSrc, diagramId, number, hasDiagram, title, summary, status, statusType, githubUrl, videoId, demoUrl }) => (
+        <div data-lab class="bg-bg-light border border-border-soft rounded-xl overflow-hidden flex flex-col">
+
+          <!-- Card header (thumbnail visual) -->
+          <div class="relative h-44 overflow-hidden bg-bg-dark">
+            {hasDiagram && diagramSrc ? (
+              <>
+                <img
+                  src={diagramSrc}
+                  alt=""
+                  aria-hidden="true"
+                  width="420"
+                  height="176"
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover opacity-30"
+                />
+                <div class="absolute inset-0 bg-bg-dark/50"></div>
+              </>
+            ) : (
+              <svg viewBox="0 0 400 176" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full opacity-15" aria-hidden="true">
+                <defs>
+                  <pattern id={`lab-dots-${number}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1.5" fill="#b80000"/>
+                  </pattern>
+                </defs>
+                <rect width="400" height="176" fill={`url(#lab-dots-${number})`}/>
+              </svg>
+            )}
+            <!-- Número Lab -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="font-accent text-6xl text-primary opacity-75 leading-none select-none">
+                Lab {number}
+              </span>
+            </div>
+            <!-- Badge estado -->
+            <div class="absolute top-3 right-3">
+              <span class={`font-mono text-[10px] uppercase tracking-wide px-2 py-1 rounded ${statusConfig[statusType] ?? statusConfig['architecture-only']}`}>
+                {statusLabel[statusType] ?? statusType}
+              </span>
+            </div>
+          </div>
+
+          <!-- Contenido -->
+          <div class="p-5 md:p-6 flex flex-col flex-1">
+            <h4 class="font-display font-bold text-lg text-text mb-2">{title}</h4>
+            <p class="font-body text-sm text-text-muted leading-relaxed line-clamp-4 flex-1 mb-4">
+              {summary}
+            </p>
+            <p class="font-mono text-xs text-text-muted border-t border-border-soft pt-3 mb-4 leading-relaxed">
+              {status}
+            </p>
+
+            <!-- Botones de acción -->
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {key === 'lab1' && videoId && videoId !== 'PENDING' && (
+                <button
+                  type="button"
+                  data-open-modal="video"
+                  data-video-id={videoId}
+                  class="inline-flex items-center gap-1.5 font-body text-xs px-3 py-1.5 border border-border-soft text-text-muted rounded hover:border-primary hover:text-primary transition-colors"
+                >
+                  {t('projects.labels.viewVideo')}
+                </button>
+              )}
+              {key === 'lab1' && demoUrl && demoUrl !== 'PENDING' && (
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 font-body text-xs px-3 py-1.5 bg-primary text-white rounded hover:bg-primary-dark transition-colors"
+                >
+                  {t('projects.labels.viewDemo')} →
+                </a>
+              )}
+              {key === 'lab1' && hasDiagram && diagramId && (
+                <button
+                  type="button"
+                  data-open-modal="diagram"
+                  data-diagram-id={diagramId}
+                  data-diagram-src={diagramSrc ?? ''}
+                  data-diagram-alt={title}
+                  class="inline-flex items-center gap-1.5 font-body text-xs px-3 py-1.5 border border-border-soft text-text-muted rounded hover:border-primary hover:text-primary transition-colors"
+                >
+                  {t('projects.labels.viewDiagram')}
+                </button>
+              )}
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 font-body text-xs px-3 py-1.5 border border-border-soft text-text-muted rounded hover:border-primary hover:text-primary transition-colors"
+              >
+                {t('projects.labels.viewGithub')}
+              </a>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Otros frentes activos -->
+    <div class="mt-16 md:mt-20">
+      <h3 class="font-display font-semibold text-xl text-text mb-4">
+        {t('projects.activeFronts.title')}
+      </h3>
+      <ul class="flex flex-col gap-2">
+        {(dict.projects.activeFronts.items as string[]).map((item) => (
+          <li class="flex gap-2 items-start">
+            <span class="mt-[7px] w-1.5 h-1.5 bg-primary shrink-0 rounded-sm" aria-hidden="true"></span>
+            <span class="font-body text-base text-text-muted">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal: reutilizable para diagramas y vídeo Vimeo -->
+<dialog id="project-modal" class="project-modal" aria-modal="true">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-border-soft">
+    <span id="modal-title" class="font-display font-semibold text-base text-text"></span>
+    <button
+      id="modal-close"
+      type="button"
+      class="font-mono text-lg text-text-muted hover:text-text transition-colors p-1 leading-none"
+      aria-label={t('projects.labels.closeModal')}
+    >✕</button>
+  </div>
+  <div id="modal-body" class="p-4 md:p-6"></div>
+</dialog>
+
+<script>
+  const modal = document.getElementById('project-modal') as HTMLDialogElement | null;
+  const modalBody = document.getElementById('modal-body');
+  const modalClose = document.getElementById('modal-close');
+
+  if (modal && modalBody && modalClose) {
+    document.querySelectorAll<HTMLElement>('[data-open-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const type = btn.dataset.openModal!;
+
+        if (type === 'diagram') {
+          const src = btn.dataset.diagramSrc!;
+          const alt = btn.dataset.diagramAlt ?? '';
+          modalBody.innerHTML = `<img src="${src}" alt="${alt}" class="w-full h-auto rounded" loading="eager" />`;
+        } else if (type === 'video') {
+          const videoId = btn.dataset.videoId!;
+          const iframeSrc = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+          modalBody.innerHTML = `
+            <div style="padding:56.25% 0 0 0;position:relative;">
+              <iframe
+                src="${iframeSrc}"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                title="Video demo"
+              ></iframe>
+            </div>`;
+        }
+
+        modal.showModal();
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeModal = () => {
+      modal.close();
+      document.body.style.overflow = '';
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    // Clean up body content after close (handles native Escape key too)
+    modal.addEventListener('close', () => {
+      modalBody.innerHTML = '';
+    });
+  }
+
+  // ─── IntersectionObserver: production cards ──────────────────
+  const projsSection = document.querySelector<HTMLElement>('[data-projs-section]');
+  if (projsSection && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      projsSection.querySelectorAll<HTMLElement>('[data-project]').forEach((el) => el.classList.add('project-visible'));
+    } else {
+      projsSection.classList.add('projs-animate');
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-project]').forEach((item, i) => {
+              setTimeout(() => item.classList.add('project-visible'), i * 120);
+            });
+            (entries[0]!.target as Element & { _obs?: IntersectionObserver })._obs?.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 }).observe(projsSection);
+    }
+  }
+
+  // ─── IntersectionObserver: lab cards ─────────────────────────
+  const labsSection = document.querySelector<HTMLElement>('[data-labs-section]');
+  if (labsSection && 'IntersectionObserver' in window) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      labsSection.querySelectorAll<HTMLElement>('[data-lab]').forEach((el) => el.classList.add('lab-visible'));
+    } else {
+      labsSection.classList.add('labs-animate');
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-lab]').forEach((item, i) => {
+              setTimeout(() => item.classList.add('lab-visible'), i * 80);
+            });
+          }
+        });
+      }, { threshold: 0.1 }).observe(labsSection);
+    }
+  }
+</script>

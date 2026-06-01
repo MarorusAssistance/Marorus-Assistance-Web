@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#e6e1d9"/>
+  <defs>
+    <pattern id="dots-t" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#5a5550" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#dots-t)"/>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#d4cfc5" stroke-width="1.5"/>
+  <g transform="translate(360, 155)" fill="none" stroke="#b80000" stroke-width="1.5" opacity="0.45">
+    <rect x="0" y="0" width="80" height="56" rx="6"/>
+    <path d="M16 20 Q40 8 64 20" stroke-width="1"/>
+    <line x1="20" y1="28" x2="60" y2="28"/>
+    <line x1="20" y1="36" x2="52" y2="36"/>
+    <polyline points="28,56 28,72 60,72"/>
+    <rect x="60" y="62" width="60" height="28" rx="4"/>
+    <line x1="68" y1="72" x2="112" y2="72"/>
+    <line x1="68" y1="80" x2="104" y2="80"/>
+  </g>
+  <text x="400" y="255" text-anchor="middle" font-family="monospace" font-size="10" fill="#5a5550" letter-spacing="3">DIAGRAMA DE ARQUITECTURA</text>
+  <text x="400" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">Bot de soporte interno en Teams</text>
+  <text x="400" y="300" text-anchor="middle" font-family="monospace" font-size="10" fill="#b80000" letter-spacing="1.5">Asset pendiente</text>
+</svg>
