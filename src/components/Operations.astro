@@ -8,7 +8,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const blocks = ['block1', 'block2', 'block3'] as const;
+const blocks = ['block1', 'block2', 'block3', 'block4'] as const;
 ---
 
 <section id="operaciones" class="bg-bg-light py-20 md:py-32">
@@ -33,7 +33,7 @@ const blocks = ['block1', 'block2', 'block3'] as const;
         </div>
       </div>
 
-      <!-- 3 bloques -->
+      <!-- Bloques dolor → solución → resultado -->
       <div class="flex flex-col gap-16 md:gap-24">
         {blocks.map((key, i) => (
           <div data-block>

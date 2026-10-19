@@ -1,7 +1,7 @@
 {
   "nav": {
     "servicesIT": "IT Services",
-    "operations": "AI Operations",
+    "operations": "AI for business",
     "projects": "Projects",
     "about": "About",
     "howIWork": "How I work",
@@ -9,28 +9,28 @@
     "cta": "Book a call"
   },
   "hero": {
-    "badge": "GenAI · Agents · RAG · Azure",
+    "badge": "GenAI · Agents · RAG · Evaluation · Azure · AWS",
     "titleLine1": "Freelance GenAI Engineer.",
-    "titleLine2": "Production-grade AI systems,",
-    "titleAccent": "not demos.",
-    "subtitle": "Freelance engineer specializing in agents, RAG, and LLM automation on Azure. I've deployed production assistants over 19,000 products and automated 500 invoices/month. Certified AI-102, DP-100, AZ-204.",
+    "titleLine2": "Production AI systems, measured.",
+    "titleAccent": "Not demos.",
+    "subtitle": "Freelance engineer specializing in agents and RAG on Azure and AWS. I built a multi-agent chat on AWS Bedrock for a large technology consultancy (73% correct answers, graded blind), took 2nd place in the Turing Datathon, and have been shipping production systems on Azure since 2023. Certified AI-102, DP-100, AZ-204.",
     "ctaIT": "I'm a CTO / IT Lead",
-    "ctaOps": "I'm in operations"
+    "ctaOps": "I'm in business / operations"
   },
   "stats": {
     "stat1": {
-      "number": "19,000",
-      "label": "products indexed in a production shopping assistant"
+      "number": "73%",
+      "label": "correct answers, graded blind, in a multi-agent chat on AWS Bedrock"
     },
     "stat2": {
-      "number": "500/mo",
-      "label": "invoices processed monthly in a B2B loyalty system"
+      "number": "2nd",
+      "label": "place in the Turing Datathon, solo and in one week"
     },
     "stat3": {
-      "number": "85-90%",
-      "label": "accuracy in invoice matching with noisy data"
+      "number": "500/mo",
+      "label": "invoices verified in production in a B2B loyalty program"
     },
-    "footnote": "Real production results during my tenure as AI Engineer at Wembley Studios (2023–2025)."
+    "footnote": "Multi-agent chat for Indra Group via Malt (2026), Turing Datathon (2026) and production systems at Wembley Studios (2023–2025)."
   },
   "servicesIT": {
     "sectionLabel": "IT Services",
@@ -38,8 +38,8 @@
     "subtitle": "Team reinforcement or fixed-price projects.",
     "card1": {
       "title": "AI Agents and RAG Systems",
-      "body": "I design and implement Retrieval-Augmented Generation systems and agents with tool-calling on LangChain and LangGraph. Hybrid search, semantic ranking, multi-query retrieval, routing. Tested stack: Azure OpenAI, AI Search, pgvector, FastAPI.",
-      "proof": "In production: shopping assistant over 19,000 products."
+      "body": "I design and build RAG systems and agents with LangGraph and LangChain: multi-agent orchestration, hybrid and multi-source retrieval, reranking and routing, over documentation, code, catalogs or dependency graphs. Proven stack on Azure (OpenAI, AI Search) and AWS (Bedrock, S3 Vectors).",
+      "proof": "Multi-agent chat over enterprise applications for a large technology consultancy: 73% correct answers, graded blind."
     },
     "card2": {
       "title": "Document Automation with AI",
@@ -47,18 +47,18 @@
       "proof": "In production: 500 invoices/month in a B2B loyalty system, 85–90% matching accuracy."
     },
     "card3": {
-      "title": "GenAI Architecture on Azure",
-      "body": "Architecture design for LLMs in production: service orchestration, secrets management, observability, cost control. Integration with existing systems (Teams, CRMs, ERPs). Certified AZ-204, DP-100, AI-102.",
-      "proof": "Support bot on Teams with automatic ticket creation, deployed for a B2B client."
+      "title": "GenAI architecture and evaluation on Azure and AWS",
+      "body": "Architecture design for production LLMs and systematic evaluation of their quality and cost: harness with repeated runs to measure noise, blind grading, per-stage loss funnel, and configurations that prioritize cost or quality. Observability, secrets management and integration with existing systems (Teams, CRMs, ERPs). Certified AZ-204, DP-100, AI-102.",
+      "proof": "Around 180 measured experiments on a multi-agent chat; −30% cost with equal or better quality in prototype."
     },
     "rate": "Team reinforcement: 350€/day · Fixed-price projects: on quote · Availability: remote, UTC+1",
     "cta": "Let's talk about your project"
   },
   "operations": {
-    "sectionLabel": "FOR OPERATIONS",
-    "title": "AI Operations",
-    "subtitle": "Applied AI systems for real business processes.",
-    "transparencyNote": "Cases developed during my tenure as AI Engineer at Wembley Studios (2023–2025), now offered as a freelance service.",
+    "sectionLabel": "FOR BUSINESS",
+    "title": "AI for business",
+    "subtitle": "Applied AI systems for real processes: catalogs, documents, internal support and financial communication.",
+    "transparencyNote": "Real cases: three built as AI Engineer at Wembley Studios (2023–2025) and one built in the Turing Datathon (2026). I now offer them as a freelance service.",
     "block1": {
       "title": "Product search and catalog management",
       "pain": {
@@ -104,6 +104,21 @@
         "text": "Support bot deployed in Microsoft Teams for an appraisal and valuation client, with automatic ticket creation from the conversation. Frequently asked questions no longer reach the human team; real cases arrive with context."
       }
     },
+    "block4": {
+      "title": "Analyst questions during earnings presentations",
+      "pain": {
+        "label": "The pain",
+        "text": "During an earnings presentation, analysts ask live about figures, charts and acronyms in the deck. Answering on the spot, with the exact figure and without going beyond what was presented, depends on someone finding the right slide in time."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "An assistant that transcribes questions as they are asked and answers in streaming relying only on the presentation slides, citing which ones each answer comes from. What isn't in the deck, it doesn't make up."
+      },
+      "result": {
+        "label": "The result in the datathon",
+        "text": "Built solo in one week for the Turing Datathon, where it took 2nd place. On a synthetic set of 24 questions: 23/24 top-1 accuracy with rephrasings (21/24 without them), 24/24 top-3 and 8/8 in English. The demo processes an audio file; the natural next step is a live microphone."
+      }
+    },
     "closingLine": "If you recognize any of these pain points in your operation, let's talk. Each case starts from an analysis of the real process, not a template.",
     "cta": "Tell me about your case"
   },
@@ -112,12 +127,38 @@
     "title": "Projects",
     "subtitle": "Real systems built and operated, plus personal lab work.",
     "production": {
-      "heading": "In production",
-      "description": "Production systems built for real clients during my tenure at Wembley Studios (2023–2025)."
+      "heading": "Case studies",
+      "description": "Most recent first. The three Wembley Studios projects (Mar 2023 – Mar 2025) are still in production today."
     },
     "labs": {
       "heading": "Labs",
       "description": "Personal projects in development. Some have a demo, others are at architecture stage. The transparency about each project's status is deliberate."
+    },
+    "case1": {
+      "title": "Multi-agent RAG chat over enterprise applications",
+      "meta": "Indra Group (via Malt) · Freelance · AI Engineer · May – Oct 2026",
+      "summary": "Multi-agent chat that answers functional and technical questions about enterprise applications across several clients, configurable to prioritize cost or quality. The challenge: combining code, documentation and a dependency graph while keeping cost per query under control.",
+      "decisions": [
+        "LangGraph orchestration (orchestrator-workers pattern): an analyzer decomposes the question and plans the search, and several workers search and answer in parallel. Configurable with lightweight workers (Claude Haiku) to minimize cost, or with a Claude Sonnet synthesizer over all the evidence to maximize quality",
+        "Multi-source retrieval: vector search on S3 Vectors with a per-project index, per-source-type reranking (Cohere Rerank 3.5), logical chunking with a context sentence, and deterministic graph queries with semantic fallback",
+        "Rigorous evaluation: CLI harness with repeated runs to measure noise, blind grading and a per-stage loss funnel. Around 180 experiments",
+        "Roadmap with measured prototypes, on my own initiative: graph-guided planning (the analyzer receives the project context: nodes and relationships) and more granular workers (−30% cost in prototype)"
+      ],
+      "stack": ["Amazon Bedrock", "Claude Haiku", "Claude Sonnet", "LangGraph", "S3 Vectors", "Cohere Rerank 3.5", "AWS Lambda", "DynamoDB", "CloudWatch", "Python", "Hexagonal architecture"],
+      "deliverables": "Chat and evaluation harness code, technical documentation and handoff to the team, and a next-steps report with a prioritized recommendation."
+    },
+    "case2": {
+      "title": "Voice-based financial Q&A assistant",
+      "meta": "Turing Datathon · Jul 2026 · 2nd place · solo, in one week",
+      "summary": "Transcribes analysts' questions during an earnings presentation and answers in streaming, relying only on the slides. The challenge: answering on the spot, sticking to the deck's content and without making things up.",
+      "decisions": [
+        "PPTX ingestion with offline enrichment: textual descriptions of charts, bilingual ES/EN rephrasings and synthetic questions",
+        "Hybrid retrieval on pgvector (70% vector, 30% full-text) so figures, years and acronyms aren't lost",
+        "Transcription with Azure AI Speech: conservative correction with a dynamic glossary and deterministic question detection, with an LLM only as fallback",
+        "Answers that cite only the retrieved slides, streamed question by question",
+        "The demo processes an audio file; the natural next step is a live microphone"
+      ],
+      "stack": ["Azure OpenAI", "GPT-5.4", "GPT-5.4-mini", "text-embedding-3-large", "Azure AI Speech", "Azure PostgreSQL", "pgvector", "FastAPI", "SSE", "Python"]
     },
     "production1": {
       "title": "Conversational assistant over product catalog",
@@ -160,7 +201,7 @@
       "summary": "FAQ-bot connected to internal documentation with automatic escalation to incidents when the query exceeds what the bot can resolve. Personal iteration on the pattern of Project 3, generalized for deployment at different clients.",
       "status": "Functional · demo, video and architecture available",
       "statusType": "functional",
-      "videoId": "PENDING",
+      "videoUrl": "PENDING",
       "demoUrl": "PENDING",
       "githubUrl": "https://github.com/MarorusAssistance/Asistente-Interno-Microsoft-Teams"
     },
@@ -187,6 +228,7 @@
     },
     "labels": {
       "decisions": "Technical decisions",
+      "deliverables": "Deliverables",
       "stack": "Stack",
       "viewDiagram": "View architecture",
       "viewVideo": "Watch video",
@@ -204,15 +246,16 @@
     "bio": [
       "I'm Manuel Romero. I've been building generative AI systems for B2B since 2023.",
       "I started as AI Engineer at Wembley Studios, a B2B technical consultancy, where over two years I designed and deployed production systems for real clients: a conversational assistant over product catalogs with 19,000 references in retail, a loyalty system with automatic invoice verification for professionals in the same sector, and an internal support bot integrated with Teams for a company in the appraisal and valuation sector. These were not POCs or demos — they are systems still running today.",
-      "Since April 2025 I work as a freelancer. My current focus is three specific services where I can deliver deep value: agents and RAG systems, document automation with AI, and GenAI architecture on Azure. I prefer going slow and specializing rather than offering a broad catalog without depth.",
-      "I work primarily on Azure (with three official certifications: AI-102, DP-100, AZ-204) and the Python AI ecosystem: LangChain, LangGraph, FastAPI, PostgreSQL with pgvector. But technology is the tool; what I sell is the judgment to decide what to build, how, and what not to build. The projects that excite me most are often the ones where I learn the most: if your stack is AWS, GCP, or another provider, I adapt. The specialization is in the problem, not in the vendor's logo."
+      "Since March 2025 I work as a freelancer, and I'm a Super Malter on Malt. My current focus is three specific services where I can deliver deep value: agents and RAG systems, document automation with AI, and GenAI architecture. I prefer going slow and specializing rather than offering a broad catalog without depth.",
+      "In 2026, via Malt, I built a multi-agent RAG chat over enterprise applications on AWS Bedrock for Indra Group, and took 2nd place in the Turing Datathon with a voice-based financial Q&A assistant. Since April 2026 I also work with LILT, designing Spanish-language programming tasks to train and evaluate AI agents for leading AI labs.",
+      "I have production systems on Azure (with three official certifications: AI-102, DP-100, AZ-204) and have built multi-agent systems on AWS Bedrock, using the Python AI ecosystem: LangChain, LangGraph, FastAPI, PostgreSQL with pgvector. But technology is the tool; what I sell is the judgment to decide what to build, how, and what not to build, with quality and cost measured through systematic evaluation. The specialization is in the problem, not in the vendor's logo."
     ],
     "skillsTitle": "Stack and experience",
     "skills": {
       "aiLlm": { "label": "AI languages and frameworks", "items": ["Python", "LangChain", "LangGraph", "FastAPI", "prompt engineering", "tool calling", "multi-agent systems"] },
-      "cloud": { "label": "Cloud and Azure services", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault"] },
+      "cloud": { "label": "Cloud: Azure and AWS", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure AI Speech", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "Amazon Bedrock", "AWS Lambda", "DynamoDB", "S3 Vectors"] },
       "data": { "label": "Data, search and storage", "items": ["PostgreSQL", "pgvector", "SQL", "embeddings", "hybrid search", "semantic search", "OCR"] },
-      "quality": { "label": "LLM quality and evaluation", "items": ["LangSmith", "LLM-as-judge", "heuristic evals", "LLM observability"] },
+      "quality": { "label": "LLM quality and evaluation", "items": ["LangSmith", "LLM-as-judge", "heuristic evals", "blind grading", "evaluation harness", "LLM observability"] },
       "integration": { "label": "Integration and operations", "items": ["Docker", "CI/CD", "async architectures", "API integration", "Microsoft Teams"] },
       "alt": { "label": "Alternative environments", "items": ["n8n", "local LLMs / on-premise"] }
     },
@@ -288,7 +331,7 @@
     "placeholder": "This page is under construction. If you need information about how your data is handled when you contact me, write to me directly at marorusassistance@gmail.com."
   },
   "footer": {
-    "tagline": "AI Engineering for B2B operations",
+    "tagline": "Agents and RAG in production, with measured quality and cost",
     "rights": "All rights reserved",
     "links": {
       "linkedin": "LinkedIn",
@@ -298,8 +341,8 @@
     }
   },
   "meta": {
-    "title": "Maroru's Assistance — AI Engineering for B2B operations",
-    "description": "I build production-grade AI systems for B2B companies: agents, automations, and data pipelines that actually work in production."
+    "title": "Maroru's Assistance — Agents and RAG in production, with measured quality and cost",
+    "description": "Freelance AI Engineer. I build production agents and RAG systems on Azure and AWS, with quality and cost measured through systematic evaluation."
   },
   "languageSwitcher": {
     "es": "ES",

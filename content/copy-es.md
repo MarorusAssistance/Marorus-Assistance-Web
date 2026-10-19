@@ -1,5 +1,7 @@
 # Contenido web — Manuel Romero · Freelance GenAI Engineer
 
+> **Nota (oct 2026):** este documento es el copy original. Tras el reposicionamiento ("Agentes y RAG en producción, con calidad y coste medidos · Azure y AWS", ver `CLAUDE.md`) cambiaron el hero, la banda de stats, Servicios IT (cards 1 y 3), la sección Operaciones (ahora "IA para negocio", con un 4º bloque de Turing), Proyectos y Sobre mí. **El texto canónico es `src/i18n/es.json`**; las secciones de abajo no reflejan esos cambios salvo §5 (Proyectos).
+
 Documento de contenido en español para las 8 secciones de la web de portfolio profesional. Listo para implementar por el equipo de desarrollo / diseño.
 
 ---
@@ -181,9 +183,71 @@ CTA secundario hacia el formulario de contacto.
 
 ## 5. PROYECTOS
 
-Sección dividida en dos sub-secciones: **En producción** y **Labs**.
+Sección dividida en dos sub-secciones: **Casos** (antes "En producción") y **Labs**.
 
-### EN PRODUCCIÓN
+### CASOS
+
+Orden: del más reciente al más antiguo (Indra Group → Datatón de Turing → Wembley ×3). Subtítulo: "Del más reciente al más antiguo. Los tres de Wembley Studios (mar 2023 – mar 2025) siguen en producción hoy." Los casos sin diagrama muestran sus métricas en la columna derecha. El texto canónico está en `src/i18n/es.json` (`projects.case1`, `projects.case2`).
+
+**Reglas de contenido (Indra):** describir como "aplicaciones empresariales"; nunca "legacy", "COBOL", "Natural" ni "Java"; sin tamaños de muestra de la evaluación (solo "calificadas a ciegas" / "validado en prototipo"); no nombrar proyectos ni clientes internos de Indra. **LILT:** no es caso de portfolio, va como línea en la bio; no nombrar los laboratorios, solo "laboratorios de IA punteros".
+
+---
+
+#### Caso 1 — Chat RAG multiagente sobre aplicaciones empresariales
+
+*Indra Group (vía Malt) · Freelance · AI Engineer · may – oct 2026*
+
+Chat multiagente que responde preguntas funcionales y técnicas sobre aplicaciones empresariales de varios clientes, configurable para priorizar coste o calidad. El reto: combinar código, documentación y un grafo de dependencias manteniendo controlado el coste por consulta.
+
+**Decisiones técnicas:**
+
+- Orquestación con LangGraph (patrón orchestrator-workers): un analyzer descompone la pregunta y planifica la búsqueda, y varios workers buscan y responden en paralelo. Se configura con workers ligeros (Claude Haiku) para minimizar coste o con un sintetizador Claude Sonnet con toda la evidencia para maximizar calidad
+- Retrieval multifuente: búsqueda vectorial en S3 Vectors con índice por proyecto, rerank por tipo de fuente (Cohere Rerank 3.5), troceo lógico con frase de contexto y consultas deterministas al grafo con fallback semántico
+- Evaluación rigurosa: harness por CLI con repeticiones para medir el ruido, calificación a ciegas y embudo de pérdidas por etapa. Unos 180 experimentos
+- Hoja de ruta con prototipos medidos, por iniciativa propia: planificación guiada por el grafo (el analyzer recibe el contexto del proyecto: nodos y relaciones) y workers más granulares (−30 % de coste en prototipo)
+
+**Resultados:**
+
+- **73 %** respuestas correctas en modo calidad (+26 puntos sobre el modo coste, a ~2× el coste)
+- **47 %** respuestas correctas en modo coste
+- **−30 %** de coste con calidad igual o superior con el diseño propuesto, en prototipo
+
+*Respuestas calificadas a ciegas. El diseño propuesto se validó en un prototipo.*
+
+**Entregables:** Código del chat y del harness de evaluación, documentación técnica y handoff al equipo, e informe de próximos pasos con recomendación priorizada.
+
+**Stack:** Amazon Bedrock · Claude Haiku · Claude Sonnet · LangGraph · S3 Vectors · Cohere Rerank 3.5 · AWS Lambda · DynamoDB · CloudWatch · Python · Arquitectura hexagonal
+
+---
+
+#### Caso 2 — Asistente de Q&A financiero por voz
+
+*Datatón de Turing · jul 2026 · 2º puesto · en solitario, en una semana*
+
+Transcribe las preguntas de los analistas durante una presentación de resultados y responde en streaming apoyándose solo en las slides. El reto: responder al momento, ciñéndose al contenido del deck y sin inventar.
+
+**Decisiones técnicas:**
+
+- Ingesta de PPTX con enriquecimiento offline: descripción textual de gráficos, reformulaciones bilingües ES/EN y preguntas sintéticas
+- Retrieval híbrido en pgvector (70 % vectorial, 30 % full-text) para no perder cifras, años ni siglas
+- Transcripción con Azure AI Speech: corrección conservadora con glosario dinámico y detección de preguntas determinista, con LLM solo como fallback
+- Respuestas que citan solo las slides recuperadas, emitidas por streaming pregunta a pregunta
+- La demo procesa un fichero de audio; el siguiente paso natural es micrófono en directo
+
+**Resultados:**
+
+- **2º** puesto en el datatón · en solitario, 1 semana
+- **23/24** acierto top-1 con reformulaciones (21/24 sin ellas)
+- **24/24** acierto top-3
+- **8/8** acierto top-1 en inglés
+
+*Evaluación sobre un set sintético de 24 preguntas.*
+
+**Stack:** Azure OpenAI · GPT-5.4 · GPT-5.4-mini · text-embedding-3-large · Azure AI Speech · Azure PostgreSQL · pgvector · FastAPI · SSE · Python
+
+---
+
+### WEMBLEY STUDIOS (mar 2023 – mar 2025)
 
 ---
 
@@ -287,7 +351,7 @@ Soy Manuel Romero. Construyo sistemas de IA generativa para B2B desde 2023.
 
 Empecé como AI Engineer en Wembley Studios, una consultora técnica B2B, donde durante año y medio diseñé y desplegué sistemas en producción para clientes reales: un asistente conversacional sobre catálogos de producto con 19.000 referencias en el sector retail, un sistema de loyalty con verificación automática de facturas para profesionales del mismo sector, y un bot de soporte interno integrado en Teams para una empresa del sector de tasación y valoración. No fueron POCs ni demos: son sistemas que siguen funcionando hoy.
 
-Desde marzo de 2025 trabajo como freelance. Mi enfoque actual son tres servicios concretos donde puedo entregar valor profundo: agentes y sistemas RAG, automatización documental con IA, y arquitectura GenAI sobre Azure. Prefiero ir despacio y especializarme antes que ofrecer un catálogo amplio sin profundidad.
+Desde marzo de 2025 trabajo como freelance y soy Super Malter en Malt. Mi enfoque actual son tres servicios concretos donde puedo entregar valor profundo: agentes y sistemas RAG, automatización documental con IA, y arquitectura GenAI sobre Azure. Prefiero ir despacio y especializarme antes que ofrecer un catálogo amplio sin profundidad.
 
 Trabajo principalmente sobre Azure (con tres certificaciones oficiales: AI-102, DP-100, AZ-204) y el ecosistema Python para IA: LangChain, LangGraph, FastAPI, PostgreSQL con pgvector. Pero la tecnología es la herramienta; lo que vendo es criterio para decidir qué construir, cómo, y qué no construir.
 

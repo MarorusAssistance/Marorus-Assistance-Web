@@ -4,9 +4,15 @@ Este archivo mantiene el contexto compartido entre distintas instancias de Claud
 
 ## Qué es este proyecto
 
-Web de portfolio profesional para Manuel Romero, freelance GenAI Engineer. Dos audiencias objetivo:
-1. Cliente IT (CTOs, Project Managers) que buscan subcontratación freelance senior — tarifa 350€/jornada
-2. Cliente supply chain / operaciones que necesitan IA aplicada a procesos internos — a presupuesto
+Web de portfolio profesional para Manuel Romero, freelance GenAI Engineer.
+
+**Posicionamiento (oct 2026):** "Agentes y RAG en producción, con calidad y coste medidos. Azure y AWS." El diferencial es la evaluación sistemática (calificación a ciegas, harness, coste frente a calidad), respaldada por Indra Group, el Datatón de Turing y LILT. Sustituye al enfoque inicial "IA para operaciones B2B sobre Azure".
+
+Dos audiencias, en este orden de prioridad:
+1. **Equipos técnicos** (CTOs, consultoras, equipos de producto) que necesitan llevar agentes/RAG a producción con garantías — tarifa 350€/jornada
+2. **Negocio / operaciones** (no solo supply chain): IA aplicada a procesos reales — catálogos, documentos, soporte, comunicación financiera — a presupuesto
+
+No presentar la web como "solo Azure" ni con pruebas solo de Wembley: cada bloque de prueba debe mezclar experiencia AWS/2026 y Azure/Wembley.
 
 La web sustituye una landing previa de HTML plano con React por CDN. Se construye desde cero con Astro 5.
 
@@ -64,9 +70,9 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas internas:
 
 1. **Hero** (#inicio) — bifurca con dos CTAs (cliente IT y operaciones)
-2. **Banda de stats** — 3 métricas de impacto sobre fondo oscuro
-3. **Servicios IT** (#servicios-it) — 3 cards técnicas + tarifa 350€/jornada
-4. **Operaciones IA** (#operaciones) — 3 bloques dolor→solución→resultado
+2. **Banda de stats** — 3 métricas sobre fondo oscuro: 73 % (Indra), 2º (Turing), 500 facturas/mes (Wembley)
+3. **Servicios IT** (#servicios-it) — 3 cards técnicas (agentes/RAG, automatización documental, arquitectura y evaluación en Azure y AWS) + tarifa 350€/jornada
+4. **IA para negocio** (#operaciones, antes "Operaciones IA") — 4 bloques dolor→solución→resultado (3 de Wembley + Turing)
 5. **Proyectos** (#proyectos) — En producción (Wembley) + Labs (proyectos propios)
 6. **Sobre mí** (#sobre-mi) — bio, skills agrupados, certificaciones (AI-102, DP-100, AZ-204)
 7. **Cómo trabajo** (#como-trabajo) — Conecta. Desconecta. Reconecta.
@@ -131,10 +137,13 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **Operations IntersectionObserver**: threshold `0.1`, stagger `200ms` por bloque (bloques más altos = threshold más bajo y stagger más amplio que cards).
 - **Operations nota de transparencia**: `border-l-2 border-primary pl-4 italic text-sm` — visible pero discreta.
 - **Projects modal**: elemento nativo `<dialog>` + vanilla JS. Sin librerías externas. `dialog::backdrop` para overlay, `showModal()` / `close()` API. El evento `close` limpia el innerHTML del body (cubre Escape nativo).
-- **Projects diagramas**: SVG placeholders en `public/diagrams/` (no en `src/assets/` para evitar complejidad de import con Astro Image). Cuando el usuario tenga PNGs reales, moverlos a `src/assets/diagrams/`, actualizar a imports estáticos y usar `<Image>` de `astro:assets`.
+- **Projects visuales (oct 2026)**: cada caso tiene miniatura + arquitectura en `src/assets/projects/<caso>-thumb.png` y `<caso>-architecture.png`, importadas en `Projects.astro` y optimizadas a WebP por Astro (miniatura con `<Image>`, arquitectura con `getImage()` para el modal). La columna derecha de la tarjeta es solo la miniatura clicable + botón "Ver arquitectura", sticky en escritorio. Se probó poner métricas en texto bajo la miniatura y se descartó: repetía lo que ya dice la imagen. Los diagramas técnicos anteriores de Wembley están archivados en `src/assets/diagrams/older/` (fuera de `public/`, no se publican). El del Lab 1 sigue en `public/diagrams/`. Las imágenes solo existen en español.
+- **⚠️ Imágenes de Indra pendientes de corregir**: `indra-thumb.png` dice "aplicaciones legacy" e `indra-architecture.png` incluye tamaños de muestra ("45 preguntas reales", "19 consultas") y la errata "aplicacione". Enlazadas igualmente por decisión del usuario; sustituir los PNG (mismo nombre) cuando haya versiones corregidas.
 - **Projects arrays en i18n**: `decisions` y `stack` como arrays nativos en JSON. Accedidos mediante import directo del JSON en el frontmatter (`esData.projects.production1.decisions`), no vía `t()` helper (que solo retorna strings).
 - **Projects layout producción**: `grid-cols-[3fr_2fr]` (~60/40), cards horizontales apiladas una bajo otra.
-- **Projects video**: Vimeo embed. videoId `"PENDING"` en i18n = botón oculto. Cambiar por ID real para que aparezca.
+- **Casos 2026 (Indra Group, Datatón de Turing)**: en i18n como `projects.case1` y `projects.case2`, en la misma lista de tarjetas que Wembley, antes que ellos (más reciente primero). La subsección "En producción" pasó a llamarse "Casos". Campo opcional `deliverables`. LILT va solo como línea en la bio de "Sobre mí", no como tarjeta. Reglas de contenido en `content/copy-es.md` §5.
+- **Inicio freelance**: marzo de 2025 (confirmado por el usuario; sustituye a "abril" en la bio).
+- **Projects video**: autoalojado (no Vimeo/YouTube) — vídeo corto y básico, se evitan cookies de terceros y dependencias externas. `<video>` nativo en el modal. `videoUrl` `"PENDING"` en i18n = botón oculto. MP4 < 25 MB en `public/videos/`; si es mayor, Cloudflare R2. Ver `content/assets-guide.md`.
 - **Projects demoUrl**: mismo patrón — `"PENDING"` = botón oculto.
 - **Sitemap**: `@astrojs/sitemap` con i18n (`es-ES`, `en-US`). Excluye `/privacidad` y `/en/privacy` via `filter`. Requiere `site` en `astro.config.mjs`.
 - **OG image**: SVG en `public/og-image.svg` + PNG generado con `sharp` via `npm run generate:og`. El PNG se commitea al repo. Layout.astro usa `.png` como default.

@@ -4,53 +4,49 @@ Referencia rápida para añadir los assets que faltan al proyecto.
 
 ---
 
-## Diagramas de arquitectura (PNG)
+## Miniaturas y arquitecturas de los casos
 
-**Dónde van:** `public/diagrams/`
+**Dónde van:** `src/assets/projects/` (Astro las convierte a WebP en el build).
 
-**Nombres exactos:**
-```
-public/diagrams/wembley-catalog.png
-public/diagrams/wembley-invoices.png
-public/diagrams/wembley-teams-bot.png
-public/diagrams/lab-internal-assistant.png
-```
+| Caso | Miniatura | Arquitectura | Estado |
+|---|---|---|---|
+| Indra Group | `indra-thumb.png` | `indra-architecture.png` | ⚠️ Enlazadas, pero pendientes de corregir: contienen "legacy" y tamaños de muestra |
+| Datatón de Turing | `turing-thumb.png` | `turing-architecture.png` | ✅ |
+| Wembley · catálogo | `catalog-thumb.png` | `catalog-architecture.png` | ✅ |
+| Wembley · facturas | `invoices-thumb.png` | `invoices-architecture.png` | ✅ |
+| Wembley · bot Teams | `teams-thumb.png` | `teams-architecture.png` | ✅ |
 
-**Qué cambiar en el código:**  
-En `src/components/Projects.astro`, objeto `DIAGRAMS` (líneas ~20-25):
+**Para sustituir una imagen:** reemplaza el PNG con el mismo nombre. **Para enlazar un caso nuevo**: en `Projects.astro`, importa los dos PNG y añade `thumb` y `archSrc: await archUrl(...)` a la entrada del array `productionProjects`.
 
-```ts
-const DIAGRAMS = {
-  catalog:  '/diagrams/wembley-catalog.png',
-  invoices: '/diagrams/wembley-invoices.png',
-  teams:    '/diagrams/wembley-teams-bot.png',
-  lab1:     '/diagrams/lab-internal-assistant.png',
-} as const;
-```
+Formato de origen: miniatura 2400×1500, arquitectura ~3264 px de ancho (exportadas @2x).
 
-Solo cambiar `.svg` → `.png`. Los SVG placeholder se pueden borrar después.
-
-**Optimización avanzada (opcional, Sesión 8):**  
-Mover los PNG a `src/assets/diagrams/` y cambiar a imports estáticos con `<Image>` de `astro:assets` para conversión automática a WebP en el build.
+Los diagramas técnicos anteriores están archivados en `src/assets/diagrams/older/`.
 
 ---
 
-## Vídeo del Lab 1 (Vimeo)
+## Vídeo del Lab 1 (autoalojado)
 
-**Plataforma elegida:** Vimeo (no listado)
+**Decisión:** vídeo propio servido como archivo estático, no Vimeo/YouTube. Es un vídeo corto y básico (el visitante puede probar la demo por su cuenta), así que no compensa un tercero: sin cookies de terceros (simplifica RGPD), sin branding ajeno, sin dependencia externa.
 
-**Pasos:**
-1. Sube el vídeo a [vimeo.com](https://vimeo.com) como "solo con enlace" (no listado)
-2. Copia el ID numérico de la URL (ej: `vimeo.com/123456789` → ID es `123456789`)
-3. En `src/i18n/es.json` y `src/i18n/en.json`, busca `"videoId": "PENDING"` en `projects.lab1` y reemplaza:
+**Formato recomendado:** MP4 (H.264 + AAC), 1080p o 720p, `-movflags +faststart` para que empiece a reproducir antes de descargarse entero. Ejemplo:
 
-```json
-"videoId": "123456789"
+```bash
+ffmpeg -i demo-original.mov -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 128k -movflags +faststart demo-lab1.mp4
 ```
 
-**Efecto:** el botón "Ver vídeo" en la card del Lab 1 aparece automáticamente.
+**Dónde va:**
+- **< 25 MB** (límite por archivo de static assets en Cloudflare Workers): `public/videos/demo-lab1.mp4` → URL `/videos/demo-lab1.mp4`
+- **≥ 25 MB**: subirlo a un bucket de Cloudflare R2 con acceso público (egress gratis) y usar su URL pública.
 
-**Cómo está implementado:** embed de Vimeo en `<dialog>` nativo vía `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`.
+**Qué cambiar:** en `src/i18n/es.json` y `src/i18n/en.json`, `projects.lab1.videoUrl`:
+
+```json
+"videoUrl": "/videos/demo-lab1.mp4"
+```
+
+**Efecto:** el botón "Ver vídeo" en la card del Lab 1 aparece automáticamente (con `"PENDING"` queda oculto).
+
+**Cómo está implementado:** `<video controls autoplay playsinline>` inyectado en el `<dialog>` nativo al pulsar el botón; no se descarga nada hasta entonces. Al cerrar el modal se vacía el body, lo que detiene la reproducción.
 
 ---
 
@@ -81,9 +77,6 @@ Si en el futuro quieres añadir diagramas reales para estos labs:
 
 | Asset | Estado | Notas |
 |---|---|---|
-| wembley-catalog.png | ⏳ Pendiente | Placeholder SVG activo |
-| wembley-invoices.png | ⏳ Pendiente | Placeholder SVG activo |
-| wembley-teams-bot.png | ⏳ Pendiente | Placeholder SVG activo |
 | lab-internal-assistant.png | ⏳ Pendiente | Placeholder SVG activo |
-| Lab 1 videoId (Vimeo) | ⏳ Pendiente | Botón oculto hasta añadir ID |
+| Lab 1 vídeo (autoalojado) | ⏳ Pendiente | Botón oculto hasta añadir `videoUrl` |
 | Lab 1 demoUrl | ⏳ Pendiente | Botón oculto hasta añadir URL |

@@ -11,6 +11,6 @@
   <rect x="80" y="200" width="6" height="90" fill="#b80000" rx="3"/>
   <text x="108" y="270" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="72" font-weight="700" fill="#0a0a0a" letter-spacing="-1">Maroru's Assistance</text>
   <text x="108" y="330" font-family="'Inter', sans-serif" font-size="30" font-weight="400" fill="#5a5550">Freelance GenAI Engineer</text>
-  <text x="108" y="490" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="400" fill="#b80000" letter-spacing="1">Azure · LangChain · Python · RAG · Agents</text>
+  <text x="108" y="490" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="400" fill="#b80000" letter-spacing="1">Agents · RAG · LLM Evaluation · Azure · AWS</text>
   <text x="108" y="560" font-family="'Inter', sans-serif" font-size="20" font-weight="500" fill="#5a5550">marorusassistance.com</text>
 </svg>
