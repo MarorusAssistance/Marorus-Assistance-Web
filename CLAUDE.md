@@ -57,6 +57,45 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 - Sin gradientes en CTAs (colores planos)
 - Microinteracciones sutiles permitidas (fade-in, slide-up, hover suave)
 
+## Brief de rediseño visual (oct 2026) — pendiente de ejecutar
+
+El contenido está casi cerrado; el siguiente bloque de trabajo es estético. La web actual está bien construida pero es predecible: cae en casi todos los clichés de "web hecha por IA" que lista el skill oficial `frontend-design` de Anthropic.
+
+**Herramientas instaladas en el proyecto** (usarlas para cualquier trabajo visual):
+- `frontend-design` (plugin oficial de Anthropic, `.claude/settings.json`): obliga a hacer un plan de diseño antes de escribir UI y lista los clichés a evitar.
+- `impeccable` (`.claude/skills/impeccable/`, de pbakaus, Apache 2.0): `/impeccable critique`, `audit`, `polish`, `bolder`, `typeset`, `layout`, `animate`… Esta web es modo **Persuade** (landing) con la sección de Proyectos en modo **Experience**. Su `init` escribe `PRODUCT.md`/`DESIGN.md` en la raíz.
+- Referencia: [Prompting for frontend aesthetics](https://platform.claude.com/cookbook/coding-prompting-for-frontend-aesthetics) (cookbook de Anthropic).
+
+**Se mantiene (marca):**
+- Granate `#b80000` como color dominante y el beige como base, salvo que el usuario diga lo contrario (pendiente de confirmar si se pueden ajustar tonos).
+- Logo y lema **Conecta. Desconecta. Reconecta.**
+- Tono anti-marketing, cifras defendibles, todo el contenido actual.
+
+**Se cambia — clichés detectados en la web actual:**
+
+| Cliché | Dónde está hoy |
+|---|---|
+| Space Grotesk + Inter (las fuentes por defecto de la IA) | Toda la web |
+| Fondo crema + acento terracota/rojo ejecutado de forma genérica | Toda la web |
+| Etiquetas pequeñas en mayúsculas con mucho tracking | "TRAYECTORIA", "DECISIONES TÉCNICAS", "EL DOLOR"… |
+| Resaltar una palabra del titular en color | "No demos." |
+| Metadatos con puntos medios | Línea meta de cada caso |
+| Flechas añadidas a los enlaces | "Ver arquitectura →", "Cuéntame tu caso →" |
+| Numeración sin secuencia real | 01/02/03 en Servicios IT y en IA para negocio |
+| Número grande + etiqueta pequeña como gancho | Banda de stats |
+| Rejilla de tarjetas iguales tipo SaaS | Servicios IT |
+
+**Dirección:**
+- **Alinear la web con el lenguaje visual de las miniaturas y arquitecturas de proyectos** (`src/assets/projects/`): sans geométrica (por identificar la fuente exacta), números condensados enormes en granate, "píldoras" de flujo conectadas con `>` y cajas de diagrama. Hoy la web y las imágenes hablan idiomas distintos.
+- **Un único elemento memorable**: candidato principal, el hero construido con ese lenguaje de flujo/diagrama (cómo trabaja un sistema de IA: pregunta → agentes → respuesta medida) en lugar de titular + número. El resto, disciplinado.
+- Tipografía con contraste extremo de pesos (200 frente a 800) y saltos de tamaño de 3× o más.
+- Fondos con profundidad (capas, patrón) en lugar de planos.
+- Movimiento: una carga de página bien orquestada + animaciones ligadas al scroll con CSS nativo (scroll-driven animations), respetando `prefers-reduced-motion`. Nada de microanimaciones repartidas.
+
+**Pendiente del usuario:** 2-3 webs de referencia que le gusten (Awwwards portfolio, etc.) y confirmar si los tonos de marca se pueden ajustar.
+
+**Proceso:** plan de diseño corto → revisión contra clichés → hero primero → resto por secciones, con capturas en escritorio (1280) y móvil (390) en cada iteración.
+
 ## Tono de contenido
 
 - Directo, técnico cuando habla al cliente IT, claro cuando habla a operaciones
@@ -108,6 +147,8 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 6 | ✅ | Proyectos (Wembley + Labs) |
 | 7 | ✅ | Sobre mí + Cómo trabajo + Contacto |
 | 8 | ✅ | SEO, performance, sitemap, OG image |
+| 8.5 | ✅ | Proyectos 2026 (Indra, Turing, LILT), visuales nuevos, reposicionamiento Azure + AWS |
+| 8.6 | ⏳ | Rediseño visual (ver "Brief de rediseño visual") |
 | 9 | ⏳ | Deploy a producción + DNS swap |
 
 ## Cómo trabajar en este proyecto
