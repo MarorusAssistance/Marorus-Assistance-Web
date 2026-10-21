@@ -28,8 +28,9 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 - **Calendario**: Calendly embed (URL: https://calendly.com/marorusassistance/30min)
 - **Hosting**: Cloudflare Workers con static assets (no Pages — usamos el nuevo sistema de Workers)
 - **Repo**: https://github.com/MarorusAssistance/Marorus-Assistance-Web
-- **URL temporal**: marorus-assistance-web.marorusassistance.workers.dev
-- **Dominio final**: marorusassistance.com (DNS en Cloudflare apuntando a GitHub Pages actualmente — se migrará en Sesión 9)
+- **Producción**: https://marorusassistance.com (y www), dominio personalizado del Worker `marorus-assistance-web` desde el 21 oct 2026. También responde en marorus-assistance-web.marorusassistance.workers.dev
+- **Despliegue**: Cloudflare Workers Builds conectado al repo. Rama de producción `main`; cualquier otra rama genera una vista previa en `<rama>-marorus-assistance-web.marorusassistance.workers.dev`
+- **DNS**: zona en Cloudflare. Los registros MX y el TXT de SPF son del reenvío de correo de Cloudflare: no tocarlos. GitHub Pages está desactivado
 
 ## Branding y diseño
 
@@ -156,16 +157,17 @@ Ya no se usan (borrados): Hero, Stats, ServicesIT, Operations, Projects, About, 
 | 8 | ✅ | SEO, performance, sitemap, OG image |
 | 8.5 | ✅ | Proyectos 2026 (Indra, Turing, LILT), visuales nuevos, reposicionamiento Azure + AWS |
 | 8.6 | ✅ | Rediseño "folio" (capítulos, páginas de caso, sobre mí) |
-| 9 | ⏳ | Deploy a producción + DNS swap |
+| 9 | ✅ | Deploy a producción + DNS swap (21 oct 2026) |
 
 ## Cómo trabajar en este proyecto
 
-- **Rama de desarrollo**: `feat/astro-migration`. NO mergear a `main` hasta sesión 9.
+- **Ramas**: trabajar en una rama nueva desde `main` y fusionar por PR; fusionar en `main` publica en producción.
 - **Antes de cada sesión**: lee este CLAUDE.md y luego `git log --oneline -10` para ver el último estado.
 - **Después de cada sesión**: actualiza la tabla de "Plan de sesiones" marcando completada, y haz commit en la rama de desarrollo.
 - **Cualquier decisión técnica no especificada**: documéntala al final de este archivo en la sección "Decisiones técnicas tomadas".
 - **NO instalar dependencias innecesarias**: pensar bien si hace falta antes de añadir paquetes.
-- **NO mergear a main automáticamente**: el push a la rama de desarrollo dispara preview deploy en Cloudflare. Eso es suficiente.
+- **NO mergear a main sin el OK del usuario**: `main` es producción. El push a otra rama dispara una vista previa en Cloudflare.
+- **Commits y PRs sin marcas de Claude**: ni `Co-Authored-By` ni "Generated with Claude Code" (petición del usuario).
 
 ## Decisiones técnicas tomadas
 
