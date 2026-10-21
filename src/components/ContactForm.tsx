@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { z } from 'zod';
 
 type Locale = 'es' | 'en';
@@ -28,6 +28,31 @@ interface Props {
   fields: FieldLabels;
   labels: FormLabels;
   privacyUrl: string;
+  turnstileSiteKey: string;
+}
+
+// Cloudflare Turnstile (anti-bot). Loaded only once someone starts filling the form;
+// runs invisibly and shows a check only when Cloudflare is unsure.
+type Turnstile = {
+  render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+  execute: (id: string) => void;
+  remove: (id: string) => void;
+};
+declare global {
+  interface Window { turnstile?: Turnstile }
+}
+let turnstileLoading: Promise<Turnstile> | null = null;
+function loadTurnstile(): Promise<Turnstile> {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  turnstileLoading ??= new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    s.async = true;
+    s.onload = () => (window.turnstile ? resolve(window.turnstile) : reject(new Error('turnstile')));
+    s.onerror = () => { turnstileLoading = null; reject(new Error('turnstile')); };
+    document.head.appendChild(s);
+  });
+  return turnstileLoading;
 }
 
 type FormValues = {
@@ -42,7 +67,26 @@ type FormValues = {
 const EMPTY: FormValues = { name: '', company: '', email: '', type: '', message: '', privacy: false };
 const HONEYPOT = 'website';
 
-export default function ContactForm({ lang, fields, labels, privacyUrl }: Props) {
+export default function ContactForm({ lang, fields, labels, privacyUrl, turnstileSiteKey }: Props) {
+  const challengeRef = useRef<HTMLDivElement>(null);
+
+  const getToken = async (): Promise<string> => {
+    const ts = await loadTurnstile();
+    return new Promise((resolve, reject) => {
+      const el = challengeRef.current;
+      if (!el) return reject(new Error('turnstile'));
+      const id = ts.render(el, {
+        sitekey: turnstileSiteKey,
+        language: lang,
+        execution: 'execute',
+        appearance: 'interaction-only',
+        callback: (token: string) => { resolve(token); setTimeout(() => ts.remove(id), 0); },
+        'error-callback': () => { reject(new Error('turnstile')); ts.remove(id); },
+      });
+      ts.execute(id);
+    });
+  };
+
   const err = lang === 'es'
     ? {
         nameMin: 'Mínimo 2 caracteres',
@@ -95,8 +139,9 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
     }
     setStatus('submitting');
     try {
-      // Our own endpoint (worker/index.ts): validates, queues and emails the message
+      // Our own endpoint (worker/index.ts): checks the request and emails the message
       const honeypot = (e.currentTarget as HTMLFormElement).elements.namedItem(HONEYPOT) as HTMLInputElement | null;
+      const turnstile = await getToken();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
@@ -108,6 +153,7 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
           type: values.type,
           message: values.message,
           website: honeypot?.value ?? '',
+          turnstile,
         }),
       });
       setStatus(res.ok ? 'success' : 'error');
@@ -138,7 +184,7 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-7">
+    <form onSubmit={handleSubmit} onFocusCapture={() => { loadTurnstile().catch(() => {}); }} noValidate className="flex flex-col gap-7">
       {/* Honeypot: hidden from people and assistive tech, bots tend to fill it */}
       <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
         <label htmlFor="cf-website">Website</label>
@@ -247,6 +293,9 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
         </label>
         {errors.privacy && <p id="cf-privacy-error" className={`${errorBase} mt-2`}>{errors.privacy}</p>}
       </div>
+
+      {/* Turnstile shows a check here only if Cloudflare needs one */}
+      <div ref={challengeRef} />
 
       {/* Submit */}
       <button
