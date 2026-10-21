@@ -206,4 +206,6 @@ Ya no se usan (borrados): Hero, Stats, ServicesIT, Operations, Projects, About, 
 - **Foto**: `src/assets/photo.jpeg` — Astro la optimiza a WebP en build (350kB → 23kB). Usar `<Image>` de `astro:assets`.
 - **HowIWork step body**: texto con `\n\n` en JSON, spliteado en frontmatter/template para renderizar como párrafos `<p>` separados.
 - **Contact sección**: `bg-bg-dark` — cierra la web en oscuro. Cards Calendly y formulario en `bg-bg-light` para contraste.
-- **Páginas privacidad**: `src/pages/privacidad.astro` (ES) y `src/pages/en/privacy.astro` (EN). Placeholders con TODO RGPD.
+- **Aviso legal y privacidad**: una sola página por idioma (`/privacidad`, `/en/privacy`) generada por `src/components/folio/LegalPage.astro`, con los datos del titular (LSSI art. 10: Manuel Pedro Romero Ruiz, NIF, domicilio de notificaciones en la gestoría Atrio Consultores, Salamanca) y la política RGPD (Formspree, Calendly, Cloudflare, Gmail). Si se añade analítica, otro proveedor o un campo al formulario, actualizar esa página.
+- **Fuentes autoalojadas** en `public/fonts/` (subconjunto latin de Google Fonts, licencia OFL), declaradas con `@font-face` en `global.css`: la web no hace ninguna petición a Google.
+- **Calendly con carga al pulsar** ("Ver disponibilidad"): nada de Calendly se descarga hasta que el visitante lo pide, porque pone cookies de terceros. Sustituye a la carga por IntersectionObserver.

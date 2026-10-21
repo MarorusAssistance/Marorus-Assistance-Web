@@ -297,7 +297,10 @@
     "intro": "Si tienes un proyecto en mente, un problema operativo que crees que la IA puede resolver, o simplemente quieres validar una idea técnica, escríbeme. Respondo en menos de 48 horas laborables.",
     "calendly": {
       "title": "Reserva una llamada",
-      "subtitle": "30 minutos. Sin compromiso. Cuéntame tu caso y te digo si puedo ayudarte."
+      "subtitle": "30 minutos. Sin compromiso. Cuéntame tu caso y te digo si puedo ayudarte.",
+      "load": "Ver disponibilidad",
+      "notice": "El calendario lo ofrece Calendly (EE. UU.) y, al cargarlo, usa sus propias cookies. Solo se carga si pulsas el botón.",
+      "open": "Abrir en Calendly"
     },
     "form": {
       "title": "O escríbeme directamente",
@@ -314,7 +317,7 @@
       "submitting": "Enviando...",
       "success": "Mensaje enviado. Te responderé en menos de 48 horas laborables.",
       "error": "Algo ha fallado. Inténtalo de nuevo o escríbeme directamente a marorusassistance@gmail.com",
-      "microcopy": "Tus datos solo se usan para responderte. No los comparto ni los uso para marketing.",
+      "microcopy": "Tus datos solo se usan para responderte. No los cedo a terceros ni los uso para marketing. El envío pasa por Formspree (EE. UU.).",
       "privacyLink": "Más detalles en la política de privacidad.",
       "anotherMessage": "Enviar otro mensaje"
     },
@@ -326,9 +329,7 @@
     }
   },
   "privacy": {
-    "title": "Política de privacidad",
-    "lastUpdated": "Última actualización: [PENDIENTE]",
-    "placeholder": "Esta página está en construcción. Si necesitas información sobre cómo se tratan tus datos al contactarme, escríbeme directamente a marorusassistance@gmail.com."
+    "title": "Aviso legal y privacidad"
   },
   "footer": {
     "tagline": "Agentes y RAG en producción, con calidad y coste medidos",

@@ -297,7 +297,10 @@
     "intro": "If you have a project in mind, an operational problem you think AI can solve, or just want to validate a technical idea, write to me. I respond within 48 business hours.",
     "calendly": {
       "title": "Book a call",
-      "subtitle": "30 minutes. No commitment. Tell me your case and I'll let you know if I can help."
+      "subtitle": "30 minutes. No commitment. Tell me your case and I'll let you know if I can help.",
+      "load": "Show availability",
+      "notice": "The calendar is provided by Calendly (US) and sets its own cookies once loaded. It only loads if you press the button.",
+      "open": "Open in Calendly"
     },
     "form": {
       "title": "Or write to me directly",
@@ -314,7 +317,7 @@
       "submitting": "Sending...",
       "success": "Message sent. I'll reply within 48 business hours.",
       "error": "Something went wrong. Please try again or write to me directly at marorusassistance@gmail.com",
-      "microcopy": "Your data is only used to reply to you. I don't share it or use it for marketing.",
+      "microcopy": "Your data is only used to reply to you. I don't sell or share it, or use it for marketing. Submissions go through Formspree (US).",
       "privacyLink": "More details in the privacy policy.",
       "anotherMessage": "Send another message"
     },
@@ -326,9 +329,7 @@
     }
   },
   "privacy": {
-    "title": "Privacy policy",
-    "lastUpdated": "Last updated: [PENDING]",
-    "placeholder": "This page is under construction. If you need information about how your data is handled when you contact me, write to me directly at marorusassistance@gmail.com."
+    "title": "Legal notice and privacy"
   },
   "footer": {
     "tagline": "Agents and RAG in production, with measured quality and cost",

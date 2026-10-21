@@ -1,29 +1,5 @@
 ---
-{/*
-  TODO: Fill in complete privacy policy before launching the website.
-  Must cover GDPR: data collected via form (name, email, company, message),
-  purpose (reply to inquiry), legal basis (explicit consent),
-  controller (Manuel Romero), user rights (access, rectification, erasure,
-  portability, objection), how to exercise them (marorusassistance@gmail.com),
-  retention period, no third-party sharing, no use for marketing.
-*/}
-import Layout from '../../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import LegalPage from '../../components/folio/LegalPage.astro';
 ---
 
-<Layout title={t('privacy.title')} description={t('privacy.title')} lang={lang}>
-  <div class="max-w-[700px] px-5 md:px-12 py-16 md:py-24">
-    <h1 class="display text-6xl md:text-7xl mb-6">
-      {t('privacy.title')}
-    </h1>
-    <p class="font-mono text-xs text-text-muted mb-10">
-      {t('privacy.lastUpdated')}
-    </p>
-    <p class="font-body text-base text-text-muted leading-relaxed">
-      {t('privacy.placeholder')}
-    </p>
-  </div>
-</Layout>
+<LegalPage lang="en" />
