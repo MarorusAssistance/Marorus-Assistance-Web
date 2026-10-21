@@ -42,13 +42,17 @@ const year = new Date().getFullYear();
     <div class="px-5 md:px-12 py-14 md:py-20 lg:border-r border-rule">
       <h3 class="display text-5xl md:text-6xl">{t('contact.calendly.title')}</h3>
       <p class="mt-4 text-ink-muted">{t('contact.calendly.subtitle')}</p>
-      <!-- Visible default until the embed loads (and if it never does): the booking link itself -->
-      <div class="calendly-wrap relative mt-8">
-        <div class="calendly-fallback absolute inset-0 flex flex-col items-start justify-start gap-4 pt-2">
-          <a href="https://calendly.com/marorusassistance/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center h-12 px-6 bg-primary text-paper hover:bg-primary-dark transition-colors">{t('folio.cover.book')}</a>
+      <!-- Click to load: Calendly sets third-party cookies, so nothing from it loads until the visitor asks -->
+      <div class="calendly-gate mt-8">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+          <button type="button" data-calendly-load class="inline-flex items-center h-12 px-6 bg-primary text-paper hover:bg-primary-dark transition-colors cursor-pointer">{t('contact.calendly.load')}</button>
+          <a href="https://calendly.com/marorusassistance/30min" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors">{t('contact.calendly.open')}</a>
         </div>
-        <div class="calendly-inline-widget relative" data-url="https://calendly.com/marorusassistance/30min?hide_gdpr_banner=1&background_color=f6f3ee&primary_color=b80000" style="min-width:280px;height:700px;"></div>
+        <p class="mt-5 text-sm text-ink-muted leading-relaxed max-w-[34rem]">
+          {t('contact.calendly.notice')} <a href={privacyUrl} class="underline hover:text-primary">{t('privacy.title')}</a>
+        </p>
       </div>
+      <div class="calendly-inline-widget mt-8" data-url="https://calendly.com/marorusassistance/30min?hide_gdpr_banner=1&background_color=f6f3ee&primary_color=b80000" style="min-width:280px;height:700px;" hidden></div>
     </div>
     <div class="px-5 md:px-12 py-14 md:py-20 border-t lg:border-t-0 border-rule">
       <h3 class="display text-5xl md:text-6xl mb-10">{t('contact.form.title')}</h3>
@@ -64,18 +68,17 @@ const year = new Date().getFullYear();
 </section>
 
 <script>
-  // Calendly loads only when its widget approaches the viewport
+  // Calendly loads only on request (its embed sets third-party cookies)
+  const button = document.querySelector<HTMLButtonElement>('[data-calendly-load]');
   const widget = document.querySelector<HTMLElement>('.calendly-inline-widget');
-  if (widget) {
-    const io = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        io.disconnect();
-        const s = document.createElement('script');
-        s.src = 'https://assets.calendly.com/assets/external/widget.js';
-        s.async = true;
-        document.body.appendChild(s);
-      }
-    }, { rootMargin: '400px' });
-    io.observe(widget);
-  }
+  button?.addEventListener('click', () => {
+    if (!widget) return;
+    widget.hidden = false;
+    document.querySelector('.calendly-gate')?.remove();
+    const s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    document.body.appendChild(s);
+    widget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, { once: true });
 </script>

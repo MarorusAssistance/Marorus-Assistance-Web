@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NextChapter from './NextChapter.astro';
+import type { Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const home = lang === 'es' ? '/' : '/en/';
+
+// Legal identity (LSSI art. 10) — keep in sync with CLAUDE.md
+const owner = {
+  name: 'Manuel Pedro Romero Ruiz',
+  brand: "Maroru's Assistance",
+  nif: '70926413W',
+  address: 'C/ Marquesa de Almarza, 2, bajo, 37001 Salamanca (España)',
+  email: 'marorusassistance@gmail.com',
+  phone: '+34 628 503 214',
+};
+const mail = `<a href="mailto:${owner.email}">${owner.email}</a>`;
+
+type Section = { h: string; body: string[] };
+
+const content: Record<Locale, { title: string; updated: string; back: string; sections: Section[] }> = {
+  es: {
+    title: 'Aviso legal y privacidad',
+    updated: 'Última actualización: 21 de octubre de 2026',
+    back: 'Volver al inicio',
+    sections: [
+      {
+        h: 'Quién está detrás de esta web',
+        body: [
+          `Esta web es de <strong>${owner.name}</strong>, profesional autónomo que trabaja con el nombre comercial ${owner.brand}, dedicado a la ingeniería de inteligencia artificial (diseño y construcción de agentes, sistemas RAG y automatización con IA).`,
+          `NIF: ${owner.nif}<br />Domicilio a efectos de notificaciones: ${owner.address}<br />Email: ${mail}<br />Teléfono: ${owner.phone}`,
+          `Es también el responsable del tratamiento de los datos personales que se describen abajo.`,
+        ],
+      },
+      {
+        h: 'Qué datos trato y para qué',
+        body: [
+          `<strong>Formulario de contacto.</strong> Nombre, email, empresa (opcional), tipo de consulta y el mensaje que escribas. Los uso solo para responderte y, si lo pides, preparar una propuesta. Base legal: tu consentimiento al marcar la casilla y la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b RGPD).`,
+          `<strong>Reserva de llamada (Calendly).</strong> Los datos que introduces al reservar (nombre, email y lo que quieras contar) para organizar la llamada. Misma finalidad y base legal que el formulario.`,
+          `<strong>Email y otros canales.</strong> Si me escribes directamente, trato los datos de tu mensaje para responderte.`,
+          `<strong>Datos técnicos.</strong> Al visitar la web, el proveedor de alojamiento (Cloudflare) procesa datos técnicos como la dirección IP y el navegador para servir las páginas y protegerlas frente a abusos. Base legal: interés legítimo en la seguridad del servicio (art. 6.1.f RGPD).`,
+          `No uso analítica, publicidad ni perfiles. No envío comunicaciones comerciales y no tomo decisiones automatizadas sobre ti.`,
+        ],
+      },
+      {
+        h: 'Cuánto tiempo los conservo',
+        body: [
+          `El tiempo necesario para atender tu consulta. Si no llegamos a trabajar juntos, borro tus datos como máximo un año después del último contacto. Si hay contrato, se conservan durante la relación y los plazos que exige la ley (por ejemplo, fiscales).`,
+        ],
+      },
+      {
+        h: 'Quién más los ve',
+        body: [
+          `No cedo tus datos a nadie salvo obligación legal. Para que la web funcione me apoyo en estos proveedores, que los tratan por mi cuenta:`,
+          `<strong>Cloudflare, Inc.</strong> (EE. UU.): alojamiento de la web y procesamiento del formulario. El mensaje se guarda en una cola y se me envía por correo; si el envío falla, queda un registro del error durante un máximo de 90 días para poder recuperarlo.<br /><strong>Google</strong> (Gmail): buzón donde recibo los mensajes.<br /><strong>Calendly LLC</strong> (EE. UU.): agenda de reservas, solo si la usas.`,
+          `Estos proveedores pueden tratar datos en Estados Unidos. Los tres declaran estar adheridos al Marco de Privacidad de Datos UE-EE. UU., reconocido por la Comisión Europea como garantía adecuada (art. 45 RGPD).`,
+        ],
+      },
+      {
+        h: 'Cookies y almacenamiento en tu navegador',
+        body: [
+          `Esta web no instala cookies propias ni de analítica. Las fuentes tipográficas se sirven desde la propia web, sin conexión a Google.`,
+          `Solo se guarda en tu navegador el idioma que eliges, para mostrarte la web en ese idioma la próxima vez. Es un almacenamiento técnico necesario y no requiere consentimiento.`,
+          `Cloudflare puede usar una cookie técnica de seguridad para distinguir personas de bots.`,
+          `El calendario de Calendly no se carga hasta que pulsas "Ver disponibilidad". A partir de ese momento Calendly puede instalar sus propias cookies, según su <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">aviso de privacidad</a>. Si no quieres cookies de Calendly, usa el enlace "Abrir en Calendly", el formulario o el email.`,
+        ],
+      },
+      {
+        h: 'Tus derechos',
+        body: [
+          `Puedes pedir acceso a tus datos, su rectificación o supresión, oponerte a su tratamiento, pedir que se limite o que te los entregue en un formato portable, y retirar tu consentimiento en cualquier momento. Escríbeme a ${mail} indicando qué derecho quieres ejercer.`,
+          `Si crees que no he tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).`,
+        ],
+      },
+      {
+        h: 'Contenidos y enlaces',
+        body: [
+          `Los textos, imágenes y diagramas de esta web son de ${owner.name} salvo que se indique lo contrario. Los nombres de otras empresas se citan solo para describir trabajos realizados y pertenecen a sus titulares.`,
+          `La web enlaza a servicios externos (LinkedIn, GitHub, Malt, Calendly y demos alojadas aparte). Cada uno tiene sus propias condiciones y política de privacidad.`,
+        ],
+      },
+    ],
+  },
+  en: {
+    title: 'Legal notice and privacy',
+    updated: 'Last updated: 21 October 2026',
+    back: 'Back to home',
+    sections: [
+      {
+        h: 'Who runs this website',
+        body: [
+          `This website belongs to <strong>${owner.name}</strong>, a self-employed professional trading as ${owner.brand}, working in artificial intelligence engineering (designing and building agents, RAG systems and AI automation).`,
+          `Tax ID (NIF): ${owner.nif}<br />Address for notices: ${owner.address}<br />Email: ${mail}<br />Phone: ${owner.phone}`,
+          `He is also the data controller for the personal data described below.`,
+        ],
+      },
+      {
+        h: 'What data I process and why',
+        body: [
+          `<strong>Contact form.</strong> Name, email, company (optional), type of enquiry and your message. I use them only to reply and, if you ask, to prepare a proposal. Legal basis: your consent when ticking the box, and steps taken at your request before a contract (Art. 6(1)(a) and 6(1)(b) GDPR).`,
+          `<strong>Call booking (Calendly).</strong> The details you enter when booking (name, email and anything you choose to share) to arrange the call. Same purpose and legal basis as the form.`,
+          `<strong>Email and other channels.</strong> If you write to me directly, I process the data in your message to reply.`,
+          `<strong>Technical data.</strong> When you visit the site, the hosting provider (Cloudflare) processes technical data such as your IP address and browser to serve the pages and protect them from abuse. Legal basis: legitimate interest in the security of the service (Art. 6(1)(f) GDPR).`,
+          `I do not use analytics, advertising or profiling. I do not send marketing and I make no automated decisions about you.`,
+        ],
+      },
+      {
+        h: 'How long I keep it',
+        body: [
+          `As long as needed to handle your enquiry. If we do not end up working together, I delete your data at most one year after our last contact. If there is a contract, data is kept for its duration and for the periods the law requires (for example, tax records).`,
+        ],
+      },
+      {
+        h: 'Who else sees it',
+        body: [
+          `I do not share your data with anyone unless legally required. The site relies on these providers, which process data on my behalf:`,
+          `<strong>Cloudflare, Inc.</strong> (US): hosting and processing of the contact form. Your message is placed in a queue and emailed to me; if sending fails, a record of the error is kept for up to 90 days so it can be recovered.<br /><strong>Google</strong> (Gmail): the inbox where I receive messages.<br /><strong>Calendly LLC</strong> (US): booking calendar, only if you use it.`,
+          `These providers may process data in the United States. All three state that they participate in the EU-US Data Privacy Framework, recognised by the European Commission as an adequate safeguard (Art. 45 GDPR).`,
+        ],
+      },
+      {
+        h: 'Cookies and browser storage',
+        body: [
+          `This site sets no cookies of its own and no analytics cookies. Fonts are served from the site itself, with no connection to Google.`,
+          `The only thing stored in your browser is the language you choose, so the site opens in that language next time. This is strictly necessary storage and needs no consent.`,
+          `Cloudflare may use a technical security cookie to tell people from bots.`,
+          `The Calendly calendar does not load until you press "Show availability". From then on Calendly may set its own cookies, as described in its <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">privacy notice</a>. If you do not want Calendly cookies, use the "Open in Calendly" link, the form or email.`,
+        ],
+      },
+      {
+        h: 'Your rights',
+        body: [
+          `You can ask for access to your data, its rectification or erasure, object to its processing, ask for it to be restricted or handed to you in a portable format, and withdraw your consent at any time. Email ${mail} saying which right you want to exercise.`,
+          `If you think your data has not been handled properly, you can complain to the Spanish Data Protection Agency (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).`,
+        ],
+      },
+      {
+        h: 'Content and links',
+        body: [
+          `The texts, images and diagrams on this site belong to ${owner.name} unless stated otherwise. Other companies' names are mentioned only to describe work carried out and belong to their owners.`,
+          `The site links to external services (LinkedIn, GitHub, Malt, Calendly and separately hosted demos). Each has its own terms and privacy policy.`,
+        ],
+      },
+    ],
+  },
+};
+
+const c = content[lang];
+---
+
+<Layout title={`${c.title} — Maroru's Assistance`} description={c.title} lang={lang} esHref="/privacidad" enHref="/en/privacy">
+  <header class="on-dark bg-charcoal text-on-dark px-5 md:px-12 pt-8 md:pt-10 pb-16 md:pb-24">
+    <a href={home} class="text-sm text-on-dark-muted underline hover:text-on-dark">{c.back}</a>
+    <h1 class="display mt-16 md:mt-24 text-[clamp(3.4rem,10vw,9rem)]">{c.title}</h1>
+    <p class="mt-6 text-on-dark-muted">{c.updated}</p>
+  </header>
+
+  <div class="bg-paper px-5 md:px-12 py-16 md:py-24">
+    {c.sections.map((s) => (
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 border-t border-rule py-10 md:py-12">
+        <h2 class="lg:col-span-4 display text-3xl md:text-4xl">{s.h}</h2>
+        <div class="legal-body lg:col-span-7 lg:col-start-6 space-y-4 text-lg leading-relaxed text-ink-muted prose-measure">
+          {s.body.map((p) => <p set:html={p} />)}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <NextChapter lang={lang} />
+</Layout>
+
+<style>
+  .legal-body :global(strong) { color: var(--color-ink); font-weight: 500; }
+  .legal-body :global(a) { color: var(--color-ink); text-decoration: underline; }
+  .legal-body :global(a:hover) { color: var(--color-primary); }
+</style>

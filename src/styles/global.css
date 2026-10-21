@@ -1,6 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300..600&display=swap');
-
 @import "tailwindcss";
+
+/* Fonts served from this site (no request to Google): latin subset, OFL licensed */
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/hanken-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+}
+
 
 @theme {
   /* Folio: display serif for chapter titles and names, Hanken Grotesk for everything read or operated */
@@ -111,11 +133,3 @@ dialog.folio-dialog::backdrop {
   background: rgba(31, 28, 26, 0.88);
 }
 
-/* Calendly: until the embed injects its iframe, let clicks reach the fallback booking link beneath */
-.calendly-inline-widget:empty {
-  pointer-events: none;
-}
-/* …and once the iframe is in, the fallback disappears (Calendly's card does not cover the whole box) */
-.calendly-wrap:has(.calendly-inline-widget iframe) .calendly-fallback {
-  display: none;
-}

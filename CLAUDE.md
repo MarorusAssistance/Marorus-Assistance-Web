@@ -24,7 +24,7 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 - **i18n**: nativo de Astro, locales `es` (default, sin prefijo) y `en` (prefijo `/en`)
 - **Componentes interactivos**: React solo donde es estrictamente necesario (formulario de contacto principalmente)
 - **Validación de formularios**: Zod
-- **Envío de formularios**: Formspree (endpoint: https://formspree.io/f/xwvveolo)
+- **Envío de formularios**: propio, sin terceros. `POST /api/contact` → Worker (`worker/index.ts`) → Cloudflare Queue `contact-messages` → consumidor que envía el correo por Cloudflare Email Routing a marorusassistance@gmail.com. Reintentos con backoff (máx. 5) → cola de poison `contact-messages-dlq`; cada fallo queda en KV `CONTACT_FAILED` (`failed:<id>`, 90 días). Formspree ya no se usa. Tipos del Worker: `npx wrangler types worker/worker-configuration.d.ts` (generado, no se commitea). Prueba local: `npm run build && npx wrangler dev --local` (los correos se guardan como .eml en `.wrangler/tmp`).
 - **Calendario**: Calendly embed (URL: https://calendly.com/marorusassistance/30min)
 - **Hosting**: Cloudflare Workers con static assets (no Pages — usamos el nuevo sistema de Workers)
 - **Repo**: https://github.com/MarorusAssistance/Marorus-Assistance-Web
@@ -202,8 +202,10 @@ Ya no se usan (borrados): Hero, Stats, ServicesIT, Operations, Projects, About, 
 - **Modal accesibilidad**: `lastFocused` tracking — al cerrar el modal, el foco vuelve al botón que lo abrió. Al abrir, el foco va al botón de cerrar.
 - **React instalado en sesión 7**: `@astrojs/react` + `react` + `react-dom` + `@types/react` + `@types/react-dom`. Integración añadida en `astro.config.mjs`.
 - **Zod instalado en sesión 7**: validación de formulario en cliente desde `ContactForm.tsx`.
-- **ContactForm.tsx**: React island con `client:load`. Props de i18n pasadas desde `Contact.astro`. Validación con Zod, POST a Formspree `https://formspree.io/f/xwvveolo`. Estado: 'idle' | 'submitting' | 'success' | 'error'.
+- **ContactForm.tsx**: React island con `client:load`. Props de i18n pasadas desde `Contact.astro`. Validación con Zod, POST a `/api/contact` (antes Formspree) `https://formspree.io/f/xwvveolo`. Estado: 'idle' | 'submitting' | 'success' | 'error'.
 - **Foto**: `src/assets/photo.jpeg` — Astro la optimiza a WebP en build (350kB → 23kB). Usar `<Image>` de `astro:assets`.
 - **HowIWork step body**: texto con `\n\n` en JSON, spliteado en frontmatter/template para renderizar como párrafos `<p>` separados.
 - **Contact sección**: `bg-bg-dark` — cierra la web en oscuro. Cards Calendly y formulario en `bg-bg-light` para contraste.
-- **Páginas privacidad**: `src/pages/privacidad.astro` (ES) y `src/pages/en/privacy.astro` (EN). Placeholders con TODO RGPD.
+- **Aviso legal y privacidad**: una sola página por idioma (`/privacidad`, `/en/privacy`) generada por `src/components/folio/LegalPage.astro`, con los datos del titular (LSSI art. 10: Manuel Pedro Romero Ruiz, NIF, domicilio de notificaciones en la gestoría Atrio Consultores, Salamanca) y la política RGPD (Formspree, Calendly, Cloudflare, Gmail). Si se añade analítica, otro proveedor o un campo al formulario, actualizar esa página.
+- **Fuentes autoalojadas** en `public/fonts/` (subconjunto latin de Google Fonts, licencia OFL), declaradas con `@font-face` en `global.css`: la web no hace ninguna petición a Google.
+- **Calendly con carga al pulsar** ("Ver disponibilidad"): nada de Calendly se descarga hasta que el visitante lo pide, porque pone cookies de terceros. Sustituye a la carga por IntersectionObserver.
