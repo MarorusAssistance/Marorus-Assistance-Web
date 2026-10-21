@@ -20,3 +20,8 @@ Thumbs.db
 
 # Wrangler
 .wrangler/
+
+# Impeccable: local review captures and state
+.impeccable/review/
+.impeccable/build/
+.impeccable/config.local.json
