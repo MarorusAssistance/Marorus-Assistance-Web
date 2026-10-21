@@ -11,7 +11,7 @@ Referencia rápida para añadir los assets que faltan al proyecto.
 | Caso | Miniatura | Arquitectura | Estado |
 |---|---|---|---|
 | Indra Group | `indra-thumb.png` | `indra-architecture.png` | ⚠️ Enlazadas, pero pendientes de corregir: contienen "legacy" y tamaños de muestra |
-| Datatón de Turing | `turing-thumb.png` | `turing-architecture.png` | ✅ |
+| Datatón con Turing Challenge | `turing-thumb.png` | `turing-architecture.png` | ✅ |
 | Wembley · catálogo | `catalog-thumb.png` | `catalog-architecture.png` | ✅ |
 | Wembley · facturas | `invoices-thumb.png` | `invoices-architecture.png` | ✅ |
 | Wembley · bot Teams | `teams-thumb.png` | `teams-architecture.png` | ✅ |

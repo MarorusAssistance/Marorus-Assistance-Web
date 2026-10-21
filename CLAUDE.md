@@ -6,7 +6,7 @@ Este archivo mantiene el contexto compartido entre distintas instancias de Claud
 
 Web de portfolio profesional para Manuel Romero, freelance GenAI Engineer.
 
-**Posicionamiento (oct 2026):** "Agentes y RAG en producción, con calidad y coste medidos. Azure y AWS." El diferencial es la evaluación sistemática (calificación a ciegas, harness, coste frente a calidad), respaldada por Indra Group, el Datatón de Turing y LILT. Sustituye al enfoque inicial "IA para operaciones B2B sobre Azure".
+**Posicionamiento (oct 2026):** "Agentes y RAG en producción, con calidad y coste medidos. Azure y AWS." El diferencial es la evaluación sistemática (calificación a ciegas, harness, coste frente a calidad), respaldada por Indra Group, el datatón con Turing Challenge y LILT. Sustituye al enfoque inicial "IA para operaciones B2B sobre Azure".
 
 Dos audiencias, en este orden de prioridad:
 1. **Equipos técnicos** (CTOs, consultoras, equipos de producto) que necesitan llevar agentes/RAG a producción con garantías — tarifa 350€/jornada
@@ -33,21 +33,13 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 
 ## Branding y diseño
 
-### Colores (variables CSS y clases Tailwind)
-- `--color-primary`: #b80000 (rojo granate, CTAs y acentos)
-- `--color-primary-dark`: #8a0000 (hover de CTAs)
-- `--color-bg`: #e6e1d9 (beige claro, fondo principal)
-- `--color-bg-light`: #f0ece5 (beige más claro, fondos alternos)
-- `--color-bg-dark`: #1a1a1a (casi negro, secciones oscuras)
-- `--color-text`: #0a0a0a (texto principal)
-- `--color-text-muted`: #5a5550 (texto secundario)
-- `--color-border-soft`: #d4cfc5 (bordes sutiles)
-
-### Tipografías (Google Fonts)
-- **Space Grotesk** (font-display): titulares h1/h2, logo, texto destacado. Pesos: 400, 500, 700
-- **Inter** (font-body): cuerpo de texto, UI, párrafos. Pesos: 400, 500, 600
-- **JetBrains Mono** (font-mono): stack técnico, badges, código. Pesos: 400, 500
-- **Bebas Neue** (font-accent): números de stats, detalles de impacto. Pesos: 400
+### Colores y tipografía (folio, oct 2026) — tokens en `src/styles/global.css`
+- `paper` #f6f3ee, `bone` #ebe5dc, `charcoal` #2f2b28 (fondos que alternan por capítulo)
+- `ink` #1f1c1a, `ink-muted` #5f5852; sobre oscuro `on-dark` #efe9e1, `on-dark-muted` #b8ada1
+- `primary` #b80000 (granate de marca, único acento), `primary-dark` #8a0000, `primary-soft` #e8a9a0 (granate legible sobre carbón)
+- Todos los pares de texto ≥ 4.5:1 (comprobado)
+- **Instrument Serif** (`font-display`, clase `.display`) para títulos y nombres a tamaño enorme; **Hanken Grotesk** (`font-body`) para todo lo demás. Sin mono, sin Space Grotesk/Inter/Bebas.
+- Sin tarjetas, sin sombras, sin etiquetas tipo "eyebrow", sin numeración 01/02/03: reglas finas y tipografía.
 
 ### Filosofía visual
 - Anti-marketing: nada de palabrería, frases vacías o claims grandilocuentes
@@ -57,7 +49,7 @@ La web sustituye una landing previa de HTML plano con React por CDN. Se construy
 - Sin gradientes en CTAs (colores planos)
 - Microinteracciones sutiles permitidas (fade-in, slide-up, hover suave)
 
-## Brief de rediseño visual (oct 2026) — pendiente de ejecutar
+## Brief de rediseño visual (oct 2026) — ejecutado como "folio" (ver Estructura de la web)
 
 El contenido está casi cerrado; el siguiente bloque de trabajo es estético. La web actual está bien construida pero es predecible: cae en casi todos los clichés de "web hecha por IA" que lista el skill oficial `frontend-design` de Anthropic.
 
@@ -106,16 +98,23 @@ El contenido está casi cerrado; el siguiente bloque de trabajo es estético. La
 
 ## Estructura de la web
 
-Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas internas:
+**Rediseño "folio" (oct 2026)**, inspirado en khanhnguyen.design (referencia elegida por el usuario). La web se lee como un libro por capítulos. Componentes en `src/components/folio/`; dirección y contrato de diseño en `.impeccable/surfaces/src-pages-index-astro.md`; contexto de producto en `PRODUCT.md`.
 
-1. **Hero** (#inicio) — bifurca con dos CTAs (cliente IT y operaciones)
-2. **Banda de stats** — 3 métricas sobre fondo oscuro: 73 % (Indra), 2º (Turing), 500 facturas/mes (Wembley)
-3. **Servicios IT** (#servicios-it) — 3 cards técnicas (agentes/RAG, automatización documental, arquitectura y evaluación en Azure y AWS) + tarifa 350€/jornada
-4. **IA para negocio** (#operaciones, antes "Operaciones IA") — 4 bloques dolor→solución→resultado (3 de Wembley + Turing)
-5. **Proyectos** (#proyectos) — En producción (Wembley) + Labs (proyectos propios)
-6. **Sobre mí** (#sobre-mi) — bio, skills agrupados, certificaciones (AI-102, DP-100, AZ-204)
-7. **Cómo trabajo** (#como-trabajo) — Conecta. Desconecta. Reconecta.
-8. **Contacto** (#contacto) — Calendly + formulario
+Home (`/`, `/en/`), con lomo fijo a la izquierda (`Spine.astro`: menú a pantalla completa, nombre en vertical, barra de progreso; barra superior en móvil):
+- **Portada** (`Cover`) — "MARORU'S ASSISTANCE" gigante, posicionamiento, lema, hora local, "Reservar llamada" + Malt
+- **Capítulo I · Quién** (`Intro`, #quien) — presentación + foto + enlace a /sobre-mi
+- **Capítulo II · Los casos** (`Work`, #casos) — galería horizontal de miniaturas (se fija y avanza con el scroll vertical en escritorio; carrusel con snap en móvil y con movimiento reducido), lista de casos y Labs
+- **Capítulo III · Servicios** (`Services`, #servicios) — 3 columnas + tarifa
+- **Capítulo IV · Para negocio** (`Business`, #negocio) — 4 problemas, cada uno enlaza a su caso
+- **Capítulo V · Trayectoria** (`Record`, #trayectoria) — Indra, LILT, Turing, Maroru's Assistance, Wembley con su prueba medida + certificaciones
+- **Capítulo VI · Cómo trabajo** (`Method`, #como-trabajo) — Conecta. Desconecta. Reconecta.
+- **Siguiente capítulo** (`NextChapter`, #contacto) — email grande, Calendly, formulario, pie
+
+Páginas nuevas:
+- **Casos** `/casos/<slug>` · `/en/cases/<slug>` (`CasePage`): título, resumen, arquitectura a tamaño grande, decisiones, stack, entregables, bloque "Para negocio" (dolor/solución/resultado) y siguiente caso. Datos en `src/data/cases.ts`.
+- **Sobre mí** `/sobre-mi` · `/en/about` (`AboutPage`): bio completa, skills y certificaciones.
+
+Ya no se usan (borrados): Hero, Stats, ServicesIT, Operations, Projects, About, HowIWork, Contact, Nav, Footer, LanguageSwitcher. La banda de stats desaparece como bloque: sus cifras viven en la Trayectoria y en el texto.
 
 ## Decisiones de contenido importantes
 
@@ -125,6 +124,14 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - Las certificaciones NO van en banda de stats. Van en sección "Sobre mí" como credenciales de autoridad.
 - Proyectos Lab que NO van con vídeo (porque están a medias): solo arquitectura + GitHub. Lead manager y n8n local NO se enlazan a su GitHub individual (se mencionan como "frentes activos" sin link).
 - Bot conversacional en la web (idea de meta-demo): pospuesto a fase 2.
+
+- **Datatón (jul 2026):** fue en colaboración con la empresa **Turing Challenge**. Escribir "datatón con Turing Challenge" (EN "datathon with Turing Challenge"), nunca "Datatón de Turing".
+- **Lab 1 = Logiassist** (antes "Asistente Interno para Microsoft Teams"): asistente RAG para una empresa de logística ficticia, demo y portfolio técnico. Teams está descartado; no volver a presentarlo como bot de Teams. Repo: https://github.com/MarorusAssistance/Logiassist. Solo modelos con datos en la UE.
+- **Foto:** la web usa `src/assets/photo-cutout.png` (retrato recortado sin fondo, PNG transparente 2714×2528, sacado del original 4176×2784 `src/assets/photo.jpeg` con el recorte de sujetos de macOS/Vision). Se muestra entera, sin recorte cuadrado, sobre fondo claro, con el borde inferior apoyado en el final de la sección (si flota en medio parece un pegote). Ojo: sobre fondo oscuro aparece un leve halo blanco en el pelo; no usarla sobre carbón sin limpiar ese borde. La versión antigua de 1024×687 sigue en `legacy/src/`.
+
+- **Logos de terceros: ninguno** (decisión del usuario, por prudencia contractual). Ni Indra, ni Turing Challenge, ni LILT, ni Wembley, ni Malt. Los contratos de Indra (vía Malt, cl. 11.3-11.4 y 10) y de Turing Challenge (cl. Tercera y Sexta) exigen consentimiento para usar su marca o publicitar la relación; el usuario va a pedir permiso para nombrarlos. **Nunca nombrar a los clientes finales** de Indra ni de Turing Challenge.
+- **Fecha del datatón:** se mantiene "jul 2026" a propósito (duró una semana; la fecha exacta no es relevante para el usuario).
+- **Favicon:** la esferita de Maroru's Assistance (`public/favicon-32.png`, `favicon-512.png`, `apple-touch-icon.png`), recortada de `legacy/src/Logo_Marorus_Assistance.png`.
 
 ## URLs y assets externos
 
@@ -148,7 +155,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 | 7 | ✅ | Sobre mí + Cómo trabajo + Contacto |
 | 8 | ✅ | SEO, performance, sitemap, OG image |
 | 8.5 | ✅ | Proyectos 2026 (Indra, Turing, LILT), visuales nuevos, reposicionamiento Azure + AWS |
-| 8.6 | ⏳ | Rediseño visual (ver "Brief de rediseño visual") |
+| 8.6 | ✅ | Rediseño "folio" (capítulos, páginas de caso, sobre mí) |
 | 9 | ⏳ | Deploy a producción + DNS swap |
 
 ## Cómo trabajar en este proyecto
@@ -182,7 +189,7 @@ Una sola landing principal con secciones bifurcadas para cada audiencia. Anclas 
 - **⚠️ Imágenes de Indra pendientes de corregir**: `indra-thumb.png` dice "aplicaciones legacy" e `indra-architecture.png` incluye tamaños de muestra ("45 preguntas reales", "19 consultas") y la errata "aplicacione". Enlazadas igualmente por decisión del usuario; sustituir los PNG (mismo nombre) cuando haya versiones corregidas.
 - **Projects arrays en i18n**: `decisions` y `stack` como arrays nativos en JSON. Accedidos mediante import directo del JSON en el frontmatter (`esData.projects.production1.decisions`), no vía `t()` helper (que solo retorna strings).
 - **Projects layout producción**: `grid-cols-[3fr_2fr]` (~60/40), cards horizontales apiladas una bajo otra.
-- **Casos 2026 (Indra Group, Datatón de Turing)**: en i18n como `projects.case1` y `projects.case2`, en la misma lista de tarjetas que Wembley, antes que ellos (más reciente primero). La subsección "En producción" pasó a llamarse "Casos". Campo opcional `deliverables`. LILT va solo como línea en la bio de "Sobre mí", no como tarjeta. Reglas de contenido en `content/copy-es.md` §5.
+- **Casos 2026 (Indra Group, Datatón con Turing Challenge)**: en i18n como `projects.case1` y `projects.case2`, en la misma lista de tarjetas que Wembley, antes que ellos (más reciente primero). La subsección "En producción" pasó a llamarse "Casos". Campo opcional `deliverables`. LILT va solo como línea en la bio de "Sobre mí", no como tarjeta. Reglas de contenido en `content/copy-es.md` §5.
 - **Inicio freelance**: marzo de 2025 (confirmado por el usuario; sustituye a "abril" en la bio).
 - **Projects video**: autoalojado (no Vimeo/YouTube) — vídeo corto y básico, se evitan cookies de terceros y dependencias externas. `<video>` nativo en el modal. `videoUrl` `"PENDING"` en i18n = botón oculto. MP4 < 25 MB en `public/videos/`; si es mayor, Cloudflare R2. Ver `content/assets-guide.md`.
 - **Projects demoUrl**: mismo patrón — `"PENDING"` = botón oculto.

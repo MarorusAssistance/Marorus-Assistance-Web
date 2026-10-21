@@ -187,7 +187,7 @@ Sección dividida en dos sub-secciones: **Casos** (antes "En producción") y **L
 
 ### CASOS
 
-Orden: del más reciente al más antiguo (Indra Group → Datatón de Turing → Wembley ×3). Subtítulo: "Del más reciente al más antiguo. Los tres de Wembley Studios (mar 2023 – mar 2025) siguen en producción hoy." Los casos sin diagrama muestran sus métricas en la columna derecha. El texto canónico está en `src/i18n/es.json` (`projects.case1`, `projects.case2`).
+Orden: del más reciente al más antiguo (Indra Group → Datatón con Turing Challenge → Wembley ×3). Subtítulo: "Del más reciente al más antiguo. Los tres de Wembley Studios (mar 2023 – mar 2025) siguen en producción hoy." Los casos sin diagrama muestran sus métricas en la columna derecha. El texto canónico está en `src/i18n/es.json` (`projects.case1`, `projects.case2`).
 
 **Reglas de contenido (Indra):** describir como "aplicaciones empresariales"; nunca "legacy", "COBOL", "Natural" ni "Java"; sin tamaños de muestra de la evaluación (solo "calificadas a ciegas" / "validado en prototipo"); no nombrar proyectos ni clientes internos de Indra. **LILT:** no es caso de portfolio, va como línea en la bio; no nombrar los laboratorios, solo "laboratorios de IA punteros".
 
@@ -222,7 +222,7 @@ Chat multiagente que responde preguntas funcionales y técnicas sobre aplicacion
 
 #### Caso 2 — Asistente de Q&A financiero por voz
 
-*Datatón de Turing · jul 2026 · 2º puesto · en solitario, en una semana*
+*Datatón con Turing Challenge · jul 2026 · 2º puesto · en solitario, en una semana*
 
 Transcribe las preguntas de los analistas durante una presentación de resultados y responde en streaming apoyándose solo en las slides. El reto: responder al momento, ciñéndose al contenido del deck y sin inventar.
 
@@ -308,7 +308,7 @@ Bot conversacional integrado en Microsoft Teams que responde sobre documentació
 
 ---
 
-#### Lab 1 — Asistente Interno para Microsoft Teams
+#### Lab 1 — Logiassist (antes "Asistente Interno para Microsoft Teams"; texto canónico en `src/i18n/es.json`, `projects.lab1`)
 
 FAQ-bot conectado a documentación interna con escalado automático a incidencias cuando la consulta supera lo que el bot puede resolver. Iteración propia sobre el patrón del Proyecto 3, generalizado para ser desplegable en distinto cliente.
 
