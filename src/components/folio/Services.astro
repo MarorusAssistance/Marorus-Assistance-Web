@@ -1,0 +1,37 @@
+---
+import Chapter from './Chapter.astro';
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const cards = [
+  { key: 'card1', stack: ['LangGraph', 'LangChain', 'Amazon Bedrock', 'Azure OpenAI', 'AI Search', 'pgvector'] },
+  { key: 'card2', stack: ['Document Intelligence', 'Azure Functions', 'Service Bus', 'embeddings', 'Python'] },
+  { key: 'card3', stack: ['Azure', 'AWS', 'LLM evals', 'CloudWatch', 'Docker', 'CI/CD'] },
+] as const;
+---
+
+<Chapter id="servicios" lang={lang} numeral="III" name={t('folio.chapters.services')} tone="charcoal">
+  <div class="px-5 md:px-12 pt-16 md:pt-24 pb-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+    <h2 id="servicios-title" class="display lg:col-span-8 text-[clamp(3.2rem,7.5vw,7rem)]">{t('servicesIT.title')}</h2>
+    <p class="lg:col-span-3 lg:col-start-10 text-lg text-on-dark-muted">{t('servicesIT.subtitle')}</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 border-t border-rule-dark">
+    {cards.map(({ key, stack }, i) => (
+      <article class:list={['px-5 md:px-12 py-12 md:py-16 flex flex-col md:min-h-[38rem]', i > 0 && 'border-t md:border-t-0 md:border-l border-rule-dark']}>
+        <h3 class="display text-4xl md:text-[2.75rem] leading-[0.95]">{t(`servicesIT.${key}.title`)}</h3>
+        <p class="mt-8 text-on-dark-muted leading-relaxed">{t(`servicesIT.${key}.body`)}</p>
+        <p class="mt-6 text-sm text-on-dark-muted">{stack.join(' · ')}</p>
+        <p class="mt-auto pt-10 text-on-dark leading-snug">{t(`servicesIT.${key}.proof`)}</p>
+      </article>
+    ))}
+  </div>
+
+  <div class="px-5 md:px-12 py-12 md:py-16 border-t border-rule-dark flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <p class="text-on-dark-muted">{t('servicesIT.rate')}</p>
+    <a href="#contacto" class="inline-flex items-center h-12 px-6 bg-primary text-paper hover:bg-primary-dark transition-colors w-fit">{t('servicesIT.cta')}</a>
+  </div>
+</Chapter>

@@ -1,0 +1,35 @@
+---
+import Chapter from './Chapter.astro';
+import { useTranslations, type Locale } from '../../i18n/utils';
+import esData from '../../i18n/es.json';
+import enData from '../../i18n/en.json';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+const steps = [dict.howIWork.step1, dict.howIWork.step2, dict.howIWork.step3];
+---
+
+<Chapter id="como-trabajo" lang={lang} numeral="VI" name={t('folio.chapters.method')}>
+  <div class="px-5 md:px-12 pt-16 md:pt-24 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <h2 id="como-trabajo-title" class="sr-only">{t('howIWork.title')}</h2>
+    <p class="lg:col-span-6 text-xl md:text-2xl leading-snug tracking-[-0.01em]">{t('howIWork.intro')}</p>
+  </div>
+
+  <ol class="px-5 md:px-12 pb-24 md:pb-36">
+    {steps.map((s, i) => (
+      <li class="border-t border-rule pt-8 md:pt-10 pb-14 md:pb-20 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-6">
+        <h3 class:list={['lg:col-span-6 display text-[clamp(4.5rem,13vw,12.5rem)] leading-[0.82]', i === 2 && 'text-primary']}>
+          {s.title}.
+        </h3>
+        <div class="lg:col-span-5 lg:col-start-8 lg:pt-6">
+          <p class="text-xl leading-snug">{s.subtitle}</p>
+          {s.body.split('\n\n').map((para) => (
+            <p class="mt-5 text-ink-muted leading-relaxed prose-measure">{para}</p>
+          ))}
+        </div>
+      </li>
+    ))}
+  </ol>
+</Chapter>

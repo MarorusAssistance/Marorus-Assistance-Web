@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import NextChapter from './NextChapter.astro';
+import photo from '../../assets/photo-cutout.png';
+import { useTranslations, type Locale } from '../../i18n/utils';
+import esData from '../../i18n/es.json';
+import enData from '../../i18n/en.json';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+const bio = dict.about.bio as string[];
+const skills = Object.values(dict.about.skills) as Array<{ label: string; items: string[] }>;
+const certs = dict.about.certifications as Array<{ code: string; name: string; description: string; infoUrl: string; verifyUrl: string }>;
+const home = lang === 'es' ? '/' : '/en/';
+---
+
+<Layout title={`${t('about.title')} — Maroru's Assistance`} description={bio[0]} lang={lang} esHref="/sobre-mi" enHref="/en/about">
+  <header class="on-dark bg-charcoal text-on-dark px-5 md:px-12 pt-8 md:pt-10 pb-16 md:pb-24">
+    <a href={home} class="text-sm text-on-dark-muted underline hover:text-on-dark">{t('folio.aboutPage.back')}</a>
+    <h1 class="display uppercase mt-16 md:mt-24 text-[clamp(4.2rem,14vw,13rem)]">{t('about.title')}</h1>
+  </header>
+
+  <section class="bg-paper px-5 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-12">
+    <figure class="lg:col-span-4 order-last lg:order-none self-end -mb-16 md:-mb-24 mx-auto w-full max-w-md lg:max-w-none">
+      <Image src={photo} alt={t('folio.intro.photoAlt')} width={1600} widths={[480, 800, 1200, 1600]} sizes="(min-width: 1024px) 30vw, 90vw" quality={88} format="webp" class="block w-full h-auto" loading="eager" />
+    </figure>
+    <div class="lg:col-span-7 lg:col-start-6">
+      {bio.map((p, i) => (
+        <p class:list={['leading-relaxed prose-measure', i === 0 ? 'text-2xl md:text-3xl tracking-[-0.02em] leading-snug' : 'mt-6 text-lg text-ink-muted']}>{p}</p>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-bone px-5 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-10">
+    <h2 class="lg:col-span-4 display text-5xl md:text-6xl">{t('about.skillsTitle')}</h2>
+    <dl class="lg:col-span-7 lg:col-start-6 border-t border-rule">
+      {skills.map((s) => (
+        <div class="border-b border-rule py-5 grid grid-cols-1 md:grid-cols-[14rem_1fr] gap-x-8 gap-y-1">
+          <dt class="text-sm text-ink-muted">{s.label}</dt>
+          <dd class="text-lg leading-relaxed">{s.items.join(', ')}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="bg-paper px-5 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-10">
+    <div class="lg:col-span-4">
+      <h2 class="display text-5xl md:text-6xl">{t('about.certificationsTitle')}</h2>
+      <p class="mt-4 text-ink-muted">{t('about.certificationsSubtitle')}</p>
+    </div>
+    <ul class="lg:col-span-7 lg:col-start-6 border-t border-rule">
+      {certs.map((c) => (
+        <li class="border-b border-rule py-7 grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-x-8 gap-y-2">
+          <p class="display text-5xl">{c.code}</p>
+          <div>
+            <p class="text-lg">{c.name}</p>
+            <p class="mt-1 text-ink-muted">{c.description}</p>
+            <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm underline hover:text-primary">{t('folio.record.verify')}</a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <NextChapter lang={lang} />
+</Layout>

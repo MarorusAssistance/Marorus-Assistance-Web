@@ -1,0 +1,170 @@
+---
+import { Image } from 'astro:assets';
+import Chapter from './Chapter.astro';
+import { getCases } from '../../data/cases';
+import { useTranslations, type Locale } from '../../i18n/utils';
+import esData from '../../i18n/es.json';
+import enData from '../../i18n/en.json';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+const cases = getCases(lang);
+
+const labKeys = ['lab1', 'lab2', 'lab3'] as const;
+const labs = labKeys.map((k) => {
+  const l = dict.projects[k] as { title: string; summary: string; status: string; githubUrl: string; videoUrl?: string; demoUrl?: string };
+  return {
+    ...l,
+    videoUrl: l.videoUrl && l.videoUrl !== 'PENDING' ? l.videoUrl : undefined,
+    demoUrl: l.demoUrl && l.demoUrl !== 'PENDING' ? l.demoUrl : undefined,
+  };
+});
+---
+
+<Chapter id="casos" lang={lang} numeral="II" name={t('folio.chapters.work')}>
+  <div class="px-5 md:px-12 pt-16 md:pt-24 pb-10 md:pb-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+    <h2 id="casos-title" class="display uppercase lg:col-span-7 text-[clamp(4rem,11vw,10rem)]">{t('folio.work.title')}</h2>
+    <p class="lg:col-span-4 lg:col-start-9 text-lg leading-relaxed text-ink-muted">{t('folio.work.lead')}</p>
+  </div>
+
+  <!-- Gallery: plain horizontal scroll by default; on wide screens with motion allowed,
+       the section pins and vertical scrolling drives the plates sideways. -->
+  <div data-gallery class="relative">
+    <div data-gallery-stage class="overflow-hidden">
+      <ol data-gallery-track class="flex gap-6 md:gap-10 px-5 md:px-12 pb-6 overflow-x-auto snap-x snap-mandatory scroll-px-5 md:scroll-px-12 [scrollbar-width:thin]" aria-label={t('folio.work.title')}>
+        {cases.map((c) => (
+          <li class="snap-start shrink-0 w-[85vw] md:w-[62vw] lg:w-[54vw] xl:w-[48rem]">
+            <a href={c.href} class="group block">
+              <div class="overflow-hidden bg-bone">
+                <Image src={c.thumb} alt="" widths={[640, 1100, 1600]} sizes="(min-width: 1280px) 48rem, (min-width: 768px) 60vw, 85vw" class="w-full h-auto block transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025]" />
+              </div>
+              <div class="mt-5 flex items-baseline justify-between gap-6">
+                <h3 class="display text-3xl md:text-4xl leading-none group-hover:text-primary transition-colors">{c.title}</h3>
+                <span class="shrink-0 text-sm underline text-ink-muted group-hover:text-primary">{t('folio.work.read')}</span>
+              </div>
+              <p class="mt-2 text-sm text-ink-muted">{c.meta}</p>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <!-- Each sticky heading lives in its own grid so it only travels alongside its own list -->
+  <div class="px-5 md:px-12 pt-24 md:pt-36 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-8">
+    <h3 class="lg:col-span-4 lg:sticky lg:top-10 self-start display text-5xl md:text-6xl">{t('folio.work.listTitle')}</h3>
+    <div class="lg:col-span-7 lg:col-start-6">
+      <ol class="border-t border-rule">
+        {cases.map((c) => (
+          <li class="border-b border-rule">
+            <a href={c.href} class="group flex items-baseline justify-between gap-6 py-4 md:py-5">
+              <span class="text-2xl md:text-4xl tracking-[-0.02em] leading-tight group-hover:text-primary transition-colors">{c.title}</span>
+              <span class="hidden sm:block shrink-0 text-sm text-ink-muted max-w-[16rem] text-right">{c.meta.split(' · ')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+
+  <div class="px-5 md:px-12 pt-24 md:pt-32 pb-24 md:pb-36 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-8">
+    <div class="lg:col-span-4 lg:sticky lg:top-10 self-start">
+      <h3 class="display text-5xl md:text-6xl">{t('folio.work.labsTitle')}</h3>
+      <p class="mt-4 text-ink-muted">{t('folio.work.labsLead')}</p>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6">
+      <ul class="border-t border-rule">
+        {labs.map((l) => (
+          <li class="border-b border-rule py-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-x-8 gap-y-3">
+            <div>
+              <h4 class="text-xl md:text-2xl tracking-[-0.01em]">{l.title}</h4>
+              <p class="mt-2 text-sm text-ink-muted prose-measure">{l.summary}</p>
+              <p class="mt-3 text-sm text-ink">{l.status}</p>
+            </div>
+            <div class="flex md:flex-col gap-x-5 gap-y-2 text-sm md:text-right">
+              <a href={l.githubUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">{t('folio.work.github')}</a>
+              {l.videoUrl && <button type="button" data-video-src={l.videoUrl} class="underline hover:text-primary cursor-pointer md:text-right">{t('folio.work.video')}</button>}
+              {l.demoUrl && <a href={l.demoUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">{t('folio.work.demo')}</a>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <dialog class="folio-dialog" data-video-dialog aria-label={t('folio.work.video')}>
+    <div class="flex justify-end p-3"><button type="button" data-video-close class="text-sm text-on-dark-muted hover:text-on-dark px-2 py-1 cursor-pointer">{t('folio.close')}</button></div>
+    <div data-video-body class="px-3 pb-3"></div>
+  </dialog>
+</Chapter>
+
+<script>
+  // ─── Pinned horizontal gallery (progressive enhancement) ─────────
+  const gallery = document.querySelector<HTMLElement>('[data-gallery]');
+  const stage = gallery?.querySelector<HTMLElement>('[data-gallery-stage]');
+  const track = gallery?.querySelector<HTMLElement>('[data-gallery-track]');
+  const wide = matchMedia('(min-width: 768px)');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (gallery && stage && track) {
+    let distance = 0;
+    let ticking = false;
+
+    const measure = () => {
+      const pin = wide.matches && !still.matches;
+      gallery.classList.toggle('is-pinned', pin);
+      if (!pin) { gallery.style.height = ''; track.style.transform = ''; return; }
+      distance = Math.max(0, track.scrollWidth - stage.clientWidth);
+      gallery.style.height = `${stage.offsetHeight + distance}px`;
+      update();
+    };
+    const update = () => {
+      ticking = false;
+      if (!gallery.classList.contains('is-pinned')) return;
+      const top = gallery.getBoundingClientRect().top;
+      const p = Math.min(1, Math.max(0, -top / Math.max(1, distance)));
+      track.style.transform = `translate3d(${-p * distance}px,0,0)`;
+    };
+
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', measure);
+    wide.addEventListener('change', measure);
+    still.addEventListener('change', measure);
+    addEventListener('load', measure);
+    measure();
+  }
+
+  // ─── Lab video ──────────────────────────────────────────────────
+  const dialog = document.querySelector<HTMLDialogElement>('[data-video-dialog]');
+  const body = dialog?.querySelector<HTMLElement>('[data-video-body]');
+  document.querySelectorAll<HTMLButtonElement>('[data-video-src]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!dialog || !body) return;
+      const video = document.createElement('video');
+      video.src = btn.dataset.videoSrc!;
+      video.controls = true; video.autoplay = true; video.playsInline = true;
+      video.className = 'w-full max-h-[80vh] bg-black';
+      body.replaceChildren(video);
+      dialog.showModal();
+    });
+  });
+  dialog?.querySelector('[data-video-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('close', () => body?.replaceChildren());
+</script>
+
+<style>
+  [data-gallery].is-pinned [data-gallery-stage] {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  [data-gallery].is-pinned [data-gallery-track] {
+    overflow: visible;
+    scroll-snap-type: none;
+    will-change: transform;
+  }
+</style>

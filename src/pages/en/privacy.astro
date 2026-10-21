@@ -15,8 +15,8 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t('privacy.title')} description={t('privacy.title')} lang={lang}>
-  <main class="max-w-[700px] mx-auto px-4 py-12 md:py-20 pt-28 md:pt-36">
-    <h1 class="font-display font-bold text-3xl md:text-4xl text-text mb-3">
+  <div class="max-w-[700px] px-5 md:px-12 py-16 md:py-24">
+    <h1 class="display text-6xl md:text-7xl mb-6">
       {t('privacy.title')}
     </h1>
     <p class="font-mono text-xs text-text-muted mb-10">
@@ -25,5 +25,5 @@ const t = useTranslations(lang);
     <p class="font-body text-base text-text-muted leading-relaxed">
       {t('privacy.placeholder')}
     </p>
-  </main>
+  </div>
 </Layout>

@@ -112,19 +112,19 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
   };
 
   const inputBase =
-    'w-full bg-white border border-[#d4cfc5] rounded-md px-4 py-3 font-body text-base text-[#0a0a0a] placeholder-[#9ca3af] focus:outline-none focus:border-[#b80000] focus:ring-1 focus:ring-[#b80000] transition-colors';
+    'w-full bg-transparent border-0 border-b border-ink-muted rounded-none px-0 py-3 font-body text-lg text-ink placeholder:text-ink-muted focus:outline-none focus:border-primary transition-colors';
 
-  const labelBase = 'block font-body text-sm text-[#0a0a0a] mb-1.5';
-  const errorBase = 'mt-1.5 font-body text-xs text-red-600';
+  const labelBase = 'block font-body text-sm text-ink-muted';
+  const errorBase = 'mt-1.5 font-body text-sm text-primary';
 
   if (status === 'success') {
     return (
       <div className="py-10 text-center">
-        <p className="font-body text-base text-[#0a0a0a]">{labels.success}</p>
+        <p className="font-display text-4xl text-ink">{labels.success}</p>
         <button
           type="button"
           onClick={() => { setValues(EMPTY); setStatus('idle'); setErrors({}); }}
-          className="mt-4 font-body text-sm text-[#b80000] hover:underline"
+          className="mt-6 font-body text-base text-ink underline hover:text-primary"
         >
           {labels.anotherMessage}
         </button>
@@ -133,7 +133,7 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-7">
       {/* Nombre */}
       <div>
         <label htmlFor="cf-name" className={labelBase}>{fields.name} *</label>
@@ -229,13 +229,10 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
             onChange={handleChange}
             aria-invalid={!!errors.privacy}
             aria-describedby={errors.privacy ? 'cf-privacy-error' : undefined}
-            className="mt-0.5 shrink-0 w-4 h-4 border border-[#d4cfc5] rounded accent-[#b80000] cursor-pointer"
+            className="mt-0.5 shrink-0 w-4 h-4 accent-primary cursor-pointer"
           />
-          <span className="font-body text-sm text-[#5a5550] leading-snug">
-            {fields.privacy}{' '}
-            <a href={privacyUrl} target="_blank" rel="noopener noreferrer" className="text-[#b80000] hover:underline">
-              →
-            </a>
+          <span className="font-body text-sm text-ink-muted leading-snug">
+            {fields.privacy}
           </span>
         </label>
         {errors.privacy && <p id="cf-privacy-error" className={`${errorBase} mt-2`}>{errors.privacy}</p>}
@@ -245,20 +242,20 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full bg-[#b80000] text-white font-display font-bold text-base py-3.5 rounded-md hover:bg-[#8a0000] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+        className="self-start inline-flex items-center h-12 px-8 bg-primary text-paper font-body text-base hover:bg-primary-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         {status === 'submitting' ? labels.submitting : labels.submit}
       </button>
 
       {/* Error global */}
       {status === 'error' && (
-        <p className="font-body text-sm text-red-600 text-center">{labels.error}</p>
+        <p className="font-body text-sm text-primary">{labels.error}</p>
       )}
 
       {/* Microcopy */}
-      <p className="font-body text-xs text-[#5a5550] text-center">
+      <p className="font-body text-sm text-ink-muted">
         {labels.microcopy}{' '}
-        <a href={privacyUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-[#b80000] hover:underline">
+        <a href={privacyUrl} target="_blank" rel="noopener noreferrer" className="text-ink underline hover:text-primary">
           {labels.privacyLink}
         </a>
       </p>

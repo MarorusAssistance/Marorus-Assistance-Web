@@ -1,0 +1,23 @@
+---
+import Cover from './Cover.astro';
+import Intro from './Intro.astro';
+import Work from './Work.astro';
+import Services from './Services.astro';
+import Business from './Business.astro';
+import Record from './Record.astro';
+import Method from './Method.astro';
+import NextChapter from './NextChapter.astro';
+import type { Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+
+<Cover lang={lang} />
+<Intro lang={lang} />
+<Work lang={lang} />
+<Services lang={lang} />
+<Business lang={lang} />
+<Record lang={lang} />
+<Method lang={lang} />
+<NextChapter lang={lang} />

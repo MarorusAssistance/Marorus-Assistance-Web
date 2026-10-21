@@ -13,7 +13,7 @@
     "titleLine1": "Freelance GenAI Engineer.",
     "titleLine2": "Sistemas de IA en producción, medidos.",
     "titleAccent": "No demos.",
-    "subtitle": "Ingeniero freelance especializado en agentes y RAG sobre Azure y AWS. He construido un chat multiagente sobre AWS Bedrock para una gran consultora tecnológica (73 % de respuestas correctas, calificadas a ciegas), quedé 2º en el Datatón de Turing y llevo sistemas a producción sobre Azure desde 2023. Certificado AI-102, DP-100, AZ-204.",
+    "subtitle": "Ingeniero freelance especializado en agentes y RAG sobre Azure y AWS. He construido un chat multiagente sobre AWS Bedrock para una gran consultora tecnológica (73 % de respuestas correctas, calificadas a ciegas), quedé 2º en el datatón con Turing Challenge y llevo sistemas a producción sobre Azure desde 2023. Certificado AI-102, DP-100, AZ-204.",
     "ctaIT": "Soy CTO / IT Lead",
     "ctaOps": "Soy de negocio / operaciones"
   },
@@ -24,13 +24,13 @@
     },
     "stat2": {
       "number": "2º",
-      "label": "puesto en el Datatón de Turing, en solitario y en una semana"
+      "label": "puesto en el datatón con Turing Challenge, en solitario y en una semana"
     },
     "stat3": {
       "number": "500/mes",
       "label": "facturas verificadas en producción en un programa de loyalty B2B"
     },
-    "footnote": "Chat multiagente para Indra Group vía Malt (2026), Datatón de Turing (2026) y sistemas en producción en Wembley Studios (2023-2025)."
+    "footnote": "Chat multiagente para Indra Group vía Malt (2026), Datatón con Turing Challenge (2026) y sistemas en producción en Wembley Studios (2023-2025)."
   },
   "servicesIT": {
     "sectionLabel": "Servicios IT",
@@ -58,7 +58,7 @@
     "sectionLabel": "PARA NEGOCIO",
     "title": "IA para negocio",
     "subtitle": "Sistemas de IA aplicada a procesos reales: catálogos, documentos, soporte interno y comunicación financiera.",
-    "transparencyNote": "Casos reales: tres desarrollados como AI Engineer en Wembley Studios (2023-2025) y uno construido en el Datatón de Turing (2026). Hoy los ofrezco como servicio freelance.",
+    "transparencyNote": "Casos reales: tres desarrollados como AI Engineer en Wembley Studios (2023-2025) y uno construido en el datatón con Turing Challenge (2026). Hoy los ofrezco como servicio freelance.",
     "block1": {
       "title": "Búsqueda de productos y catálogos",
       "pain": {
@@ -116,7 +116,7 @@
       },
       "result": {
         "label": "El resultado en el datatón",
-        "text": "Construido en solitario en una semana para el Datatón de Turing, donde quedó 2º. Sobre un set sintético de 24 preguntas: acierto top-1 de 23/24 con reformulaciones (21/24 sin ellas), 24/24 en top-3 y 8/8 en inglés. La demo procesa un fichero de audio; el siguiente paso natural es micrófono en directo."
+        "text": "Construido en solitario en una semana para el datatón con Turing Challenge, donde quedó 2º. Sobre un set sintético de 24 preguntas: acierto top-1 de 23/24 con reformulaciones (21/24 sin ellas), 24/24 en top-3 y 8/8 en inglés. La demo procesa un fichero de audio; el siguiente paso natural es micrófono en directo."
       }
     },
     "closingLine": "Si reconoces alguno de estos dolores en tu operación, hablemos. Cada caso parte de un análisis del proceso real, no de una plantilla.",
@@ -149,7 +149,7 @@
     },
     "case2": {
       "title": "Asistente de Q&A financiero por voz",
-      "meta": "Datatón de Turing · jul 2026 · 2º puesto · en solitario, en una semana",
+      "meta": "Datatón con Turing Challenge · jul 2026 · 2º puesto · en solitario, en una semana",
       "summary": "Transcribe las preguntas de los analistas durante una presentación de resultados y responde en streaming apoyándose solo en las slides. El reto: responder al momento, ciñéndose al contenido del deck y sin inventar.",
       "decisions": [
         "Ingesta de PPTX con enriquecimiento offline: descripción textual de gráficos, reformulaciones bilingües ES/EN y preguntas sintéticas",
@@ -197,13 +197,13 @@
       "stack": ["Azure OpenAI", "Microsoft Bot Framework", "Teams SDK", "Python"]
     },
     "lab1": {
-      "title": "Asistente Interno para Microsoft Teams",
-      "summary": "FAQ-bot conectado a documentación interna con escalado automático a incidencias cuando la consulta supera lo que el bot puede resolver. Iteración propia sobre el patrón del Proyecto 3, generalizado para ser desplegable en distinto cliente.",
-      "status": "Funcional · demo, vídeo y arquitectura disponibles",
-      "statusType": "functional",
+      "title": "Logiassist",
+      "summary": "Asistente RAG para una empresa de logística ficticia, pensado como demo y portfolio técnico: chat web con respuesta en streaming y API. Búsqueda híbrida (pgvector + full-text en español) con reranker y comprobación de evidencia antes de responder, defensa por capas frente a prompt injection y solo modelos con datos en la UE (Microsoft Foundry, Data Zone EU). Se evalúa con juez LLM y midiendo el coste real de cada ejecución.",
+      "status": "En desarrollo · la evaluación rechaza el 100 % de los ataques; ahora estoy mejorando la búsqueda",
+      "statusType": "in-development",
       "videoUrl": "PENDING",
-      "demoUrl": "PENDING",
-      "githubUrl": "https://github.com/MarorusAssistance/Asistente-Interno-Microsoft-Teams"
+      "demoUrl": "https://internal-assistant-demo-web.azurewebsites.net/demo",
+      "githubUrl": "https://github.com/MarorusAssistance/Logiassist"
     },
     "lab2": {
       "title": "Document Intelligent Processor",
@@ -247,7 +247,7 @@
       "Soy Manuel Romero. Construyo sistemas de IA generativa para B2B desde 2023.",
       "Empecé como AI Engineer en Wembley Studios, una consultora técnica B2B, donde durante dos años diseñé y desplegué sistemas en producción para clientes reales: un asistente conversacional sobre catálogos de producto con 19.000 referencias en el sector retail, un sistema de loyalty con verificación automática de facturas para profesionales del mismo sector, y un bot de soporte interno integrado en Teams para una empresa del sector de tasación y valoración. No fueron POCs ni demos: son sistemas que siguen funcionando hoy.",
       "Desde marzo de 2025 trabajo como freelance y soy Super Malter en Malt. Mi enfoque actual son tres servicios concretos donde puedo entregar valor profundo: agentes y sistemas RAG, automatización documental con IA, y arquitectura GenAI. Prefiero ir despacio y especializarme antes que ofrecer un catálogo amplio sin profundidad.",
-      "En 2026, vía Malt, construí para Indra Group un chat RAG multiagente sobre aplicaciones empresariales en AWS Bedrock, y quedé 2º en el Datatón de Turing con un asistente de Q&A financiero por voz. Desde abril de 2026 colaboro además con LILT diseñando tareas de programación en español para entrenar y evaluar agentes de IA de laboratorios de IA punteros.",
+      "En 2026, vía Malt, construí para Indra Group un chat RAG multiagente sobre aplicaciones empresariales en AWS Bedrock, y quedé 2º en el datatón con Turing Challenge con un asistente de Q&A financiero por voz. Desde abril de 2026 colaboro además con LILT diseñando tareas de programación en español para entrenar y evaluar agentes de IA de laboratorios de IA punteros.",
       "Tengo sistemas en producción sobre Azure (con tres certificaciones oficiales: AI-102, DP-100, AZ-204) y he construido sistemas multiagente sobre AWS Bedrock, con el ecosistema Python para IA: LangChain, LangGraph, FastAPI, PostgreSQL con pgvector. Pero la tecnología es la herramienta; lo que vendo es criterio para decidir qué construir, cómo, y qué no construir, con calidad y coste medidos mediante evaluación sistemática. La especialización es en el problema, no en el logo del proveedor."
     ],
     "skillsTitle": "Stack y experiencia",
@@ -348,5 +348,104 @@
     "es": "ES",
     "en": "EN",
     "ariaLabel": "Cambiar idioma"
+  },
+  "folio": {
+    "menu": "Menú",
+    "close": "Cerrar",
+    "home": "Inicio",
+    "chapter": "Capítulo",
+    "skip": "Saltar al contenido",
+    "cover": {
+      "line": "AI Engineer freelance. Construyo agentes y sistemas RAG en producción, con su calidad y su coste medidos, sobre Azure y AWS.",
+      "place": "España · remoto",
+      "clockLabel": "Hora local",
+      "since": "Freelance desde marzo de 2025",
+      "malter": "Super Malter en Malt",
+      "book": "Reservar llamada",
+      "malt": "Perfil en Malt",
+      "scroll": "Baja"
+    },
+    "chapters": {
+      "intro": "Quién",
+      "work": "Los casos",
+      "services": "Servicios",
+      "business": "Para negocio",
+      "record": "Trayectoria",
+      "method": "Cómo trabajo",
+      "next": "Siguiente capítulo"
+    },
+    "intro": {
+      "lead": "Hola, soy Manuel. Llevo agentes y sistemas RAG a producción y mido su calidad y su coste, en lugar de prometerlos.",
+      "more": "Más sobre mí",
+      "photoAlt": "Manuel Romero"
+    },
+    "work": {
+      "title": "Los casos",
+      "lead": "Cinco sistemas reales, del más reciente al más antiguo. Cada uno con su arquitectura y lo que se midió.",
+      "hint": "Sigue bajando para recorrer los casos",
+      "listTitle": "Todos los casos",
+      "read": "Leer el caso",
+      "labsTitle": "Labs",
+      "labsLead": "Proyectos propios. El estado de cada uno se dice tal cual.",
+      "github": "Código en GitHub",
+      "video": "Ver vídeo",
+      "demo": "Probar demo"
+    },
+    "business": {
+      "seeCase": "Ver el caso"
+    },
+    "record": {
+      "title": "Trayectoria",
+      "certsTitle": "Certificaciones",
+      "verify": "Verificar",
+      "entries": [
+        {
+          "name": "Indra Group",
+          "note": "vía Malt",
+          "years": "may – oct 2026",
+          "proof": "Chat RAG multiagente sobre aplicaciones empresariales: 73 % de respuestas correctas, calificadas a ciegas."
+        },
+        {
+          "name": "LILT",
+          "note": "freelance",
+          "years": "abr 2026 – hoy",
+          "proof": "Diseño de tareas de programación en español para entrenar y evaluar agentes de IA de laboratorios de IA punteros."
+        },
+        {
+          "name": "Turing Challenge",
+          "note": "datatón · en solitario",
+          "years": "jul 2026",
+          "proof": "2º puesto con un asistente de Q&A financiero por voz, construido en una semana."
+        },
+        {
+          "name": "Maroru's Assistance",
+          "note": "freelance",
+          "years": "mar 2025 – hoy",
+          "proof": "Agentes, RAG y automatización documental para empresas B2B. Super Malter en Malt."
+        },
+        {
+          "name": "Wembley Studios",
+          "note": "AI Engineer",
+          "years": "mar 2023 – mar 2025",
+          "proof": "Tres sistemas en producción: asistente sobre 19.000 productos, 500 facturas/mes verificadas y bot de soporte en Teams."
+        }
+      ]
+    },
+    "next": {
+      "title": "Siguiente capítulo",
+      "emailLabel": "Escríbeme a"
+    },
+    "case": {
+      "back": "Volver a los casos",
+      "architecture": "Arquitectura",
+      "openFull": "Abrir a tamaño completo",
+      "business": "Para negocio",
+      "next": "Siguiente caso",
+      "challenge": "El caso",
+      "swipe": "Desliza para ver el diagrama completo"
+    },
+    "aboutPage": {
+      "back": "Volver al folio"
+    }
   }
 }

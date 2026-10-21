@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import Chapter from './Chapter.astro';
+import photo from '../../assets/photo-cutout.png';
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const aboutHref = lang === 'es' ? '/sobre-mi' : '/en/about';
+---
+
+<Chapter id="quien" lang={lang} numeral="I" name={t('folio.chapters.intro')}>
+  <!-- The bust sits on the chapter's closing rule, so the cut edge of the photo reads as a baseline, not a floating sticker -->
+  <div class="px-5 md:px-12 pt-20 md:pt-32 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-14 border-b border-rule">
+    <h2 id="quien-title" class="lg:col-span-7 lg:row-start-1 text-[clamp(1.75rem,3.4vw,3.1rem)] leading-[1.12] tracking-[-0.02em] font-normal text-balance">
+      {t('folio.intro.lead')}
+    </h2>
+
+    <p class="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:pb-32 text-lg leading-relaxed text-ink-muted prose-measure self-end">
+      {t('hero.subtitle')}
+      <a href={aboutHref} class="block mt-8 text-ink text-xl underline hover:text-primary transition-colors w-fit">
+        {t('folio.intro.more')}
+      </a>
+    </p>
+
+    <figure class="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 self-end mx-auto w-full max-w-md lg:max-w-none">
+      <Image src={photo} alt={t('folio.intro.photoAlt')} width={1600} widths={[480, 800, 1200, 1600]} sizes="(min-width: 1024px) 40vw, 90vw" quality={88} format="webp" class="block w-full h-auto" />
+    </figure>
+  </div>
+</Chapter>
