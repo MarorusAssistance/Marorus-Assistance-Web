@@ -317,7 +317,7 @@
       "submitting": "Sending...",
       "success": "Message sent. I'll reply within 48 business hours.",
       "error": "Something went wrong. Please try again or write to me directly at marorusassistance@gmail.com",
-      "microcopy": "Your data is only used to reply to you. I don't sell or share it, or use it for marketing. Submissions go through Formspree (US).",
+      "microcopy": "Your data is only used to reply to you. I don't sell or share it, or use it for marketing.",
       "privacyLink": "More details in the privacy policy.",
       "anotherMessage": "Send another message"
     },

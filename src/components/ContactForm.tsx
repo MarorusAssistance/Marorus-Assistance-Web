@@ -40,6 +40,7 @@ type FormValues = {
 };
 
 const EMPTY: FormValues = { name: '', company: '', email: '', type: '', message: '', privacy: false };
+const HONEYPOT = 'website';
 
 export default function ContactForm({ lang, fields, labels, privacyUrl }: Props) {
   const err = lang === 'es'
@@ -94,15 +95,19 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
     }
     setStatus('submitting');
     try {
-      const res = await fetch('https://formspree.io/f/xwvveolo', {
+      // Our own endpoint (worker/index.ts): validates, queues and emails the message
+      const honeypot = (e.currentTarget as HTMLFormElement).elements.namedItem(HONEYPOT) as HTMLInputElement | null;
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          lang,
           name: values.name,
           company: values.company || undefined,
           email: values.email,
           type: values.type,
           message: values.message,
+          website: honeypot?.value ?? '',
         }),
       });
       setStatus(res.ok ? 'success' : 'error');
@@ -134,6 +139,11 @@ export default function ContactForm({ lang, fields, labels, privacyUrl }: Props)
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-7">
+      {/* Honeypot: hidden from people and assistive tech, bots tend to fill it */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label htmlFor="cf-website">Website</label>
+        <input id="cf-website" name={HONEYPOT} type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+      </div>
       {/* Nombre */}
       <div>
         <label htmlFor="cf-name" className={labelBase}>{fields.name} *</label>

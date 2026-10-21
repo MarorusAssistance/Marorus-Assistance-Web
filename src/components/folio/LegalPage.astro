@@ -54,8 +54,8 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         h: 'Quién más los ve',
         body: [
           `No cedo tus datos a nadie salvo obligación legal. Para que la web funcione me apoyo en estos proveedores, que los tratan por mi cuenta:`,
-          `<strong>Formspree, Inc.</strong> (EE. UU.): recibe los envíos del formulario y me los reenvía por email.<br /><strong>Calendly LLC</strong> (EE. UU.): agenda de reservas.<br /><strong>Cloudflare, Inc.</strong> (EE. UU.): alojamiento y red de la web.<br /><strong>Google</strong> (Gmail): buzón donde recibo los mensajes.`,
-          `Estos proveedores pueden tratar datos en Estados Unidos. Calendly, Cloudflare y Google declaran estar adheridos al Marco de Privacidad de Datos UE-EE. UU., reconocido por la Comisión Europea. Formspree no declara esa adhesión: al enviar el formulario consientes expresamente esa transferencia, sabiendo que EE. UU. puede no ofrecer un nivel de protección equivalente (art. 49.1.a RGPD). Si lo prefieres, escríbeme directamente por email.`,
+          `<strong>Cloudflare, Inc.</strong> (EE. UU.): alojamiento de la web y procesamiento del formulario. El mensaje se guarda en una cola y se me envía por correo; si el envío falla, queda un registro del error durante un máximo de 90 días para poder recuperarlo.<br /><strong>Google</strong> (Gmail): buzón donde recibo los mensajes.<br /><strong>Calendly LLC</strong> (EE. UU.): agenda de reservas, solo si la usas.`,
+          `Estos proveedores pueden tratar datos en Estados Unidos. Los tres declaran estar adheridos al Marco de Privacidad de Datos UE-EE. UU., reconocido por la Comisión Europea como garantía adecuada (art. 45 RGPD).`,
         ],
       },
       {
@@ -116,8 +116,8 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         h: 'Who else sees it',
         body: [
           `I do not share your data with anyone unless legally required. The site relies on these providers, which process data on my behalf:`,
-          `<strong>Formspree, Inc.</strong> (US): receives form submissions and forwards them to me by email.<br /><strong>Calendly LLC</strong> (US): booking calendar.<br /><strong>Cloudflare, Inc.</strong> (US): hosting and network.<br /><strong>Google</strong> (Gmail): the inbox where I receive messages.`,
-          `These providers may process data in the United States. Calendly, Cloudflare and Google state that they participate in the EU-US Data Privacy Framework recognised by the European Commission. Formspree does not state such participation: by sending the form you explicitly consent to that transfer, aware that the US may not offer an equivalent level of protection (Art. 49(1)(a) GDPR). If you prefer, email me directly.`,
+          `<strong>Cloudflare, Inc.</strong> (US): hosting and processing of the contact form. Your message is placed in a queue and emailed to me; if sending fails, a record of the error is kept for up to 90 days so it can be recovered.<br /><strong>Google</strong> (Gmail): the inbox where I receive messages.<br /><strong>Calendly LLC</strong> (US): booking calendar, only if you use it.`,
+          `These providers may process data in the United States. All three state that they participate in the EU-US Data Privacy Framework, recognised by the European Commission as an adequate safeguard (Art. 45 GDPR).`,
         ],
       },
       {

@@ -22,7 +22,7 @@ Personal portfolio and contact point for Manuel Romero (brand: Maroru's Assistan
 ## Operating Context
 
 - Visitors come mostly from Malt or LinkedIn, often on a laptop during evaluation, sometimes on mobile.
-- Contact paths: Calendly (https://calendly.com/marorusassistance/30min), Formspree form, email, LinkedIn, GitHub, Malt.
+- Contact paths: Calendly (https://calendly.com/marorusassistance/30min), own contact form (Cloudflare Worker + Queue + Email Routing), email, LinkedIn, GitHub, Malt.
 - Pricing shown: team reinforcement 350 €/day; closed projects quoted.
 
 ## Capabilities and Constraints
