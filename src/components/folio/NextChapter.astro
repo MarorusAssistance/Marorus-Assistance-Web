@@ -10,6 +10,8 @@ const t = useTranslations(lang);
 const dict = lang === 'es' ? esData : enData;
 
 const privacyUrl = lang === 'es' ? '/privacidad' : '/en/privacy';
+// Turnstile site key (public). Cloudflare's always-pass test key in `astro dev`.
+const turnstileSiteKey = import.meta.env.DEV ? '1x00000000000000000000AA' : '0x4AAAAAAFfbdPe-tydfOAWg';
 const f = dict.contact.form;
 const formLabels = {
   submit: f.submit, submitting: f.submitting, success: f.success, error: f.error,
@@ -56,7 +58,7 @@ const year = new Date().getFullYear();
     </div>
     <div class="px-5 md:px-12 py-14 md:py-20 border-t lg:border-t-0 border-rule">
       <h3 class="display text-5xl md:text-6xl mb-10">{t('contact.form.title')}</h3>
-      <ContactForm client:visible lang={lang} fields={f.fields as any} labels={formLabels} privacyUrl={privacyUrl} />
+      <ContactForm client:visible lang={lang} fields={f.fields as any} labels={formLabels} privacyUrl={privacyUrl} turnstileSiteKey={turnstileSiteKey} />
     </div>
   </div>
 

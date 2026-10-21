@@ -2,19 +2,18 @@
  * Worker in front of the static site.
  *
  * - Static pages are served from ./dist by the assets layer; only /api/* reaches this code.
- * - POST /api/contact validates the form and enqueues it (contact-messages), answering at once.
- * - The queue consumer sends each message to the owner's inbox through Cloudflare Email Routing.
- *   A failed send is retried with backoff; after max_retries it lands in contact-messages-dlq.
- * - Every failure is written to KV (CONTACT_FAILED, key failed:<id>) with the last error, so a
- *   poison message leaves a durable trace even after the queue's own retention expires.
+ * - POST /api/contact checks origin, rate limit, Turnstile and the fields, then emails the
+ *   message to the owner's inbox through Cloudflare Email Routing, right away.
+ * - If sending fails the visitor sees an error with the phone and email to reach out directly;
+ *   the failure is logged (Workers Logs) without the message content.
  */
 import { EmailMessage } from 'cloudflare:email';
 
 interface Env {
   ASSETS: Fetcher;
-  CONTACT_QUEUE: Queue<ContactMessage>;
-  CONTACT_FAILED: KVNamespace;
   EMAIL: SendEmail;
+  CONTACT_LIMIT: RateLimit;
+  TURNSTILE_SECRET: string;
   MAIL_FROM: string;
   MAIL_TO: string;
 }
@@ -32,15 +31,6 @@ interface ContactMessage {
   message: string;
 }
 
-interface FailureRecord {
-  message: ContactMessage;
-  attempts: number;
-  lastError: string;
-  status: 'retrying' | 'dead-letter';
-  updatedAt: string;
-}
-
-const DLQ = 'contact-messages-dlq';
 const TYPES: ContactType[] = ['team', 'project', 'general', 'other'];
 const TYPE_LABEL: Record<ContactType, string> = {
   team: 'Refuerzo de equipo IT',
@@ -50,7 +40,6 @@ const TYPE_LABEL: Record<ContactType, string> = {
 };
 const EMAIL_RE = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/;
 const ALLOWED_HOSTS = ['marorusassistance.com', 'www.marorusassistance.com', 'localhost'];
-const FAILED_TTL = 60 * 60 * 24 * 90; // 90 days
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
@@ -75,24 +64,15 @@ function parseContact(body: Record<string, unknown>): Omit<ContactMessage, 'id' 
   return { lang, name, company: company || undefined, email, type, message };
 }
 
-async function handleContact(request: Request, env: Env): Promise<Response> {
-  if (request.method !== 'POST') return json({ ok: false }, 405);
-  if (!allowedOrigin(request)) return json({ ok: false }, 403);
-
-  let body: Record<string, unknown>;
-  try {
-    body = await request.json();
-  } catch {
-    return json({ ok: false }, 400);
-  }
-  // Honeypot: a field people never see. Bots that fill it get a fake success.
-  if (str(body.website, 200)) return json({ ok: true }, 202);
-
-  const contact = parseContact(body);
-  if (!contact) return json({ ok: false }, 400);
-
-  await env.CONTACT_QUEUE.send({ id: crypto.randomUUID(), receivedAt: new Date().toISOString(), ...contact });
-  return json({ ok: true }, 202);
+async function verifyTurnstile(token: string, ip: string | null, secret: string): Promise<boolean> {
+  if (!token) return false;
+  const form = new FormData();
+  form.append('secret', secret);
+  form.append('response', token);
+  if (ip) form.append('remoteip', ip);
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form });
+  const data = (await res.json()) as { success: boolean };
+  return data.success === true;
 }
 
 // --- Email (raw MIME, UTF-8, base64 so no user text can inject headers) ---
@@ -114,7 +94,6 @@ function buildMime(m: ContactMessage, env: Env): string {
     `Tipo: ${TYPE_LABEL[m.type]}`,
     `Idioma de la web: ${m.lang}`,
     `Recibido: ${m.receivedAt}`,
-    `Id: ${m.id}`,
     '',
     m.message,
     '',
@@ -138,10 +117,38 @@ function buildMime(m: ContactMessage, env: Env): string {
   ].join('\r\n');
 }
 
-async function recordFailure(env: Env, record: FailureRecord) {
-  await env.CONTACT_FAILED.put(`failed:${record.message.id}`, JSON.stringify(record, null, 2), {
-    expirationTtl: FAILED_TTL,
-  });
+async function handleContact(request: Request, env: Env): Promise<Response> {
+  if (request.method !== 'POST') return json({ ok: false }, 405);
+  if (!allowedOrigin(request)) return json({ ok: false }, 403);
+
+  const ip = request.headers.get('cf-connecting-ip');
+  const { success: underLimit } = await env.CONTACT_LIMIT.limit({ key: ip ?? 'unknown' });
+  if (!underLimit) return json({ ok: false, error: 'rate-limited' }, 429);
+
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false }, 400);
+  }
+  // Honeypot: a field people never see. Bots that fill it get a fake success.
+  if (str(body.website, 200)) return json({ ok: true });
+
+  const contact = parseContact(body);
+  if (!contact) return json({ ok: false }, 400);
+
+  if (!(await verifyTurnstile(str(body.turnstile, 4096), ip, env.TURNSTILE_SECRET))) {
+    return json({ ok: false, error: 'challenge' }, 403);
+  }
+
+  const message: ContactMessage = { id: crypto.randomUUID(), receivedAt: new Date().toISOString(), ...contact };
+  try {
+    await env.EMAIL.send(new EmailMessage(env.MAIL_FROM, env.MAIL_TO, buildMime(message, env)));
+  } catch (err) {
+    console.error('contact email failed', message.id, err instanceof Error ? `${err.name}: ${err.message}` : String(err));
+    return json({ ok: false, error: 'send' }, 502);
+  }
+  return json({ ok: true });
 }
 
 export default {
@@ -150,42 +157,4 @@ export default {
     if (url.pathname === '/api/contact') return handleContact(request, env);
     return env.ASSETS.fetch(request);
   },
-
-  async queue(batch, env): Promise<void> {
-    // Dead-letter queue: the message exhausted its retries. Keep it in KV and stop.
-    if (batch.queue === DLQ) {
-      for (const msg of batch.messages) {
-        const previous = await env.CONTACT_FAILED.get<FailureRecord>(`failed:${msg.body.id}`, 'json');
-        await recordFailure(env, {
-          message: msg.body,
-          attempts: previous?.attempts ?? msg.attempts,
-          lastError: previous?.lastError ?? 'unknown',
-          status: 'dead-letter',
-          updatedAt: new Date().toISOString(),
-        });
-        console.error('contact message dead-lettered', msg.body.id);
-        msg.ack();
-      }
-      return;
-    }
-
-    for (const msg of batch.messages) {
-      try {
-        await env.EMAIL.send(new EmailMessage(env.MAIL_FROM, env.MAIL_TO, buildMime(msg.body, env)));
-        if (msg.attempts > 1) await env.CONTACT_FAILED.delete(`failed:${msg.body.id}`);
-        msg.ack();
-      } catch (err) {
-        const lastError = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-        console.error('contact email failed', msg.body.id, msg.attempts, lastError);
-        await recordFailure(env, {
-          message: msg.body,
-          attempts: msg.attempts,
-          lastError,
-          status: 'retrying',
-          updatedAt: new Date().toISOString(),
-        });
-        msg.retry({ delaySeconds: Math.min(60 * 2 ** (msg.attempts - 1), 3600) });
-      }
-    }
-  },
-} satisfies ExportedHandler<Env, ContactMessage>;
+} satisfies ExportedHandler<Env>;

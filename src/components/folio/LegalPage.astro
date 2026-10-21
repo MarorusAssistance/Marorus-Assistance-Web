@@ -54,7 +54,7 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         h: 'Quién más los ve',
         body: [
           `No cedo tus datos a nadie salvo obligación legal. Para que la web funcione me apoyo en estos proveedores, que los tratan por mi cuenta:`,
-          `<strong>Cloudflare, Inc.</strong> (EE. UU.): alojamiento de la web y procesamiento del formulario. El mensaje se guarda en una cola y se me envía por correo; si el envío falla, queda un registro del error durante un máximo de 90 días para poder recuperarlo.<br /><strong>Google</strong> (Gmail): buzón donde recibo los mensajes.<br /><strong>Calendly LLC</strong> (EE. UU.): agenda de reservas, solo si la usas.`,
+          `<strong>Cloudflare, Inc.</strong> (EE. UU.): alojamiento de la web y envío del formulario a mi correo, sin guardar una copia. También comprueba con Turnstile que quien envía el formulario es una persona y no un bot.<br /><strong>Google</strong> (Gmail): buzón donde recibo los mensajes.<br /><strong>Calendly LLC</strong> (EE. UU.): agenda de reservas, solo si la usas.`,
           `Estos proveedores pueden tratar datos en Estados Unidos. Los tres declaran estar adheridos al Marco de Privacidad de Datos UE-EE. UU., reconocido por la Comisión Europea como garantía adecuada (art. 45 RGPD).`,
         ],
       },
@@ -63,7 +63,7 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         body: [
           `Esta web no instala cookies propias ni de analítica. Las fuentes tipográficas se sirven desde la propia web, sin conexión a Google.`,
           `Solo se guarda en tu navegador el idioma que eliges, para mostrarte la web en ese idioma la próxima vez. Es un almacenamiento técnico necesario y no requiere consentimiento.`,
-          `Cloudflare puede usar una cookie técnica de seguridad para distinguir personas de bots.`,
+          `Cloudflare puede usar una cookie técnica de seguridad para distinguir personas de bots. Al empezar a rellenar el formulario se carga Turnstile, de Cloudflare, que analiza señales técnicas del navegador con el mismo fin; no se usa para publicidad ni seguimiento.`,
           `El calendario de Calendly no se carga hasta que pulsas "Ver disponibilidad". A partir de ese momento Calendly puede instalar sus propias cookies, según su <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">aviso de privacidad</a>. Si no quieres cookies de Calendly, usa el enlace "Abrir en Calendly", el formulario o el email.`,
         ],
       },
@@ -116,7 +116,7 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         h: 'Who else sees it',
         body: [
           `I do not share your data with anyone unless legally required. The site relies on these providers, which process data on my behalf:`,
-          `<strong>Cloudflare, Inc.</strong> (US): hosting and processing of the contact form. Your message is placed in a queue and emailed to me; if sending fails, a record of the error is kept for up to 90 days so it can be recovered.<br /><strong>Google</strong> (Gmail): the inbox where I receive messages.<br /><strong>Calendly LLC</strong> (US): booking calendar, only if you use it.`,
+          `<strong>Cloudflare, Inc.</strong> (US): hosting, and delivery of the contact form to my inbox without keeping a copy. It also uses Turnstile to check that the form is sent by a person rather than a bot.<br /><strong>Google</strong> (Gmail): the inbox where I receive messages.<br /><strong>Calendly LLC</strong> (US): booking calendar, only if you use it.`,
           `These providers may process data in the United States. All three state that they participate in the EU-US Data Privacy Framework, recognised by the European Commission as an adequate safeguard (Art. 45 GDPR).`,
         ],
       },
@@ -125,7 +125,7 @@ const content: Record<Locale, { title: string; updated: string; back: string; se
         body: [
           `This site sets no cookies of its own and no analytics cookies. Fonts are served from the site itself, with no connection to Google.`,
           `The only thing stored in your browser is the language you choose, so the site opens in that language next time. This is strictly necessary storage and needs no consent.`,
-          `Cloudflare may use a technical security cookie to tell people from bots.`,
+          `Cloudflare may use a technical security cookie to tell people from bots. When you start filling in the form, Cloudflare Turnstile loads and checks technical browser signals for the same purpose; it is not used for advertising or tracking.`,
           `The Calendly calendar does not load until you press "Show availability". From then on Calendly may set its own cookies, as described in its <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">privacy notice</a>. If you do not want Calendly cookies, use the "Open in Calendly" link, the form or email.`,
         ],
       },
