@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T08:19:48.577379+00:00",
+  "title": "Design System: Maroru's Assistance",
+  "extensions": {
+    "colorMeta": {
+      "maroon-ink": {
+        "role": "primary",
+        "displayName": "Maroon Ink",
+        "canonical": "oklch(49.1% 0.202 29.2)",
+        "tonalRamp": [
+          "oklch(15% 0.088 29.2)",
+          "oklch(25% 0.122 29.2)",
+          "oklch(35% 0.156 29.2)",
+          "oklch(45% 0.189 29.2)",
+          "oklch(58% 0.179 29.2)",
+          "oklch(70% 0.139 29.2)",
+          "oklch(82% 0.098 29.2)",
+          "oklch(95% 0.055 29.2)"
+        ]
+      },
+      "maroon-deep": {
+        "role": "primary",
+        "displayName": "Deep Maroon",
+        "canonical": "oklch(39.8% 0.163 29.2)",
+        "tonalRamp": [
+          "oklch(15% 0.072 29.2)",
+          "oklch(25% 0.099 29.2)",
+          "oklch(35% 0.126 29.2)",
+          "oklch(45% 0.153 29.2)",
+          "oklch(58% 0.145 29.2)",
+          "oklch(70% 0.113 29.2)",
+          "oklch(82% 0.08 29.2)",
+          "oklch(95% 0.045 29.2)"
+        ]
+      },
+      "maroon-on-charcoal": {
+        "role": "primary",
+        "displayName": "Maroon on Charcoal",
+        "canonical": "oklch(79.2% 0.076 28.0)",
+        "tonalRamp": [
+          "oklch(15% 0.036 28.0)",
+          "oklch(25% 0.048 28.0)",
+          "oklch(35% 0.061 28.0)",
+          "oklch(45% 0.074 28.0)",
+          "oklch(58% 0.07 28.0)",
+          "oklch(70% 0.055 28.0)",
+          "oklch(82% 0.039 28.0)",
+          "oklch(95% 0.023 28.0)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(96.5% 0.007 80.7)",
+        "tonalRamp": [
+          "oklch(15% 0.007 80.7)",
+          "oklch(25% 0.007 80.7)",
+          "oklch(35% 0.007 80.7)",
+          "oklch(45% 0.007 80.7)",
+          "oklch(58% 0.007 80.7)",
+          "oklch(70% 0.007 80.7)",
+          "oklch(82% 0.007 80.7)",
+          "oklch(95% 0.006 80.7)"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(92.4% 0.014 78.3)",
+        "tonalRamp": [
+          "oklch(15% 0.01 78.3)",
+          "oklch(25% 0.012 78.3)",
+          "oklch(35% 0.014 78.3)",
+          "oklch(45% 0.014 78.3)",
+          "oklch(58% 0.014 78.3)",
+          "oklch(70% 0.013 78.3)",
+          "oklch(82% 0.011 78.3)",
+          "oklch(95% 0.007 78.3)"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "oklch(29.2% 0.008 59.4)",
+        "tonalRamp": [
+          "oklch(15% 0.007 59.4)",
+          "oklch(25% 0.008 59.4)",
+          "oklch(35% 0.008 59.4)",
+          "oklch(45% 0.008 59.4)",
+          "oklch(58% 0.008 59.4)",
+          "oklch(70% 0.008 59.4)",
+          "oklch(82% 0.008 59.4)",
+          "oklch(95% 0.006 59.4)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(22.9% 0.006 56.1)",
+        "tonalRamp": [
+          "oklch(15% 0.006 56.1)",
+          "oklch(25% 0.006 56.1)",
+          "oklch(35% 0.006 56.1)",
+          "oklch(45% 0.006 56.1)",
+          "oklch(58% 0.006 56.1)",
+          "oklch(70% 0.006 56.1)",
+          "oklch(82% 0.006 56.1)",
+          "oklch(95% 0.005 56.1)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(46.5% 0.013 63.1)",
+        "tonalRamp": [
+          "oklch(15% 0.009 63.1)",
+          "oklch(25% 0.012 63.1)",
+          "oklch(35% 0.013 63.1)",
+          "oklch(45% 0.013 63.1)",
+          "oklch(58% 0.013 63.1)",
+          "oklch(70% 0.013 63.1)",
+          "oklch(82% 0.01 63.1)",
+          "oklch(95% 0.007 63.1)"
+        ]
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "On Dark",
+        "canonical": "oklch(93.7% 0.013 75.4)",
+        "tonalRamp": [
+          "oklch(15% 0.009 75.4)",
+          "oklch(25% 0.012 75.4)",
+          "oklch(35% 0.013 75.4)",
+          "oklch(45% 0.013 75.4)",
+          "oklch(58% 0.013 75.4)",
+          "oklch(70% 0.013 75.4)",
+          "oklch(82% 0.01 75.4)",
+          "oklch(95% 0.007 75.4)"
+        ]
+      },
+      "on-dark-muted": {
+        "role": "neutral",
+        "displayName": "On Dark Muted",
+        "canonical": "oklch(75.3% 0.021 69.9)",
+        "tonalRamp": [
+          "oklch(15% 0.013 69.9)",
+          "oklch(25% 0.016 69.9)",
+          "oklch(35% 0.02 69.9)",
+          "oklch(45% 0.021 69.9)",
+          "oklch(58% 0.021 69.9)",
+          "oklch(70% 0.018 69.9)",
+          "oklch(82% 0.014 69.9)",
+          "oklch(95% 0.009 69.9)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(85.5% 0.017 76.1)",
+        "tonalRamp": [
+          "oklch(15% 0.011 76.1)",
+          "oklch(25% 0.014 76.1)",
+          "oklch(35% 0.017 76.1)",
+          "oklch(45% 0.017 76.1)",
+          "oklch(58% 0.017 76.1)",
+          "oklch(70% 0.015 76.1)",
+          "oklch(82% 0.012 76.1)",
+          "oklch(95% 0.008 76.1)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule Dark",
+        "canonical": "oklch(39.1% 0.012 62.3)",
+        "tonalRamp": [
+          "oklch(15% 0.009 62.3)",
+          "oklch(25% 0.011 62.3)",
+          "oklch(35% 0.012 62.3)",
+          "oklch(45% 0.012 62.3)",
+          "oklch(58% 0.012 62.3)",
+          "oklch(70% 0.012 62.3)",
+          "oklch(82% 0.01 62.3)",
+          "oklch(95% 0.007 62.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Cover name, contact and about titles; uppercase, two lines at most."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Chapter titles, case titles, track-record names and method steps."
+      },
+      "section-head": {
+        "displayName": "Section Head",
+        "purpose": "Left-column heads of two-column blocks."
+      },
+      "running-head": {
+        "displayName": "Running Head",
+        "purpose": "Folio header of each home chapter: numeral left, name right, muted."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sans statements read rather than displayed: list rows, business problems, intro lead."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose and controls, capped at 68ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Meta lines, stack lists, field labels, captions; sentence case."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "cover-rise",
+        "value": "1100ms cubic-bezier(0.16, 1, 0.3, 1); translateY(0.35em) + blur(6px) to rest; staggered 0/120/420/560ms",
+        "purpose": "The one orchestrated entrance, cover only; disabled under reduced motion."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Cover rise and the 900ms case-plate hover scale (1.025)."
+      },
+      {
+        "name": "colour-transition",
+        "value": "150ms (Tailwind default transition-colors); 300ms on menu rows",
+        "purpose": "Hover colour shifts on links, buttons and menu rows."
+      },
+      {
+        "name": "pinned-gallery",
+        "value": "scroll-linked translate3d on the plate track, from 768px with motion allowed",
+        "purpose": "Chapter II signature; plain horizontal snap scroll otherwise."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main booking action and form submit.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Reservar llamada</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;height:48px;padding:0 24px;background:var(--color-primary,#b80000);color:var(--color-paper,#f6f3ee);font-family:var(--font-body,\"Hanken Grotesk\",sans-serif);font-weight:350;font-size:1rem;text-decoration:none;border-radius:0;transition:background-color .15s}.ds-btn-primary:hover{background:var(--color-primary-dark,#8a0000)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-primary,#b80000);outline-offset:3px}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Secondary solid action on a light ground.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Hablemos de tu proceso</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;height:48px;padding:0 24px;background:var(--color-ink,#1f1c1a);color:var(--color-paper,#f6f3ee);font-family:var(--font-body,\"Hanken Grotesk\",sans-serif);font-weight:350;text-decoration:none;border-radius:0;transition:background-color .15s}.ds-btn-ink:hover{background:var(--color-primary,#b80000)}.ds-btn-ink:focus-visible{outline:2px solid var(--color-primary,#b80000);outline-offset:3px}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Default secondary action: underlined, turns maroon on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">Ver caso</a>",
+      "css": ".ds-link{color:var(--color-ink,#1f1c1a);font-family:var(--font-body,\"Hanken Grotesk\",sans-serif);font-weight:350;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;transition:color .15s}.ds-link:hover{color:var(--color-primary,#b80000)}.ds-link:focus-visible{outline:2px solid var(--color-primary,#b80000);outline-offset:3px}"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Contact form field: label above, underline only.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Nombre *</span><input class=\"ds-input\" type=\"text\" placeholder=\"Tu nombre\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:4px;font-family:var(--font-body,\"Hanken Grotesk\",sans-serif)}.ds-field-label{font-size:.875rem;color:var(--color-ink-muted,#5f5852)}.ds-input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--color-ink-muted,#5f5852);border-radius:0;padding:12px 0;font:inherit;font-size:1.125rem;font-weight:350;color:var(--color-ink,#1f1c1a);transition:border-color .15s}.ds-input::placeholder{color:var(--color-ink-muted,#5f5852)}.ds-input:focus,.ds-input:focus-visible{outline:none;border-bottom-color:var(--color-primary,#b80000)}"
+    },
+    {
+      "name": "Spine",
+      "kind": "nav",
+      "refersTo": "spine",
+      "description": "Fixed left spine: menu button, vertical name, progress line.",
+      "html": "<aside class=\"ds-spine\"><button class=\"ds-spine-menu\" aria-label=\"Menu\"><span></span></button><a class=\"ds-spine-name\" href=\"#\">Maroru's Assistance</a><span class=\"ds-spine-progress\"></span></aside>",
+      "css": ".ds-spine{position:relative;width:64px;height:420px;display:flex;flex-direction:column;align-items:center;background:var(--color-charcoal,#2f2b28);color:var(--color-on-dark,#efe9e1);border-right:1px solid var(--color-rule-dark,#4a443f)}.ds-spine-menu{width:64px;height:64px;display:grid;place-items:center;background:none;border:0;border-bottom:1px solid var(--color-rule-dark,#4a443f);color:inherit;cursor:pointer;transition:color .15s}.ds-spine-menu span{display:block;width:28px;height:1px;background:currentColor;box-shadow:0 -6px 0 currentColor,0 6px 0 currentColor}.ds-spine-menu:hover{color:var(--color-primary-soft,#e8a9a0)}.ds-spine-menu:focus-visible{outline:2px solid var(--color-primary-soft,#e8a9a0);outline-offset:3px}.ds-spine-name{margin:auto 0;font-family:var(--font-display,\"Instrument Serif\",serif);font-size:1.25rem;letter-spacing:.025em;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;color:inherit;text-decoration:none}.ds-spine-progress{position:absolute;right:0;top:0;width:2px;height:40%;background:var(--color-primary,#b80000)}"
+    },
+    {
+      "name": "Running Head",
+      "kind": "custom",
+      "refersTo": "running-head",
+      "description": "Folio header of a chapter: numeral and name.",
+      "html": "<div class=\"ds-running-head\"><span>Capítulo II</span><span>Casos</span></div>",
+      "css": ".ds-running-head{display:flex;align-items:baseline;justify-content:space-between;padding:32px 48px 0;font-family:var(--font-display,\"Instrument Serif\",serif);font-size:1.5rem;color:var(--color-ink-muted,#5f5852);background:var(--color-paper,#f6f3ee)}"
+    },
+    {
+      "name": "Hairline List Row",
+      "kind": "card",
+      "refersTo": "list-row",
+      "description": "The list primitive: rows between 1px rules, no cards.",
+      "html": "<ol class=\"ds-rows\"><li><a class=\"ds-row\" href=\"#\"><span class=\"ds-row-title\">Agente de catálogo</span><span class=\"ds-row-meta\">Indra Group · 2026</span></a></li><li><a class=\"ds-row\" href=\"#\"><span class=\"ds-row-title\">Documentos a ERP</span><span class=\"ds-row-meta\">Wembley Studios</span></a></li></ol>",
+      "css": ".ds-rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--color-rule,#d6cec3);background:var(--color-paper,#f6f3ee)}.ds-rows li{border-bottom:1px solid var(--color-rule,#d6cec3)}.ds-row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:20px 0;color:var(--color-ink,#1f1c1a);text-decoration:none;font-family:var(--font-body,\"Hanken Grotesk\",sans-serif)}.ds-row-title{font-size:2.25rem;font-weight:350;letter-spacing:-.02em;line-height:1.25;transition:color .15s}.ds-row:hover .ds-row-title{color:var(--color-primary,#b80000)}.ds-row:focus-visible{outline:2px solid var(--color-primary,#b80000);outline-offset:3px}.ds-row-meta{font-size:.875rem;color:var(--color-ink-muted,#5f5852);text-align:right}"
+    },
+    {
+      "name": "Display Title on Charcoal",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Cover-scale serif title with the maroon italic motto.",
+      "html": "<div class=\"ds-cover\"><h1 class=\"ds-display\">Maroru's<br>Assistance</h1><p class=\"ds-motto\">Conecta. Desconecta. Reconecta.</p></div>",
+      "css": ".ds-cover{background:var(--color-charcoal,#2f2b28);color:var(--color-on-dark,#efe9e1);padding:48px}.ds-display{margin:0;font-family:var(--font-display,\"Instrument Serif\",serif);font-weight:400;font-size:clamp(3rem,10vw,7rem);line-height:.86;letter-spacing:-.02em;text-transform:uppercase}.ds-motto{margin:32px 0 0;font-family:var(--font-display,\"Instrument Serif\",serif);font-style:italic;font-size:2.25rem;color:var(--color-primary-soft,#e8a9a0)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bound Folio",
+    "overview": "The site is read like a book of measured work, not scanned like a SaaS landing page. Each chapter is a full-bleed ground (paper, bone or charcoal) that changes as the reader turns the page; proof is set as typography (names, figures, decisions) rather than packaged into cards, badges or stat bands. Enormous, light Instrument Serif carries titles and names; Hanken Grotesk carries everything read or operated. A fixed charcoal spine on the left holds the menu, the vertical name and a maroon reading-progress line.\n\nDensity is low and deliberate: wide gutters, long vertical rests between chapters, content hung on a 12-column grid with a narrow left column for the heading and a wide right column for the matter. Maroon is ink, not paint: it marks the motto, the primary action, links on hover and the active state, and almost nothing else. Motion is a single staggered rise on the cover; the only other moving thing is the chapter II gallery, where vertical scroll drives the case plates sideways. The folio follows the user-pinned reference khanhnguyen.design.",
+    "keyCharacteristics": [
+      "Alternating full-bleed chapter grounds: paper, bone, charcoal.",
+      "Display serif at poster scale, set tight (0.86 line height, -0.02em).",
+      "Hairline rules as the only structure; no cards, no shadows, no radii.",
+      "One accent, maroon, used as ink.",
+      "Fixed left spine with vertical name and scroll progress.",
+      "One orchestrated entrance (the cover); nothing else animates on entry."
+    ],
+    "rules": [
+      {
+        "name": "The Single Ink Rule",
+        "body": "Maroon is the only accent. It marks action, state and the motto; it never fills a section, a background panel or a decorative shape.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Maroons Rule",
+        "body": "On charcoal, maroon text is always `maroon-on-charcoal`, never `maroon-ink`. A maroon fill (button) may sit on charcoal because its text is paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone-Pair Rule",
+        "body": "Every ground has its own text pair: paper and bone take ink and ink-muted; charcoal takes on-dark and on-dark-muted. Every pair in the build is at least 4.5:1; new pairs must meet the same floor.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Names, Sans Speaks Rule",
+        "body": "Instrument Serif sets titles, names, certification codes and the motto. Anything that is a sentence to read, or a control to operate, is Hanken Grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "Nothing sits above a title as a small uppercase tracked label. Context comes from the running head and the left-column structure.",
+        "section": "typography"
+      },
+      {
+        "name": "The Motto Italic Rule",
+        "body": "Italic serif is reserved for the motto \"Conecta. Desconecta. Reconecta.\" in maroon. Elsewhere italic appears only as the grotesk's inline emphasis (for example a transparency note).",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Times, years and other aligned figures use tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Chapter Ground Rule",
+        "body": "Every chapter is one full-bleed ground. Grounds alternate so adjacent chapters never share a tone; there are no boxed panels inside a chapter.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hung Matter Rule",
+        "body": "Long-form content hangs in the 7-column right block with its head in the 4-column left block; the gap between them is the white space of the page, not a divider.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Folio Rule",
+        "body": "No box-shadow, no blur, no glass. If something needs separation, change the ground or draw a 1px rule.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Lists are rows between 1px rules, never cards. A row gets a rule, not a background, a border box or a radius.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** give every chapter a single full-bleed ground (paper, bone or charcoal) and its matching text pair.",
+      "**Do** set titles and names in Instrument Serif at 400 with 0.86 line height and -0.02em tracking.",
+      "**Do** keep prose in Hanken Grotesk at weight 350, capped at 68ch.",
+      "**Do** separate list items with 1px rules and nothing else.",
+      "**Do** use maroon-on-charcoal for any maroon text on a dark ground.",
+      "**Do** provide the reduced-motion fallback for any scroll-driven or entrance motion, as the cover and gallery do."
+    ],
+    "donts": [
+      "**Don't** use cards, boxed panels, shadows or rounded corners.",
+      "**Don't** add a second accent colour or fill a section with maroon.",
+      "**Don't** put small uppercase eyebrows or kickers above titles.",
+      "**Don't** animate content on entry outside the cover's single staggered rise.",
+      "**Don't** set body copy or controls in the display serif.",
+      "**Don't** reproduce the case thumbnails' deck typography on new surfaces."
+    ]
+  }
+}

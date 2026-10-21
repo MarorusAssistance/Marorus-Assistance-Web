@@ -1,0 +1,81 @@
+---
+import ContactForm from '../ContactForm';
+import { useTranslations, type Locale } from '../../i18n/utils';
+import esData from '../../i18n/es.json';
+import enData from '../../i18n/en.json';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+
+const privacyUrl = lang === 'es' ? '/privacidad' : '/en/privacy';
+const f = dict.contact.form;
+const formLabels = {
+  submit: f.submit, submitting: f.submitting, success: f.success, error: f.error,
+  microcopy: f.microcopy, privacyLink: f.privacyLink, anotherMessage: f.anotherMessage,
+};
+const socials = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/manuel-pedro-romero-ruiz/' },
+  { label: 'GitHub', href: 'https://github.com/MarorusAssistance' },
+  { label: 'Malt', href: 'https://www.malt.es/profile/manuelromero?origin=dashboard_profile_name' },
+];
+const year = new Date().getFullYear();
+---
+
+<section id="contacto" class="on-dark bg-charcoal text-on-dark" aria-labelledby="contacto-title">
+  <div class="px-5 md:px-12 pt-10 md:pt-12 flex flex-wrap justify-end gap-x-6 gap-y-2 text-base">
+    {socials.map((s) => (
+      <a href={s.href} target="_blank" rel="noopener noreferrer" class="hover:text-primary-soft transition-colors">{s.label}</a>
+    ))}
+  </div>
+
+  <div class="px-5 md:px-12 pt-10 md:pt-6 pb-16 md:pb-24">
+    <h2 id="contacto-title" class="display uppercase text-[clamp(4.2rem,15.5vw,15rem)]">{t('folio.next.title')}</h2>
+    <p class="mt-10 md:mt-14 text-lg md:text-xl text-on-dark-muted leading-relaxed max-w-[44rem]">{t('contact.intro')}</p>
+    <a href="mailto:marorusassistance@gmail.com" class="inline-block mt-10 text-[clamp(1.5rem,3.6vw,3rem)] tracking-[-0.02em] underline decoration-1 underline-offset-[0.18em] hover:text-primary-soft transition-colors break-all">
+      marorusassistance@gmail.com
+    </a>
+  </div>
+
+  <div class="bg-paper text-ink grid grid-cols-1 lg:grid-cols-2">
+    <div class="px-5 md:px-12 py-14 md:py-20 lg:border-r border-rule">
+      <h3 class="display text-5xl md:text-6xl">{t('contact.calendly.title')}</h3>
+      <p class="mt-4 text-ink-muted">{t('contact.calendly.subtitle')}</p>
+      <!-- Visible default until the embed loads (and if it never does): the booking link itself -->
+      <div class="calendly-wrap relative mt-8">
+        <div class="calendly-fallback absolute inset-0 flex flex-col items-start justify-start gap-4 pt-2">
+          <a href="https://calendly.com/marorusassistance/30min" target="_blank" rel="noopener noreferrer" class="inline-flex items-center h-12 px-6 bg-primary text-paper hover:bg-primary-dark transition-colors">{t('folio.cover.book')}</a>
+        </div>
+        <div class="calendly-inline-widget relative" data-url="https://calendly.com/marorusassistance/30min?hide_gdpr_banner=1&background_color=f6f3ee&primary_color=b80000" style="min-width:280px;height:700px;"></div>
+      </div>
+    </div>
+    <div class="px-5 md:px-12 py-14 md:py-20 border-t lg:border-t-0 border-rule">
+      <h3 class="display text-5xl md:text-6xl mb-10">{t('contact.form.title')}</h3>
+      <ContactForm client:visible lang={lang} fields={f.fields as any} labels={formLabels} privacyUrl={privacyUrl} />
+    </div>
+  </div>
+
+  <footer class="px-5 md:px-12 py-8 flex flex-col md:flex-row gap-3 md:items-center md:justify-between text-sm text-on-dark-muted border-t border-rule-dark">
+    <p>© {year} Maroru's Assistance · {t('footer.rights')}</p>
+    <p>{t('footer.tagline')}</p>
+    <a href={privacyUrl} class="underline hover:text-on-dark">{t('privacy.title')}</a>
+  </footer>
+</section>
+
+<script>
+  // Calendly loads only when its widget approaches the viewport
+  const widget = document.querySelector<HTMLElement>('.calendly-inline-widget');
+  if (widget) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        const s = document.createElement('script');
+        s.src = 'https://assets.calendly.com/assets/external/widget.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+    }, { rootMargin: '400px' });
+    io.observe(widget);
+  }
+</script>

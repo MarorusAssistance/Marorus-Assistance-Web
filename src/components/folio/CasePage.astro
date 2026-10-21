@@ -1,0 +1,99 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import NextChapter from './NextChapter.astro';
+import { getCases, caseHref } from '../../data/cases';
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale; slug: string }
+const { lang, slug } = Astro.props;
+const t = useTranslations(lang);
+
+const cases = getCases(lang);
+const i = cases.findIndex((c) => c.slug === slug);
+const c = cases[i];
+const next = cases[(i + 1) % cases.length];
+const home = lang === 'es' ? '/' : '/en/';
+const archFull = await getImage({ src: c.arch, format: 'webp', width: 3200 });
+---
+
+<Layout
+  title={`${c.title} — Maroru's Assistance`}
+  description={c.summary}
+  lang={lang}
+  esHref={caseHref(slug, 'es')}
+  enHref={caseHref(slug, 'en')}
+>
+  <article>
+    <header class="on-dark bg-charcoal text-on-dark px-5 md:px-12 pt-8 md:pt-10 pb-16 md:pb-24">
+      <a href={`${home}#casos`} class="text-sm text-on-dark-muted underline hover:text-on-dark">{t('folio.case.back')}</a>
+      <h1 class="display mt-16 md:mt-24 text-[clamp(3.4rem,8.5vw,8.5rem)] max-w-[16ch]">{c.title}</h1>
+      <div class="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-6">
+        <p class="lg:col-span-4 text-sm text-on-dark-muted leading-relaxed">{c.meta}</p>
+        <p class="lg:col-span-7 lg:col-start-6 text-lg md:text-xl leading-relaxed text-on-dark">{c.summary}</p>
+      </div>
+    </header>
+
+    <figure class="bg-bone px-5 md:px-12 py-12 md:py-20">
+      <!-- On narrow screens the diagram keeps a readable width and scrolls sideways -->
+      <div class="overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0" tabindex="0" aria-label={t('folio.case.architecture')}>
+        <a href={archFull.src} target="_blank" rel="noopener" class="block min-w-[110rem] md:min-w-0" aria-label={`${t('folio.case.openFull')}: ${t('folio.case.architecture')}`}>
+          <Image src={c.arch} alt={`${t('folio.case.architecture')} — ${c.title}`} widths={[900, 1600, 2400]} sizes="(min-width: 768px) calc(100vw - 10rem), 110rem" class="w-full h-auto block" loading="eager" />
+        </a>
+      </div>
+      <p class="md:hidden mt-3 text-sm text-ink-muted">{t('folio.case.swipe')}</p>
+      <figcaption class="mt-4 flex justify-between gap-6 text-sm text-ink-muted">
+        <span>{t('folio.case.architecture')}</span>
+        <a href={archFull.src} target="_blank" rel="noopener" class="underline hover:text-primary">{t('folio.case.openFull')}</a>
+      </figcaption>
+    </figure>
+
+    <section class="bg-paper px-5 md:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-10">
+      <h2 class="lg:col-span-4 display text-5xl md:text-6xl">{t('projects.labels.decisions')}</h2>
+      <ol class="lg:col-span-7 lg:col-start-6 border-t border-rule">
+        {c.decisions.map((d) => (
+          <li class="border-b border-rule py-5 text-lg leading-relaxed">{d}</li>
+        ))}
+      </ol>
+
+      <h2 class="lg:col-span-4 display text-5xl md:text-6xl lg:mt-10">{t('projects.labels.stack')}</h2>
+      <p class="lg:col-span-7 lg:col-start-6 lg:mt-10 text-lg leading-relaxed text-ink-muted">{c.stack.join(' · ')}</p>
+
+      {c.deliverables && (
+        <>
+          <h2 class="lg:col-span-4 display text-5xl md:text-6xl lg:mt-10">{t('projects.labels.deliverables')}</h2>
+          <p class="lg:col-span-7 lg:col-start-6 lg:mt-10 text-lg leading-relaxed text-ink-muted">{c.deliverables}</p>
+        </>
+      )}
+    </section>
+
+    {c.ops && (
+      <section class="bg-bone px-5 md:px-12 py-16 md:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-baseline">
+          <h2 class="lg:col-span-4 display text-5xl md:text-6xl">{t('folio.case.business')}</h2>
+          <p class="lg:col-span-7 lg:col-start-6 text-3xl md:text-4xl tracking-[-0.02em] leading-tight">{c.ops.title}</p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-10 border-t border-rule pt-10">
+          {[c.ops.pain, c.ops.solution, c.ops.result].map((b) => (
+            <div>
+              <h3 class="display text-3xl md:text-4xl">{b.label}</h3>
+              <p class="mt-4 text-ink-muted leading-relaxed">{b.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <nav class="bg-paper px-5 md:px-12 py-16 md:py-24 border-t border-rule" aria-label={t('folio.case.next')}>
+      <a href={next.href} class="group grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-baseline">
+        <span class="lg:col-span-4 display text-5xl md:text-6xl">{t('folio.case.next')}</span>
+        <span class="lg:col-span-7 lg:col-start-6">
+          <span class="block text-3xl md:text-5xl tracking-[-0.02em] leading-tight group-hover:text-primary transition-colors">{next.title}</span>
+          <span class="block mt-3 text-sm text-ink-muted">{next.meta}</span>
+        </span>
+      </a>
+    </nav>
+  </article>
+
+  <NextChapter lang={lang} />
+</Layout>

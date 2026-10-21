@@ -1,0 +1,55 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const MALT = 'https://www.malt.es/profile/manuelromero?origin=dashboard_profile_name';
+---
+
+<section class="on-dark relative bg-charcoal text-on-dark min-h-[88svh] md:min-h-[100svh] flex flex-col px-5 md:px-12 pt-8 md:pt-12 pb-8 md:pb-10 overflow-hidden" aria-labelledby="cover-title">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,22rem)] gap-8 lg:gap-16 items-start">
+    <h1 id="cover-title" class="display text-[clamp(4.2rem,15.5vw,15rem)] uppercase">
+      <span class="block cover-rise">Maroru's</span>
+      <span class="block cover-rise" style="animation-delay:120ms">Assistance</span>
+    </h1>
+    <p class="cover-rise text-lg md:text-xl leading-snug text-on-dark lg:pt-3" style="animation-delay:420ms">
+      {t('folio.cover.line')}
+    </p>
+  </div>
+
+  <p class="cover-rise display italic text-3xl md:text-5xl text-primary-soft mt-10 md:mt-14" style="animation-delay:560ms" lang="es">
+    Conecta. Desconecta. Reconecta.
+  </p>
+
+  <div class="mt-auto pt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_auto] gap-x-6 gap-y-8 items-end text-sm">
+    <p class="leading-relaxed text-on-dark-muted">
+      {t('folio.cover.place')}<br />
+      <span class="tabular text-on-dark" data-clock aria-label={t('folio.cover.clockLabel')}>(UTC+1)</span>
+    </p>
+    <p class="leading-relaxed text-on-dark-muted">
+      {t('folio.cover.since')}<br />{t('folio.cover.malter')}
+    </p>
+    <div class="sm:col-span-2 md:col-span-1 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a href="#contacto" class="inline-flex items-center h-12 px-6 bg-primary text-paper text-base hover:bg-primary-dark transition-colors">
+        {t('folio.cover.book')}
+      </a>
+      <a href={MALT} target="_blank" rel="noopener noreferrer" class="text-base underline hover:text-primary-soft transition-colors">
+        {t('folio.cover.malt')}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const clock = document.querySelector<HTMLElement>('[data-clock]');
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat(document.documentElement.lang === 'en' ? 'en-GB' : 'es-ES', {
+      timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit',
+    });
+    const suffix = document.documentElement.lang === 'en' ? 'Spain time' : 'hora peninsular';
+    const tick = () => { clock.textContent = `${fmt.format(new Date())} · ${suffix}`; };
+    tick();
+    setInterval(tick, 30_000);
+  }
+</script>

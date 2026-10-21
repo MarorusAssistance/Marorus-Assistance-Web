@@ -1,0 +1,451 @@
+{
+  "nav": {
+    "servicesIT": "IT Services",
+    "operations": "AI for business",
+    "projects": "Projects",
+    "about": "About",
+    "howIWork": "How I work",
+    "contact": "Contact",
+    "cta": "Book a call"
+  },
+  "hero": {
+    "badge": "GenAI · Agents · RAG · Evaluation · Azure · AWS",
+    "titleLine1": "Freelance GenAI Engineer.",
+    "titleLine2": "Production AI systems, measured.",
+    "titleAccent": "Not demos.",
+    "subtitle": "Freelance engineer specializing in agents and RAG on Azure and AWS. I built a multi-agent chat on AWS Bedrock for a large technology consultancy (73% correct answers, graded blind), took 2nd place in the datathon with Turing Challenge, and have been shipping production systems on Azure since 2023. Certified AI-102, DP-100, AZ-204.",
+    "ctaIT": "I'm a CTO / IT Lead",
+    "ctaOps": "I'm in business / operations"
+  },
+  "stats": {
+    "stat1": {
+      "number": "73%",
+      "label": "correct answers, graded blind, in a multi-agent chat on AWS Bedrock"
+    },
+    "stat2": {
+      "number": "2nd",
+      "label": "place in the datathon with Turing Challenge, solo and in one week"
+    },
+    "stat3": {
+      "number": "500/mo",
+      "label": "invoices verified in production in a B2B loyalty program"
+    },
+    "footnote": "Multi-agent chat for Indra Group via Malt (2026), Datathon with Turing Challenge (2026) and production systems at Wembley Studios (2023–2025)."
+  },
+  "servicesIT": {
+    "sectionLabel": "IT Services",
+    "title": "Technical services for IT teams",
+    "subtitle": "Team reinforcement or fixed-price projects.",
+    "card1": {
+      "title": "AI Agents and RAG Systems",
+      "body": "I design and build RAG systems and agents with LangGraph and LangChain: multi-agent orchestration, hybrid and multi-source retrieval, reranking and routing, over documentation, code, catalogs or dependency graphs. Proven stack on Azure (OpenAI, AI Search) and AWS (Bedrock, S3 Vectors).",
+      "proof": "Multi-agent chat over enterprise applications for a large technology consultancy: 73% correct answers, graded blind."
+    },
+    "card2": {
+      "title": "Document Automation with AI",
+      "body": "Pipelines to extract and ingest unstructured documents (PDFs, invoices, contracts) into ERPs or databases. Azure Document Intelligence, Functions, Service Bus, embeddings and fuzzy matching for noisy data.",
+      "proof": "In production: 500 invoices/month in a B2B loyalty system, 85–90% matching accuracy."
+    },
+    "card3": {
+      "title": "GenAI architecture and evaluation on Azure and AWS",
+      "body": "Architecture design for production LLMs and systematic evaluation of their quality and cost: harness with repeated runs to measure noise, blind grading, per-stage loss funnel, and configurations that prioritize cost or quality. Observability, secrets management and integration with existing systems (Teams, CRMs, ERPs). Certified AZ-204, DP-100, AI-102.",
+      "proof": "Around 180 measured experiments on a multi-agent chat; −30% cost with equal or better quality in prototype."
+    },
+    "rate": "Team reinforcement: 350€/day · Fixed-price projects: on quote · Availability: remote, UTC+1",
+    "cta": "Let's talk about your project"
+  },
+  "operations": {
+    "sectionLabel": "FOR BUSINESS",
+    "title": "AI for business",
+    "subtitle": "Applied AI systems for real processes: catalogs, documents, internal support and financial communication.",
+    "transparencyNote": "Real cases: three built as AI Engineer at Wembley Studios (2023–2025) and one built in the datathon with Turing Challenge (2026). I now offer them as a freelance service.",
+    "block1": {
+      "title": "Product search and catalog management",
+      "pain": {
+        "label": "The pain",
+        "text": "Your purchasing or sales team wastes time searching for products across PDF catalogs, scattered spreadsheets, or slow ERPs. Every supplier query means lost minutes, reference errors, and customers waiting."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A conversational assistant that understands natural language (\"I need a part compatible with model X\") and searches simultaneously across all your catalogs, data sheets, and product databases. Integrated where your team already works: Teams, internal web, or ERP."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "Assistant deployed for a retail / bath and sanitary client with 19,000 products and 5,000 spare parts indexed across 20 PDF catalogs. Although deployed in a B2C channel, the retrieval architecture is the same as what you'd need for an internal purchasing or sales search tool."
+      }
+    },
+    "block2": {
+      "title": "Invoices, delivery notes, and documents into ERP",
+      "pain": {
+        "label": "The pain",
+        "text": "Your admin team spends hours entering invoices and delivery notes into the ERP. Data arrives in different formats depending on the supplier, there are transcription errors, and the bottleneck is always the same: one person copying fields by hand."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A pipeline that receives documents by email or folder, extracts the relevant data using AI, cross-references it against your supplier and product master data, and prepares it for ERP upload. Ambiguous cases are flagged for human review before loading."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "I built a production invoice verification system for a retail / bath and sanitary client, as part of a loyalty program for professional installers. The system processes 500 invoices/month, extracts the sold products, and matches them against the catalog master with 85–90% accuracy on noisy data (imperfect OCR, abbreviations, partial references). The same architecture works for ERP upload."
+      }
+    },
+    "block3": {
+      "title": "Internal support and incident management",
+      "pain": {
+        "label": "The pain",
+        "text": "Your IT or internal support team answers the same questions over and over: \"how do I access X?\", \"where is the Y procedure?\", \"I need permissions for Z\". Repetitive queries consume the team, and the ones that actually need attention wait."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "A bot integrated in Teams that answers frequent questions from your internal documentation and, when it can't resolve, automatically creates a ticket in your system with the information already collected from the user. The support team receives clean cases, not raw questions."
+      },
+      "result": {
+        "label": "The result with a real client",
+        "text": "Support bot deployed in Microsoft Teams for an appraisal and valuation client, with automatic ticket creation from the conversation. Frequently asked questions no longer reach the human team; real cases arrive with context."
+      }
+    },
+    "block4": {
+      "title": "Analyst questions during earnings presentations",
+      "pain": {
+        "label": "The pain",
+        "text": "During an earnings presentation, analysts ask live about figures, charts and acronyms in the deck. Answering on the spot, with the exact figure and without going beyond what was presented, depends on someone finding the right slide in time."
+      },
+      "solution": {
+        "label": "The solution",
+        "text": "An assistant that transcribes questions as they are asked and answers in streaming relying only on the presentation slides, citing which ones each answer comes from. What isn't in the deck, it doesn't make up."
+      },
+      "result": {
+        "label": "The result in the datathon",
+        "text": "Built solo in one week for the datathon with Turing Challenge, where it took 2nd place. On a synthetic set of 24 questions: 23/24 top-1 accuracy with rephrasings (21/24 without them), 24/24 top-3 and 8/8 in English. The demo processes an audio file; the natural next step is a live microphone."
+      }
+    },
+    "closingLine": "If you recognize any of these pain points in your operation, let's talk. Each case starts from an analysis of the real process, not a template.",
+    "cta": "Tell me about your case"
+  },
+  "projects": {
+    "sectionLabel": "TRACK RECORD",
+    "title": "Projects",
+    "subtitle": "Real systems built and operated, plus personal lab work.",
+    "production": {
+      "heading": "Case studies",
+      "description": "Most recent first. The three Wembley Studios projects (Mar 2023 – Mar 2025) are still in production today."
+    },
+    "labs": {
+      "heading": "Labs",
+      "description": "Personal projects in development. Some have a demo, others are at architecture stage. The transparency about each project's status is deliberate."
+    },
+    "case1": {
+      "title": "Multi-agent RAG chat over enterprise applications",
+      "meta": "Indra Group (via Malt) · Freelance · AI Engineer · May – Oct 2026",
+      "summary": "Multi-agent chat that answers functional and technical questions about enterprise applications across several clients, configurable to prioritize cost or quality. The challenge: combining code, documentation and a dependency graph while keeping cost per query under control.",
+      "decisions": [
+        "LangGraph orchestration (orchestrator-workers pattern): an analyzer decomposes the question and plans the search, and several workers search and answer in parallel. Configurable with lightweight workers (Claude Haiku) to minimize cost, or with a Claude Sonnet synthesizer over all the evidence to maximize quality",
+        "Multi-source retrieval: vector search on S3 Vectors with a per-project index, per-source-type reranking (Cohere Rerank 3.5), logical chunking with a context sentence, and deterministic graph queries with semantic fallback",
+        "Rigorous evaluation: CLI harness with repeated runs to measure noise, blind grading and a per-stage loss funnel. Around 180 experiments",
+        "Roadmap with measured prototypes, on my own initiative: graph-guided planning (the analyzer receives the project context: nodes and relationships) and more granular workers (−30% cost in prototype)"
+      ],
+      "stack": ["Amazon Bedrock", "Claude Haiku", "Claude Sonnet", "LangGraph", "S3 Vectors", "Cohere Rerank 3.5", "AWS Lambda", "DynamoDB", "CloudWatch", "Python", "Hexagonal architecture"],
+      "deliverables": "Chat and evaluation harness code, technical documentation and handoff to the team, and a next-steps report with a prioritized recommendation."
+    },
+    "case2": {
+      "title": "Voice-based financial Q&A assistant",
+      "meta": "Datathon with Turing Challenge · Jul 2026 · 2nd place · solo, in one week",
+      "summary": "Transcribes analysts' questions during an earnings presentation and answers in streaming, relying only on the slides. The challenge: answering on the spot, sticking to the deck's content and without making things up.",
+      "decisions": [
+        "PPTX ingestion with offline enrichment: textual descriptions of charts, bilingual ES/EN rephrasings and synthetic questions",
+        "Hybrid retrieval on pgvector (70% vector, 30% full-text) so figures, years and acronyms aren't lost",
+        "Transcription with Azure AI Speech: conservative correction with a dynamic glossary and deterministic question detection, with an LLM only as fallback",
+        "Answers that cite only the retrieved slides, streamed question by question",
+        "The demo processes an audio file; the natural next step is a live microphone"
+      ],
+      "stack": ["Azure OpenAI", "GPT-5.4", "GPT-5.4-mini", "text-embedding-3-large", "Azure AI Speech", "Azure PostgreSQL", "pgvector", "FastAPI", "SSE", "Python"]
+    },
+    "production1": {
+      "title": "Conversational assistant over product catalog",
+      "meta": "Sector: Retail / Bath & Sanitary · Wembley Studios · 2024",
+      "summary": "Conversational system over ~20 supplier PDF catalogs, ~19,000 products, and ~5,000 spare parts. The main challenge was not generation — it was retrieval: catalogs had inconsistent structures, reference mismatches, and technical data in poorly scanned tables.",
+      "decisions": [
+        "Hybrid search (lexical + vector) to combine exact reference matches with semantic search",
+        "Semantic ranking on results to prioritize actual relevance",
+        "Multi-query retrieval to decompose complex questions",
+        "Tool-calling routing to avoid invoking the LLM when a deterministic query sufficed"
+      ],
+      "stack": ["Azure OpenAI", "Azure AI Search", "LangChain", "FastAPI", "Python"]
+    },
+    "production2": {
+      "title": "Automatic invoice verification in a loyalty program",
+      "meta": "Sector: Retail / Bath & Sanitary · Wembley Studios · 2024",
+      "summary": "B2B loyalty system where professional installers upload invoices from their distributors and earn points for the brand's products sold. The technical challenge was not generic extraction — it was reliable identification: in a multi-brand distributor invoice, you need to identify which products belong to the client brand, which references map to which catalog SKU, all with noisy input data (imperfect OCR, abbreviations, partial references).",
+      "decisions": [
+        "Azure Document Intelligence for structured extraction of invoice line items",
+        "Embeddings + fuzzy matching + layered heuristics for product matching against the catalog master with noisy data",
+        "Measured accuracy of 85–90% in matching against master data",
+        "Asynchronous architecture with Azure Functions and Service Bus for volume spike tolerance (500 invoices/month)",
+        "Human validation before crediting points on all processed cases"
+      ],
+      "stack": ["Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "PostgreSQL", "Python"]
+    },
+    "production3": {
+      "title": "Internal support bot on Teams",
+      "meta": "Sector: Appraisal & Valuation · Wembley Studios · 2024",
+      "summary": "Conversational bot integrated in Microsoft Teams that answers questions about internal documentation and, when it cannot resolve, opens a ticket in the management system with the context already collected from the user.",
+      "decisions": [
+        "RAG over internal document base with per-user access control",
+        "Intent detection to distinguish resolvable queries vs. incidents requiring a ticket",
+        "Enriched ticket creation: the bot extracts data from the conversation (affected system, problem description, urgency) and structures it before creating the incident"
+      ],
+      "stack": ["Azure OpenAI", "Microsoft Bot Framework", "Teams SDK", "Python"]
+    },
+    "lab1": {
+      "title": "Logiassist",
+      "summary": "RAG assistant for a fictional logistics company, built as a demo and technical portfolio piece: web chat with streamed answers, plus an API. Hybrid search (pgvector + Spanish full-text) with a reranker and an evidence check before answering, layered defences against prompt injection, and EU-resident models only (Microsoft Foundry, EU Data Zone). Evaluated with an LLM judge and the real cost of every run.",
+      "status": "In development · the evaluation rejects 100% of attacks; I'm now improving retrieval",
+      "statusType": "in-development",
+      "videoUrl": "PENDING",
+      "demoUrl": "https://internal-assistant-demo-web.azurewebsites.net/demo",
+      "githubUrl": "https://github.com/MarorusAssistance/Logiassist"
+    },
+    "lab2": {
+      "title": "Document Intelligent Processor",
+      "summary": "Automatic extraction of data from unstructured documents (invoices, delivery notes, contracts) into ERP, with a matching layer against master data and human review for ambiguous cases. Generalization of the pattern used in Project 2, reoriented toward the ERP upload use case.",
+      "status": "Demo in development · no public visual demo (backend pipeline)",
+      "statusType": "in-development",
+      "githubUrl": "https://github.com/MarorusAssistance/Document-Intelligent-Processor"
+    },
+    "lab3": {
+      "title": "Agent Orchestrator (LOLO)",
+      "summary": "Gateway that routes requests to multiple specialized agents based on intent: shopping agent, support agent, document agent. Designed for clients who already have several use cases and need a common orchestration, authentication, and observability layer.",
+      "status": "Architecture vision · no implementation yet",
+      "statusType": "architecture-only",
+      "githubUrl": "https://github.com/MarorusAssistance/LOLO.openclaw-gateway"
+    },
+    "activeFronts": {
+      "title": "Other active fronts",
+      "items": [
+        "Lead management agent integrated with CRM (Notion)",
+        "Assistant on n8n with local LLMs for on-premise scenarios"
+      ]
+    },
+    "labels": {
+      "decisions": "Technical decisions",
+      "deliverables": "Deliverables",
+      "stack": "Stack",
+      "viewDiagram": "View architecture",
+      "viewVideo": "Watch video",
+      "viewDemo": "Try demo",
+      "viewGithub": "View on GitHub",
+      "closeModal": "Close",
+      "statusFunctional": "Functional",
+      "statusInDevelopment": "In development",
+      "statusArchitectureOnly": "Architecture only"
+    }
+  },
+  "about": {
+    "sectionLabel": "ABOUT",
+    "title": "Manuel Romero",
+    "bio": [
+      "I'm Manuel Romero. I've been building generative AI systems for B2B since 2023.",
+      "I started as AI Engineer at Wembley Studios, a B2B technical consultancy, where over two years I designed and deployed production systems for real clients: a conversational assistant over product catalogs with 19,000 references in retail, a loyalty system with automatic invoice verification for professionals in the same sector, and an internal support bot integrated with Teams for a company in the appraisal and valuation sector. These were not POCs or demos — they are systems still running today.",
+      "Since March 2025 I work as a freelancer, and I'm a Super Malter on Malt. My current focus is three specific services where I can deliver deep value: agents and RAG systems, document automation with AI, and GenAI architecture. I prefer going slow and specializing rather than offering a broad catalog without depth.",
+      "In 2026, via Malt, I built a multi-agent RAG chat over enterprise applications on AWS Bedrock for Indra Group, and took 2nd place in the datathon with Turing Challenge with a voice-based financial Q&A assistant. Since April 2026 I also work with LILT, designing Spanish-language programming tasks to train and evaluate AI agents for leading AI labs.",
+      "I have production systems on Azure (with three official certifications: AI-102, DP-100, AZ-204) and have built multi-agent systems on AWS Bedrock, using the Python AI ecosystem: LangChain, LangGraph, FastAPI, PostgreSQL with pgvector. But technology is the tool; what I sell is the judgment to decide what to build, how, and what not to build, with quality and cost measured through systematic evaluation. The specialization is in the problem, not in the vendor's logo."
+    ],
+    "skillsTitle": "Stack and experience",
+    "skills": {
+      "aiLlm": { "label": "AI languages and frameworks", "items": ["Python", "LangChain", "LangGraph", "FastAPI", "prompt engineering", "tool calling", "multi-agent systems"] },
+      "cloud": { "label": "Cloud: Azure and AWS", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure AI Speech", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "Amazon Bedrock", "AWS Lambda", "DynamoDB", "S3 Vectors"] },
+      "data": { "label": "Data, search and storage", "items": ["PostgreSQL", "pgvector", "SQL", "embeddings", "hybrid search", "semantic search", "OCR"] },
+      "quality": { "label": "LLM quality and evaluation", "items": ["LangSmith", "LLM-as-judge", "heuristic evals", "blind grading", "evaluation harness", "LLM observability"] },
+      "integration": { "label": "Integration and operations", "items": ["Docker", "CI/CD", "async architectures", "API integration", "Microsoft Teams"] },
+      "alt": { "label": "Alternative environments", "items": ["n8n", "local LLMs / on-premise"] }
+    },
+    "certificationsTitle": "Certifications",
+    "certificationsSubtitle": "Three official Microsoft Azure certifications as verifiable proof of technical competence.",
+    "certifications": [
+      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Design and implementation of AI solutions on Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/8458E78A893EB486?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Design and operation of machine learning solutions on Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/1C2E34127EC4F30C?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Development of applications and services on the Azure platform.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-developer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/7494AEF2236C87DC?sharingId=1D7BF3F93DD8D96E" }
+    ]
+  },
+  "howIWork": {
+    "sectionLabel": "HOW I WORK",
+    "title": "Connect. Disconnect. Reconnect.",
+    "intro": "Building an AI system in a company is not just deploying code. It means understanding the real process, integrating it into operations, and making the team adopt it. My way of working comes down to three words.",
+    "step1": {
+      "letter": "C",
+      "title": "Connect",
+      "subtitle": "Before proposing architecture, I understand the process.",
+      "body": "Every company has its own way of working, its tools, its real bottlenecks (which are almost never the ones that appear in the initial brief). The first job is to identify where AI adds real value and where it's more efficient not to use it. Not every process needs an LLM behind it; some just need a well-written SQL query or a procedure change.\n\nThis phase is conversation, observation, and a lot of questions. The goal is to come out with a clear map of what to build, what not to build, and why."
+    },
+    "step2": {
+      "letter": "D",
+      "title": "Disconnect",
+      "subtitle": "The system runs so your team doesn't have to babysit it.",
+      "body": "Once the use case is identified, I build it so that repetitive work stops going through people. Invoices are processed automatically, frequent queries are resolved without intervention, data is centralized and queryable. What used to take hours now happens in the background.\n\nThe goal is not just to automate tasks — it's to free up attention. To let your team stop spending energy on the mechanical so they can spend it on what requires judgment."
+    },
+    "step3": {
+      "letter": "R",
+      "title": "Reconnect",
+      "subtitle": "Less operational noise, more room for what matters.",
+      "body": "When the system works, something happens that goes beyond ROI: people stop rushing around all day. The operations manager leaves at 6pm instead of 9pm. The CTO stops fighting fires and starts thinking three months ahead. The team stops being scattered and starts having mental space.\n\nIt sounds soft for a technical service, but it's the result I see again and again. A well-built system doesn't just save costs; it returns time and lowers the temperature of operations. And that time is what you decide how to use: on strategy, on the team, or on your life outside of work."
+    },
+    "cta": "Recognize the pattern? Let's talk →"
+  },
+  "contact": {
+    "sectionLabel": "CONTACT",
+    "title": "Let's talk",
+    "intro": "If you have a project in mind, an operational problem you think AI can solve, or just want to validate a technical idea, write to me. I respond within 48 business hours.",
+    "calendly": {
+      "title": "Book a call",
+      "subtitle": "30 minutes. No commitment. Tell me your case and I'll let you know if I can help."
+    },
+    "form": {
+      "title": "Or write to me directly",
+      "fields": {
+        "name": "Name",
+        "company": "Company (optional)",
+        "email": "Email",
+        "type": "How did you find me?",
+        "typeOptions": { "team": "IT team reinforcement", "project": "Fixed-price project", "general": "General inquiry", "other": "Other" },
+        "message": "Tell me briefly",
+        "privacy": "I have read and accept the privacy policy"
+      },
+      "submit": "Send",
+      "submitting": "Sending...",
+      "success": "Message sent. I'll reply within 48 business hours.",
+      "error": "Something went wrong. Please try again or write to me directly at marorusassistance@gmail.com",
+      "microcopy": "Your data is only used to reply to you. I don't share it or use it for marketing.",
+      "privacyLink": "More details in the privacy policy.",
+      "anotherMessage": "Send another message"
+    },
+    "alternativeContact": {
+      "label": "Also on:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt"
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "lastUpdated": "Last updated: [PENDING]",
+    "placeholder": "This page is under construction. If you need information about how your data is handled when you contact me, write to me directly at marorusassistance@gmail.com."
+  },
+  "footer": {
+    "tagline": "Agents and RAG in production, with measured quality and cost",
+    "rights": "All rights reserved",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt",
+      "email": "Email"
+    }
+  },
+  "meta": {
+    "title": "Maroru's Assistance — Agents and RAG in production, with measured quality and cost",
+    "description": "Freelance AI Engineer. I build production agents and RAG systems on Azure and AWS, with quality and cost measured through systematic evaluation."
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN",
+    "ariaLabel": "Change language"
+  },
+  "folio": {
+    "menu": "Menu",
+    "close": "Close",
+    "home": "Home",
+    "chapter": "Chapter",
+    "skip": "Skip to content",
+    "cover": {
+      "line": "Freelance AI Engineer. I build production agents and RAG systems on Azure and AWS, with their quality and cost measured.",
+      "place": "Spain · remote",
+      "clockLabel": "Local time",
+      "since": "Freelance since March 2025",
+      "malter": "Super Malter on Malt",
+      "book": "Book a call",
+      "malt": "Malt profile",
+      "scroll": "Scroll"
+    },
+    "chapters": {
+      "intro": "Who",
+      "work": "The work",
+      "services": "Services",
+      "business": "For business",
+      "record": "Track record",
+      "method": "How I work",
+      "next": "Next chapter"
+    },
+    "intro": {
+      "lead": "Hi, I'm Manuel. I take agents and RAG systems to production and measure their quality and cost instead of promising them.",
+      "more": "More about me",
+      "photoAlt": "Manuel Romero"
+    },
+    "work": {
+      "title": "The work",
+      "lead": "Five real systems, most recent first. Each with its architecture and what was measured.",
+      "hint": "Keep scrolling to move through the cases",
+      "listTitle": "All cases",
+      "read": "Read the case",
+      "labsTitle": "Labs",
+      "labsLead": "Personal projects. The status of each one is stated as it is.",
+      "github": "Code on GitHub",
+      "video": "Watch video",
+      "demo": "Try demo"
+    },
+    "business": {
+      "seeCase": "See the case"
+    },
+    "record": {
+      "title": "Track record",
+      "certsTitle": "Certifications",
+      "verify": "Verify",
+      "entries": [
+        {
+          "name": "Indra Group",
+          "note": "via Malt",
+          "years": "May – Oct 2026",
+          "proof": "Multi-agent RAG chat over enterprise applications: 73% correct answers, graded blind."
+        },
+        {
+          "name": "LILT",
+          "note": "freelance",
+          "years": "Apr 2026 – now",
+          "proof": "Designing Spanish-language programming tasks to train and evaluate AI agents for leading AI labs."
+        },
+        {
+          "name": "Turing Challenge",
+          "note": "datathon · solo",
+          "years": "Jul 2026",
+          "proof": "2nd place with a voice-based financial Q&A assistant, built in one week."
+        },
+        {
+          "name": "Maroru's Assistance",
+          "note": "freelance",
+          "years": "Mar 2025 – now",
+          "proof": "Agents, RAG and document automation for B2B companies. Super Malter on Malt."
+        },
+        {
+          "name": "Wembley Studios",
+          "note": "AI Engineer",
+          "years": "Mar 2023 – Mar 2025",
+          "proof": "Three production systems: assistant over 19,000 products, 500 invoices/month verified and a Teams support bot."
+        }
+      ]
+    },
+    "next": {
+      "title": "Next chapter",
+      "emailLabel": "Write to"
+    },
+    "case": {
+      "back": "Back to the cases",
+      "architecture": "Architecture",
+      "openFull": "Open full size",
+      "business": "For business",
+      "next": "Next case",
+      "challenge": "The case",
+      "swipe": "Swipe to see the whole diagram"
+    },
+    "aboutPage": {
+      "back": "Back to the folio"
+    }
+  }
+}

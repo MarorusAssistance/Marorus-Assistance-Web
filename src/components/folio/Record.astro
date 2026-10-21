@@ -1,0 +1,43 @@
+---
+import Chapter from './Chapter.astro';
+import { useTranslations, type Locale } from '../../i18n/utils';
+import esData from '../../i18n/es.json';
+import enData from '../../i18n/en.json';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = lang === 'es' ? esData : enData;
+const entries = dict.folio.record.entries;
+const certs = dict.about.certifications as Array<{ code: string; name: string; verifyUrl: string }>;
+---
+
+<Chapter id="trayectoria" lang={lang} numeral="V" name={t('folio.chapters.record')} tone="bone">
+  <div class="px-5 md:px-12 pt-16 md:pt-24 pb-24 md:pb-36">
+    <h2 id="trayectoria-title" class="sr-only">{t('folio.record.title')}</h2>
+    <ol class="border-t border-rule">
+      {entries.map((e) => (
+        <li class="border-b border-rule py-7 md:py-9 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-3 items-baseline">
+          <p class="lg:col-span-6 display text-[clamp(3rem,7vw,6.5rem)] leading-[0.9]">
+            {e.name}
+          </p>
+          <p class="lg:col-span-2 text-sm text-ink-muted tabular">{e.years}<br />{e.note}</p>
+          <p class="lg:col-span-4 text-ink leading-relaxed">{e.proof}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-20 md:mt-28 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-6">
+      <h3 class="lg:col-span-4 text-sm text-ink-muted">{t('folio.record.certsTitle')}</h3>
+      <ul class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {certs.map((c) => (
+          <li>
+            <p class="display text-5xl">{c.code}</p>
+            <p class="mt-2 text-sm text-ink-muted leading-snug">{c.name}</p>
+            <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm underline hover:text-primary">{t('folio.record.verify')}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Chapter>

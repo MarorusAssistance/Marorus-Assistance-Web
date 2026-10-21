@@ -1,0 +1,451 @@
+{
+  "nav": {
+    "servicesIT": "Servicios IT",
+    "operations": "IA para negocio",
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "howIWork": "Cómo trabajo",
+    "contact": "Contacto",
+    "cta": "Reservar llamada"
+  },
+  "hero": {
+    "badge": "GenAI · Agentes · RAG · Evaluación · Azure · AWS",
+    "titleLine1": "Freelance GenAI Engineer.",
+    "titleLine2": "Sistemas de IA en producción, medidos.",
+    "titleAccent": "No demos.",
+    "subtitle": "Ingeniero freelance especializado en agentes y RAG sobre Azure y AWS. He construido un chat multiagente sobre AWS Bedrock para una gran consultora tecnológica (73 % de respuestas correctas, calificadas a ciegas), quedé 2º en el datatón con Turing Challenge y llevo sistemas a producción sobre Azure desde 2023. Certificado AI-102, DP-100, AZ-204.",
+    "ctaIT": "Soy CTO / IT Lead",
+    "ctaOps": "Soy de negocio / operaciones"
+  },
+  "stats": {
+    "stat1": {
+      "number": "73 %",
+      "label": "respuestas correctas, calificadas a ciegas, en chat multiagente sobre AWS Bedrock"
+    },
+    "stat2": {
+      "number": "2º",
+      "label": "puesto en el datatón con Turing Challenge, en solitario y en una semana"
+    },
+    "stat3": {
+      "number": "500/mes",
+      "label": "facturas verificadas en producción en un programa de loyalty B2B"
+    },
+    "footnote": "Chat multiagente para Indra Group vía Malt (2026), Datatón con Turing Challenge (2026) y sistemas en producción en Wembley Studios (2023-2025)."
+  },
+  "servicesIT": {
+    "sectionLabel": "Servicios IT",
+    "title": "Servicios técnicos para equipos IT",
+    "subtitle": "Refuerzo de equipo o proyectos cerrados.",
+    "card1": {
+      "title": "Agentes IA y sistemas RAG",
+      "body": "Diseño e implemento sistemas RAG y agentes con LangGraph y LangChain: orquestación multiagente, retrieval híbrido y multifuente, rerank y routing, sobre documentación, código, catálogos o grafos de dependencias. Stack probado en Azure (OpenAI, AI Search) y AWS (Bedrock, S3 Vectors).",
+      "proof": "Chat multiagente sobre aplicaciones empresariales para una gran consultora tecnológica: 73 % de respuestas correctas, calificadas a ciegas."
+    },
+    "card2": {
+      "title": "Automatización documental con IA",
+      "body": "Pipelines de extracción e ingesta de documentos no estructurados (PDFs, facturas, contratos) hacia ERPs o bases de datos. Azure Document Intelligence, Functions, Service Bus, embeddings y fuzzy matching para datos ruidosos.",
+      "proof": "En producción: 500 facturas/mes en sistema de loyalty B2B, 85-90% de precisión de matching."
+    },
+    "card3": {
+      "title": "Arquitectura y evaluación GenAI en Azure y AWS",
+      "body": "Diseño de arquitecturas para LLMs en producción y evaluación sistemática de su calidad y coste: harness con repeticiones para medir el ruido, calificación a ciegas, embudo de pérdidas por etapa y configuraciones que priorizan coste o calidad. Observabilidad, gestión de secretos e integración con sistemas existentes (Teams, CRMs, ERPs). Certificado AZ-204, DP-100, AI-102.",
+      "proof": "Unos 180 experimentos medidos en un chat multiagente; −30 % de coste con calidad igual o superior en prototipo."
+    },
+    "rate": "Refuerzo de equipo: 350€/jornada · Proyectos cerrados: a presupuesto · Disponibilidad: remoto, UTC+1",
+    "cta": "Hablemos de tu proyecto"
+  },
+  "operations": {
+    "sectionLabel": "PARA NEGOCIO",
+    "title": "IA para negocio",
+    "subtitle": "Sistemas de IA aplicada a procesos reales: catálogos, documentos, soporte interno y comunicación financiera.",
+    "transparencyNote": "Casos reales: tres desarrollados como AI Engineer en Wembley Studios (2023-2025) y uno construido en el datatón con Turing Challenge (2026). Hoy los ofrezco como servicio freelance.",
+    "block1": {
+      "title": "Búsqueda de productos y catálogos",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo de compras o ventas pierde tiempo buscando productos en catálogos PDF, hojas de cálculo dispersas o ERPs lentos. Cada consulta a proveedor son minutos perdidos, errores de referencia y clientes esperando."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un asistente conversacional que entiende lenguaje natural (\"necesito un repuesto compatible con el modelo X\") y busca a la vez en todos tus catálogos, fichas técnicas y bases de datos de producto. Integrado donde tu equipo ya trabaja: Teams, web interna o ERP."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "Asistente desplegado para un cliente del sector retail / sanitarios y baño con 19.000 productos y 5.000 repuestos indexados sobre 20 catálogos PDF. Aunque se desplegó en canal B2C, la arquitectura de recuperación es la misma que necesitarías para un buscador interno de compras o ventas."
+      }
+    },
+    "block2": {
+      "title": "Facturas, albaranes y documentos hacia ERP",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo administrativo dedica horas a meter facturas y albaranes en el ERP. Los datos llegan en formatos distintos según el proveedor, hay errores de transcripción, y el cuello de botella siempre es el mismo: una persona copiando campos a mano."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un pipeline que recibe los documentos por email o carpeta, extrae los datos relevantes con IA, los contrasta con tus maestros de proveedores y productos, y los prepara para volcado al ERP. Los casos ambiguos se marcan para revisión humana antes de cargar."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "He construido un sistema de verificación de facturas en producción para un cliente del sector retail / sanitarios y baño, dentro de un programa de loyalty para profesionales instaladores. El sistema procesa 500 facturas/mes, extrae los productos vendidos y matchea contra el maestro de catálogo con 85-90% de precisión sobre datos ruidosos (OCR imperfecto, abreviaturas, referencias parciales). La misma arquitectura sirve para volcado a ERP."
+      }
+    },
+    "block3": {
+      "title": "Soporte interno y gestión de incidencias",
+      "pain": {
+        "label": "El dolor",
+        "text": "Tu equipo de IT o de soporte interno responde una y otra vez a las mismas preguntas: \"¿cómo accedo a X?\", \"¿dónde está el procedimiento de Y?\", \"necesito permisos para Z\". Las consultas repetitivas consumen al equipo y las que sí necesitan atención esperan."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un bot integrado en Teams que responde dudas frecuentes a partir de tu documentación interna y, cuando no puede resolver, crea automáticamente el ticket en tu sistema con la información ya recogida del usuario. El equipo de soporte recibe casos limpios, no preguntas en bruto."
+      },
+      "result": {
+        "label": "El resultado en cliente real",
+        "text": "Bot de soporte desplegado en Microsoft Teams para un cliente del sector tasación y valoración, con creación automática de tickets a partir de la conversación. Las preguntas frecuentes dejan de llegar al equipo humano; los casos reales llegan con contexto."
+      }
+    },
+    "block4": {
+      "title": "Preguntas de analistas en presentaciones de resultados",
+      "pain": {
+        "label": "El dolor",
+        "text": "En una presentación de resultados, los analistas preguntan en directo por cifras, gráficos y siglas del deck. Responder al momento, con el dato exacto y sin salirse de lo presentado, depende de que alguien encuentre la slide adecuada a tiempo."
+      },
+      "solution": {
+        "label": "La solución",
+        "text": "Un asistente que transcribe las preguntas mientras se hacen y responde en streaming apoyándose solo en las slides de la presentación, citando de cuáles sale cada respuesta. Lo que no está en el deck, no lo inventa."
+      },
+      "result": {
+        "label": "El resultado en el datatón",
+        "text": "Construido en solitario en una semana para el datatón con Turing Challenge, donde quedó 2º. Sobre un set sintético de 24 preguntas: acierto top-1 de 23/24 con reformulaciones (21/24 sin ellas), 24/24 en top-3 y 8/8 en inglés. La demo procesa un fichero de audio; el siguiente paso natural es micrófono en directo."
+      }
+    },
+    "closingLine": "Si reconoces alguno de estos dolores en tu operación, hablemos. Cada caso parte de un análisis del proceso real, no de una plantilla.",
+    "cta": "Cuéntame tu caso"
+  },
+  "projects": {
+    "sectionLabel": "TRAYECTORIA",
+    "title": "Proyectos",
+    "subtitle": "Sistemas reales construidos y operados, más laboratorio propio.",
+    "production": {
+      "heading": "Casos",
+      "description": "Del más reciente al más antiguo. Los tres de Wembley Studios (mar 2023 – mar 2025) siguen en producción hoy."
+    },
+    "labs": {
+      "heading": "Labs",
+      "description": "Proyectos propios en desarrollo. Algunos tienen demo, otros están en fase de arquitectura. La transparencia sobre el estado de cada uno es deliberada."
+    },
+    "case1": {
+      "title": "Chat RAG multiagente sobre aplicaciones empresariales",
+      "meta": "Indra Group (vía Malt) · Freelance · AI Engineer · may – oct 2026",
+      "summary": "Chat multiagente que responde preguntas funcionales y técnicas sobre aplicaciones empresariales de varios clientes, configurable para priorizar coste o calidad. El reto: combinar código, documentación y un grafo de dependencias manteniendo controlado el coste por consulta.",
+      "decisions": [
+        "Orquestación con LangGraph (patrón orchestrator-workers): un analyzer descompone la pregunta y planifica la búsqueda, y varios workers buscan y responden en paralelo. Se configura con workers ligeros (Claude Haiku) para minimizar coste o con un sintetizador Claude Sonnet con toda la evidencia para maximizar calidad",
+        "Retrieval multifuente: búsqueda vectorial en S3 Vectors con índice por proyecto, rerank por tipo de fuente (Cohere Rerank 3.5), troceo lógico con frase de contexto y consultas deterministas al grafo con fallback semántico",
+        "Evaluación rigurosa: harness por CLI con repeticiones para medir el ruido, calificación a ciegas y embudo de pérdidas por etapa. Unos 180 experimentos",
+        "Hoja de ruta con prototipos medidos, por iniciativa propia: planificación guiada por el grafo (el analyzer recibe el contexto del proyecto: nodos y relaciones) y workers más granulares (−30 % de coste en prototipo)"
+      ],
+      "stack": ["Amazon Bedrock", "Claude Haiku", "Claude Sonnet", "LangGraph", "S3 Vectors", "Cohere Rerank 3.5", "AWS Lambda", "DynamoDB", "CloudWatch", "Python", "Arquitectura hexagonal"],
+      "deliverables": "Código del chat y del harness de evaluación, documentación técnica y handoff al equipo, e informe de próximos pasos con recomendación priorizada."
+    },
+    "case2": {
+      "title": "Asistente de Q&A financiero por voz",
+      "meta": "Datatón con Turing Challenge · jul 2026 · 2º puesto · en solitario, en una semana",
+      "summary": "Transcribe las preguntas de los analistas durante una presentación de resultados y responde en streaming apoyándose solo en las slides. El reto: responder al momento, ciñéndose al contenido del deck y sin inventar.",
+      "decisions": [
+        "Ingesta de PPTX con enriquecimiento offline: descripción textual de gráficos, reformulaciones bilingües ES/EN y preguntas sintéticas",
+        "Retrieval híbrido en pgvector (70 % vectorial, 30 % full-text) para no perder cifras, años ni siglas",
+        "Transcripción con Azure AI Speech: corrección conservadora con glosario dinámico y detección de preguntas determinista, con LLM solo como fallback",
+        "Respuestas que citan solo las slides recuperadas, emitidas por streaming pregunta a pregunta",
+        "La demo procesa un fichero de audio; el siguiente paso natural es micrófono en directo"
+      ],
+      "stack": ["Azure OpenAI", "GPT-5.4", "GPT-5.4-mini", "text-embedding-3-large", "Azure AI Speech", "Azure PostgreSQL", "pgvector", "FastAPI", "SSE", "Python"]
+    },
+    "production1": {
+      "title": "Asistente conversacional sobre catálogo de producto",
+      "meta": "Sector: Retail / Sanitarios y baño · Wembley Studios · 2024",
+      "summary": "Sistema conversacional sobre ~20 catálogos PDF de proveedores, ~19.000 productos y ~5.000 repuestos. El reto principal no era la generación, era la recuperación: los catálogos tenían estructuras dispares, referencias inconsistentes y datos técnicos en tablas mal escaneadas.",
+      "decisions": [
+        "Hybrid search (búsqueda léxica + vectorial) para combinar coincidencias exactas de referencia con búsqueda semántica",
+        "Semantic ranking sobre los resultados para priorizar relevancia real",
+        "Multi-query retrieval para descomponer preguntas complejas",
+        "Tool-calling routing para evitar invocar al LLM cuando una consulta determinista bastaba"
+      ],
+      "stack": ["Azure OpenAI", "Azure AI Search", "LangChain", "FastAPI", "Python"]
+    },
+    "production2": {
+      "title": "Verificación automática de facturas en programa de loyalty",
+      "meta": "Sector: Retail / Sanitarios y baño · Wembley Studios · 2024",
+      "summary": "Sistema de loyalty B2B donde instaladores profesionales suben las facturas de sus distribuidores y reciben puntos por los productos de la marca vendidos. El reto técnico no era la extracción genérica, era la identificación fiable: en una factura de un distribuidor multimarca, hay que distinguir qué productos son de la marca cliente, qué referencias se corresponden con qué SKU del catálogo, y todo esto con datos de entrada ruidosos (OCR imperfecto, abreviaturas, referencias parciales del distribuidor).",
+      "decisions": [
+        "Azure Document Intelligence para extracción estructurada de líneas de factura",
+        "Embeddings + fuzzy matching + heurísticas en capas para matching de productos contra el maestro de catálogo con datos ruidosos",
+        "Precisión medida del 85-90% en matching contra maestros",
+        "Arquitectura asíncrona con Azure Functions y Service Bus para tolerancia a picos de volumen (500 facturas/mes)",
+        "Validación humana antes de acreditar puntos sobre todos los casos procesados"
+      ],
+      "stack": ["Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "PostgreSQL", "Python"]
+    },
+    "production3": {
+      "title": "Bot de soporte interno en Teams",
+      "meta": "Sector: Tasación y valoración · Wembley Studios · 2024",
+      "summary": "Bot conversacional integrado en Microsoft Teams que responde sobre documentación interna y, cuando no puede resolver, abre ticket en el sistema de gestión con el contexto ya recogido del usuario.",
+      "decisions": [
+        "RAG sobre base documental interna con control de acceso por usuario",
+        "Detección de intención para distinguir consulta resoluble vs. incidencia que requiere ticket",
+        "Creación de tickets enriquecida: el bot extrae datos de la conversación (sistema afectado, descripción del problema, urgencia) y los estructura antes de crear la incidencia"
+      ],
+      "stack": ["Azure OpenAI", "Microsoft Bot Framework", "Teams SDK", "Python"]
+    },
+    "lab1": {
+      "title": "Logiassist",
+      "summary": "Asistente RAG para una empresa de logística ficticia, pensado como demo y portfolio técnico: chat web con respuesta en streaming y API. Búsqueda híbrida (pgvector + full-text en español) con reranker y comprobación de evidencia antes de responder, defensa por capas frente a prompt injection y solo modelos con datos en la UE (Microsoft Foundry, Data Zone EU). Se evalúa con juez LLM y midiendo el coste real de cada ejecución.",
+      "status": "En desarrollo · la evaluación rechaza el 100 % de los ataques; ahora estoy mejorando la búsqueda",
+      "statusType": "in-development",
+      "videoUrl": "PENDING",
+      "demoUrl": "https://internal-assistant-demo-web.azurewebsites.net/demo",
+      "githubUrl": "https://github.com/MarorusAssistance/Logiassist"
+    },
+    "lab2": {
+      "title": "Document Intelligent Processor",
+      "summary": "Extracción automática de datos de documentos no estructurados (facturas, albaranes, contratos) hacia ERP, con capa de matching contra maestros y revisión humana para casos ambiguos. Generalización del patrón usado en el Proyecto 2, reorientado al caso de uso de volcado a ERP.",
+      "status": "Demo en desarrollo · sin demo visual pública (pipeline backend)",
+      "statusType": "in-development",
+      "githubUrl": "https://github.com/MarorusAssistance/Document-Intelligent-Processor"
+    },
+    "lab3": {
+      "title": "Orquestador de agentes (LOLO)",
+      "summary": "Gateway que enruta peticiones a múltiples agentes especializados según intención: agente de compras, agente de soporte, agente documental. Pensado para clientes que ya tienen varios casos de uso y necesitan una capa común de orquestación, autenticación y observabilidad.",
+      "status": "Visión arquitectónica · sin implementación todavía",
+      "statusType": "architecture-only",
+      "githubUrl": "https://github.com/MarorusAssistance/LOLO.openclaw-gateway"
+    },
+    "activeFronts": {
+      "title": "Otros frentes activos",
+      "items": [
+        "Agente de lead management integrado con CRM (Notion)",
+        "Asistente sobre n8n con LLMs locales para escenarios on-premise"
+      ]
+    },
+    "labels": {
+      "decisions": "Decisiones técnicas",
+      "deliverables": "Entregables",
+      "stack": "Stack",
+      "viewDiagram": "Ver arquitectura",
+      "viewVideo": "Ver vídeo",
+      "viewDemo": "Probar demo",
+      "viewGithub": "Ver en GitHub",
+      "closeModal": "Cerrar",
+      "statusFunctional": "Funcional",
+      "statusInDevelopment": "En desarrollo",
+      "statusArchitectureOnly": "Solo arquitectura"
+    }
+  },
+  "about": {
+    "sectionLabel": "SOBRE MÍ",
+    "title": "Manuel Romero",
+    "bio": [
+      "Soy Manuel Romero. Construyo sistemas de IA generativa para B2B desde 2023.",
+      "Empecé como AI Engineer en Wembley Studios, una consultora técnica B2B, donde durante dos años diseñé y desplegué sistemas en producción para clientes reales: un asistente conversacional sobre catálogos de producto con 19.000 referencias en el sector retail, un sistema de loyalty con verificación automática de facturas para profesionales del mismo sector, y un bot de soporte interno integrado en Teams para una empresa del sector de tasación y valoración. No fueron POCs ni demos: son sistemas que siguen funcionando hoy.",
+      "Desde marzo de 2025 trabajo como freelance y soy Super Malter en Malt. Mi enfoque actual son tres servicios concretos donde puedo entregar valor profundo: agentes y sistemas RAG, automatización documental con IA, y arquitectura GenAI. Prefiero ir despacio y especializarme antes que ofrecer un catálogo amplio sin profundidad.",
+      "En 2026, vía Malt, construí para Indra Group un chat RAG multiagente sobre aplicaciones empresariales en AWS Bedrock, y quedé 2º en el datatón con Turing Challenge con un asistente de Q&A financiero por voz. Desde abril de 2026 colaboro además con LILT diseñando tareas de programación en español para entrenar y evaluar agentes de IA de laboratorios de IA punteros.",
+      "Tengo sistemas en producción sobre Azure (con tres certificaciones oficiales: AI-102, DP-100, AZ-204) y he construido sistemas multiagente sobre AWS Bedrock, con el ecosistema Python para IA: LangChain, LangGraph, FastAPI, PostgreSQL con pgvector. Pero la tecnología es la herramienta; lo que vendo es criterio para decidir qué construir, cómo, y qué no construir, con calidad y coste medidos mediante evaluación sistemática. La especialización es en el problema, no en el logo del proveedor."
+    ],
+    "skillsTitle": "Stack y experiencia",
+    "skills": {
+      "aiLlm": { "label": "Lenguajes y frameworks IA", "items": ["Python", "LangChain", "LangGraph", "FastAPI", "prompt engineering", "tool calling", "multi-agent systems"] },
+      "cloud": { "label": "Cloud: Azure y AWS", "items": ["Azure OpenAI", "Azure AI Foundry", "Azure AI Search", "Azure AI Speech", "Azure Functions", "Document Intelligence", "Service Bus", "Key Vault", "Amazon Bedrock", "AWS Lambda", "DynamoDB", "S3 Vectors"] },
+      "data": { "label": "Datos, búsqueda y almacenamiento", "items": ["PostgreSQL", "pgvector", "SQL", "embeddings", "hybrid search", "semantic search", "OCR"] },
+      "quality": { "label": "Calidad y evaluación de LLMs", "items": ["LangSmith", "LLM-as-judge", "evals heurísticos", "calificación a ciegas", "harness de evaluación", "observabilidad de LLMs"] },
+      "integration": { "label": "Integración y operación", "items": ["Docker", "CI/CD", "arquitecturas asíncronas", "API integration", "Microsoft Teams"] },
+      "alt": { "label": "Entornos alternativos", "items": ["n8n", "LLMs locales / on-premise"] }
+    },
+    "certificationsTitle": "Certificaciones",
+    "certificationsSubtitle": "Tres certificaciones oficiales de Microsoft Azure como prueba de competencia técnica verificable.",
+    "certifications": [
+      { "code": "AI-102", "name": "Microsoft Certified: Azure AI Engineer Associate", "description": "Diseño e implementación de soluciones de IA sobre Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/8458E78A893EB486?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "DP-100", "name": "Microsoft Certified: Azure Data Scientist Associate", "description": "Diseño y operación de soluciones de machine learning en Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-data-scientist/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/1C2E34127EC4F30C?sharingId=1D7BF3F93DD8D96E" },
+      { "code": "AZ-204", "name": "Microsoft Certified: Azure Developer Associate", "description": "Desarrollo de aplicaciones y servicios sobre la plataforma Azure.", "infoUrl": "https://learn.microsoft.com/credentials/certifications/azure-developer/", "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/ManuelPRomeroRuiz-3587/7494AEF2236C87DC?sharingId=1D7BF3F93DD8D96E" }
+    ]
+  },
+  "howIWork": {
+    "sectionLabel": "CÓMO TRABAJO",
+    "title": "Conecta. Desconecta. Reconecta.",
+    "intro": "Construir un sistema de IA en una empresa no es solo desplegar código. Es entender el proceso real, integrarlo en la operativa, y hacer que el equipo lo adopte. Mi forma de trabajar se resume en tres palabras.",
+    "step1": {
+      "letter": "C",
+      "title": "Conecta",
+      "subtitle": "Antes de proponer arquitectura, entiendo el proceso.",
+      "body": "Cada empresa tiene su forma de funcionar, sus herramientas, sus cuellos de botella reales (que casi nunca son los que aparecen en el brief inicial). El primer trabajo es identificar dónde la IA aporta valor de verdad y dónde es más eficiente no usarla. No todo proceso necesita un LLM detrás; algunos necesitan una query SQL bien escrita o un cambio de procedimiento.\n\nEsta fase es conversación, observación y mucho preguntar. El objetivo es salir con un mapa claro de qué construir, qué no construir, y por qué."
+    },
+    "step2": {
+      "letter": "D",
+      "title": "Desconecta",
+      "subtitle": "El sistema funciona para que tu equipo no tenga que estar encima.",
+      "body": "Una vez identificado el caso, lo construyo para que el trabajo repetitivo deje de pasar por personas. Las facturas se procesan solas, las consultas frecuentes se resuelven sin intervención, los datos están centralizados y consultables. Lo que antes consumía horas, ahora ocurre en segundo plano.\n\nLa meta no es solo automatizar tareas, es liberar atención. Que tu equipo deje de gastar energía en lo mecánico para poder gastarla en lo que requiere criterio."
+    },
+    "step3": {
+      "letter": "R",
+      "title": "Reconecta",
+      "subtitle": "Menos ruido operativo, más espacio para lo que importa.",
+      "body": "Cuando el sistema funciona, pasa algo que va más allá del ROI: las personas dejan de ir corriendo todo el día. El responsable de operaciones sale a las 18:00 en vez de a las 21:00. El CTO deja de apagar fuegos y vuelve a pensar a tres meses vista. El equipo deja de estar disperso y empieza a tener espacio mental.\n\nSuena blando para un servicio técnico, pero es el resultado que veo una y otra vez. Un sistema bien construido no solo ahorra costes; devuelve tiempo y baja la temperatura de la operativa. Y ese tiempo es lo que tú decides cómo usar: en estrategia, en el equipo, o en tu vida fuera del trabajo."
+    },
+    "cta": "¿Reconoces el patrón? Hablemos →"
+  },
+  "contact": {
+    "sectionLabel": "CONTACTO",
+    "title": "Hablemos",
+    "intro": "Si tienes un proyecto en mente, un problema operativo que crees que la IA puede resolver, o simplemente quieres validar una idea técnica, escríbeme. Respondo en menos de 48 horas laborables.",
+    "calendly": {
+      "title": "Reserva una llamada",
+      "subtitle": "30 minutos. Sin compromiso. Cuéntame tu caso y te digo si puedo ayudarte."
+    },
+    "form": {
+      "title": "O escríbeme directamente",
+      "fields": {
+        "name": "Nombre",
+        "company": "Empresa (opcional)",
+        "email": "Email",
+        "type": "¿Cómo te llego?",
+        "typeOptions": { "team": "Refuerzo de equipo IT", "project": "Proyecto cerrado", "general": "Consulta general", "other": "Otro" },
+        "message": "Cuéntame brevemente",
+        "privacy": "He leído y acepto la política de privacidad"
+      },
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "success": "Mensaje enviado. Te responderé en menos de 48 horas laborables.",
+      "error": "Algo ha fallado. Inténtalo de nuevo o escríbeme directamente a marorusassistance@gmail.com",
+      "microcopy": "Tus datos solo se usan para responderte. No los comparto ni los uso para marketing.",
+      "privacyLink": "Más detalles en la política de privacidad.",
+      "anotherMessage": "Enviar otro mensaje"
+    },
+    "alternativeContact": {
+      "label": "También en:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt"
+    }
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "lastUpdated": "Última actualización: [PENDIENTE]",
+    "placeholder": "Esta página está en construcción. Si necesitas información sobre cómo se tratan tus datos al contactarme, escríbeme directamente a marorusassistance@gmail.com."
+  },
+  "footer": {
+    "tagline": "Agentes y RAG en producción, con calidad y coste medidos",
+    "rights": "Todos los derechos reservados",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "malt": "Malt",
+      "email": "Email"
+    }
+  },
+  "meta": {
+    "title": "Maroru's Assistance — Agentes y RAG en producción, con calidad y coste medidos",
+    "description": "AI Engineer freelance. Construyo agentes y sistemas RAG en producción sobre Azure y AWS, con calidad y coste medidos mediante evaluación sistemática."
+  },
+  "languageSwitcher": {
+    "es": "ES",
+    "en": "EN",
+    "ariaLabel": "Cambiar idioma"
+  },
+  "folio": {
+    "menu": "Menú",
+    "close": "Cerrar",
+    "home": "Inicio",
+    "chapter": "Capítulo",
+    "skip": "Saltar al contenido",
+    "cover": {
+      "line": "AI Engineer freelance. Construyo agentes y sistemas RAG en producción, con su calidad y su coste medidos, sobre Azure y AWS.",
+      "place": "España · remoto",
+      "clockLabel": "Hora local",
+      "since": "Freelance desde marzo de 2025",
+      "malter": "Super Malter en Malt",
+      "book": "Reservar llamada",
+      "malt": "Perfil en Malt",
+      "scroll": "Baja"
+    },
+    "chapters": {
+      "intro": "Quién",
+      "work": "Los casos",
+      "services": "Servicios",
+      "business": "Para negocio",
+      "record": "Trayectoria",
+      "method": "Cómo trabajo",
+      "next": "Siguiente capítulo"
+    },
+    "intro": {
+      "lead": "Hola, soy Manuel. Llevo agentes y sistemas RAG a producción y mido su calidad y su coste, en lugar de prometerlos.",
+      "more": "Más sobre mí",
+      "photoAlt": "Manuel Romero"
+    },
+    "work": {
+      "title": "Los casos",
+      "lead": "Cinco sistemas reales, del más reciente al más antiguo. Cada uno con su arquitectura y lo que se midió.",
+      "hint": "Sigue bajando para recorrer los casos",
+      "listTitle": "Todos los casos",
+      "read": "Leer el caso",
+      "labsTitle": "Labs",
+      "labsLead": "Proyectos propios. El estado de cada uno se dice tal cual.",
+      "github": "Código en GitHub",
+      "video": "Ver vídeo",
+      "demo": "Probar demo"
+    },
+    "business": {
+      "seeCase": "Ver el caso"
+    },
+    "record": {
+      "title": "Trayectoria",
+      "certsTitle": "Certificaciones",
+      "verify": "Verificar",
+      "entries": [
+        {
+          "name": "Indra Group",
+          "note": "vía Malt",
+          "years": "may – oct 2026",
+          "proof": "Chat RAG multiagente sobre aplicaciones empresariales: 73 % de respuestas correctas, calificadas a ciegas."
+        },
+        {
+          "name": "LILT",
+          "note": "freelance",
+          "years": "abr 2026 – hoy",
+          "proof": "Diseño de tareas de programación en español para entrenar y evaluar agentes de IA de laboratorios de IA punteros."
+        },
+        {
+          "name": "Turing Challenge",
+          "note": "datatón · en solitario",
+          "years": "jul 2026",
+          "proof": "2º puesto con un asistente de Q&A financiero por voz, construido en una semana."
+        },
+        {
+          "name": "Maroru's Assistance",
+          "note": "freelance",
+          "years": "mar 2025 – hoy",
+          "proof": "Agentes, RAG y automatización documental para empresas B2B. Super Malter en Malt."
+        },
+        {
+          "name": "Wembley Studios",
+          "note": "AI Engineer",
+          "years": "mar 2023 – mar 2025",
+          "proof": "Tres sistemas en producción: asistente sobre 19.000 productos, 500 facturas/mes verificadas y bot de soporte en Teams."
+        }
+      ]
+    },
+    "next": {
+      "title": "Siguiente capítulo",
+      "emailLabel": "Escríbeme a"
+    },
+    "case": {
+      "back": "Volver a los casos",
+      "architecture": "Arquitectura",
+      "openFull": "Abrir a tamaño completo",
+      "business": "Para negocio",
+      "next": "Siguiente caso",
+      "challenge": "El caso",
+      "swipe": "Desliza para ver el diagrama completo"
+    },
+    "aboutPage": {
+      "back": "Volver al folio"
+    }
+  }
+}

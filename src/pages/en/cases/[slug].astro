@@ -1,0 +1,12 @@
+---
+import CasePage from '../../../components/folio/CasePage.astro';
+import { caseSlugs } from '../../../data/cases';
+
+export function getStaticPaths() {
+  return caseSlugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<CasePage lang="en" slug={slug!} />

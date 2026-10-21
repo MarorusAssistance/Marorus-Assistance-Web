@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <rect width="800" height="450" fill="#e6e1d9"/>
+  <defs>
+    <pattern id="dots-c" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#5a5550" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#dots-c)"/>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#d4cfc5" stroke-width="1.5"/>
+  <g transform="translate(376, 160)" fill="none" stroke="#b80000" stroke-width="1.5" opacity="0.45">
+    <rect x="0" y="0" width="48" height="36" rx="4"/>
+    <rect x="16" y="-20" width="32" height="20" rx="3"/>
+    <line x1="24" y1="-20" x2="24" y2="0"/>
+    <rect x="-52" y="8" width="32" height="20" rx="3"/>
+    <line x1="-4" y1="18" x2="0" y2="18"/>
+    <rect x="68" y="8" width="32" height="20" rx="3"/>
+    <line x1="48" y1="18" x2="68" y2="18"/>
+  </g>
+  <text x="400" y="255" text-anchor="middle" font-family="monospace" font-size="10" fill="#5a5550" letter-spacing="3">DIAGRAMA DE ARQUITECTURA</text>
+  <text x="400" y="278" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="600" fill="#0a0a0a">Asistente sobre catálogo de producto</text>
+  <text x="400" y="300" text-anchor="middle" font-family="monospace" font-size="10" fill="#b80000" letter-spacing="1.5">Asset pendiente</text>
+</svg>

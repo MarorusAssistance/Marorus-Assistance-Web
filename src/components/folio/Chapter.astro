@@ -1,0 +1,29 @@
+---
+import { useTranslations, type Locale } from '../../i18n/utils';
+
+interface Props {
+  id: string;
+  lang: Locale;
+  numeral: string;
+  name: string;
+  tone?: 'paper' | 'bone' | 'charcoal';
+  class?: string;
+}
+
+const { id, lang, numeral, name, tone = 'paper', class: className } = Astro.props;
+const t = useTranslations(lang);
+const toneClass = {
+  paper: 'bg-paper text-ink',
+  bone: 'bg-bone text-ink',
+  charcoal: 'on-dark bg-charcoal text-on-dark',
+}[tone];
+---
+
+<section id={id} class:list={[toneClass, 'relative', className]} aria-labelledby={`${id}-title`}>
+  <!-- Running head, as in a bound folio: chapter number and name, set apart from the content -->
+  <div class:list={['flex items-baseline justify-between px-5 md:px-12 pt-6 md:pt-8 font-display text-xl md:text-2xl', tone === 'charcoal' ? 'text-on-dark-muted' : 'text-ink-muted']} aria-hidden="true">
+    <span>{t('folio.chapter')} {numeral}</span>
+    <span>{name}</span>
+  </div>
+  <slot />
+</section>

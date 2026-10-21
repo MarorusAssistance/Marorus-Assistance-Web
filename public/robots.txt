@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marorusassistance.com/sitemap-index.xml

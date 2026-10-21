@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300..600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Folio: display serif for chapter titles and names, Hanken Grotesk for everything read or operated */
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-primary: #b80000;
+  --color-primary-dark: #8a0000;
+  --color-primary-soft: #e8a9a0;  /* maroon read on charcoal (≈6.4:1) */
+
+  --color-paper: #f6f3ee;
+  --color-bone: #ebe5dc;
+  --color-charcoal: #2f2b28;
+  --color-ink: #1f1c1a;
+  --color-ink-muted: #5f5852;       /* on paper ≈6.4:1 */
+  --color-on-dark: #efe9e1;
+  --color-on-dark-muted: #b8ada1;   /* on charcoal ≈6.1:1 */
+  --color-rule: #d6cec3;
+  --color-rule-dark: #4a443f;
+
+  /* Legacy aliases still used by the privacy pages and the contact form */
+  --color-bg: var(--color-paper);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-ink-muted);
+  --color-border-soft: var(--color-rule);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 350;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-primary-soft);
+}
+
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+html {
+  scrollbar-color: var(--color-ink-muted) var(--color-paper);
+  scrollbar-width: thin;
+}
+
+/* Display type: the serif is the voice of titles and names */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.prose-measure {
+  max-width: 68ch;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Cover load: the one orchestrated moment ──────────────────── */
+@keyframes rise {
+  from { transform: translateY(0.35em); opacity: 0; filter: blur(6px); }
+  to   { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+.cover-rise {
+  animation: rise 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cover-rise { animation: none; }
+}
+
+/* ─── Dialog (lab video) ───────────────────────────────────────── */
+dialog.folio-dialog {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  width: min(1100px, 94vw);
+  background: var(--color-charcoal);
+  color: var(--color-on-dark);
+}
+dialog.folio-dialog::backdrop {
+  background: rgba(31, 28, 26, 0.88);
+}
+
+/* Calendly: until the embed injects its iframe, let clicks reach the fallback booking link beneath */
+.calendly-inline-widget:empty {
+  pointer-events: none;
+}
+/* …and once the iframe is in, the fallback disappears (Calendly's card does not cover the whole box) */
+.calendly-wrap:has(.calendly-inline-widget iframe) .calendly-fallback {
+  display: none;
+}
